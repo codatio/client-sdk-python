@@ -2,6 +2,14 @@
 
 The current status of the dataset.
 
+## Example Usage
+
+```python
+from codat_sync_for_expenses.models.shared import DatasetStatus
+
+value = DatasetStatus.INITIAL
+```
+
 
 ## Values
 

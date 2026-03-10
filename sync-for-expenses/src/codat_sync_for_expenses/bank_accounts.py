@@ -5,7 +5,10 @@ from codat_sync_for_expenses import utils
 from codat_sync_for_expenses._hooks import HookContext
 from codat_sync_for_expenses.models import errors, operations, shared
 from codat_sync_for_expenses.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from codat_sync_for_expenses.utils.unmarshal_json_response import (
+    unmarshal_json_response,
+)
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class BankAccounts(BaseSDK):
@@ -21,14 +24,15 @@ class BankAccounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.CreateBankAccountResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.CreateBankAccountResponse:
         r"""Create bank account
 
         The *Create bank account* endpoint creates a new [bank account](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) for a given company's connection.
 
         [Bank accounts](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-bankAccounts-model).
 
@@ -36,6 +40,7 @@ class BankAccounts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -44,12 +49,14 @@ class BankAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.CreateBankAccountRequest)
         request = cast(operations.CreateBankAccountRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts",
             base_url=base_url,
@@ -60,14 +67,16 @@ class BankAccounts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bank_account,
+                request.bank_account if request is not None else None,
                 True,
                 True,
                 "json",
                 OptionalNullable[shared.BankAccount],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -85,8 +94,10 @@ class BankAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="create-bank-account",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -105,32 +116,25 @@ class BankAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.CreateBankAccountResponse]
-            )
+            return unmarshal_json_response(shared.CreateBankAccountResponse, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def create_async(
         self,
@@ -142,14 +146,15 @@ class BankAccounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.CreateBankAccountResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.CreateBankAccountResponse:
         r"""Create bank account
 
         The *Create bank account* endpoint creates a new [bank account](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) for a given company's connection.
 
         [Bank accounts](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Required data may vary by integration. To see what data to post, first call [Get create/update bank account model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-bankAccounts-model).
 
@@ -157,6 +162,7 @@ class BankAccounts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -165,12 +171,14 @@ class BankAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.CreateBankAccountRequest)
         request = cast(operations.CreateBankAccountRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts",
             base_url=base_url,
@@ -181,14 +189,16 @@ class BankAccounts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bank_account,
+                request.bank_account if request is not None else None,
                 True,
                 True,
                 "json",
                 OptionalNullable[shared.BankAccount],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -206,8 +216,10 @@ class BankAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="create-bank-account",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -226,32 +238,25 @@ class BankAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.CreateBankAccountResponse]
-            )
+            return unmarshal_json_response(shared.CreateBankAccountResponse, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get_create_model(
         self,
@@ -263,14 +268,15 @@ class BankAccounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.PushOption]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.PushOption:
         r"""Get create bank account model
 
         The *Get create/update bank account model* endpoint returns the expected data for the request payload when creating and updating a [bank account](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) for a given company and integration.
 
         [Bank accounts](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         See the *response examples* for integration-specific indicative models.
 
@@ -279,6 +285,7 @@ class BankAccounts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -287,6 +294,8 @@ class BankAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -294,7 +303,7 @@ class BankAccounts(BaseSDK):
             )
         request = cast(operations.GetCreateBankAccountsModelRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts",
             base_url=base_url,
@@ -305,7 +314,9 @@ class BankAccounts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -323,8 +334,10 @@ class BankAccounts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-create-bankAccounts-model",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -342,30 +355,25 @@ class BankAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
+            return unmarshal_json_response(shared.PushOption, http_res)
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_create_model_async(
         self,
@@ -377,14 +385,15 @@ class BankAccounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.PushOption]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.PushOption:
         r"""Get create bank account model
 
         The *Get create/update bank account model* endpoint returns the expected data for the request payload when creating and updating a [bank account](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) for a given company and integration.
 
         [Bank accounts](https://docs.codat.io/sync-for-expenses-api#/schemas/BankAccount) are financial accounts maintained by a bank or other financial institution.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         See the *response examples* for integration-specific indicative models.
 
@@ -393,6 +402,7 @@ class BankAccounts(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -401,6 +411,8 @@ class BankAccounts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -408,7 +420,7 @@ class BankAccounts(BaseSDK):
             )
         request = cast(operations.GetCreateBankAccountsModelRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/connections/{connectionId}/options/bankAccounts",
             base_url=base_url,
@@ -419,7 +431,9 @@ class BankAccounts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -437,8 +451,10 @@ class BankAccounts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-create-bankAccounts-model",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -456,27 +472,22 @@ class BankAccounts(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.PushOption])
+            return unmarshal_json_response(shared.PushOption, http_res)
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

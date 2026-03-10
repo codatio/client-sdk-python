@@ -2,6 +2,14 @@
 
 The type of platform of the connection.
 
+## Example Usage
+
+```python
+from codat_sync_for_expenses.models.shared import SourceType
+
+value = SourceType.ACCOUNTING
+```
+
 
 ## Values
 

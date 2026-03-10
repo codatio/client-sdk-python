@@ -7,15 +7,15 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Sync for Expenses: The API for Sync for Expenses.
+Expenses: The API for Codat's Expenses solution.
 
-Sync for Expenses is an API and a set of supporting tools. It has been built to
+Expenses is an API and a set of supporting tools. It has been built to
 enable corporate card and expense management platforms to provide high-quality
 integrations with multiple accounting software through a standardized API.
 
-[Explore product](https://docs.codat.io/sync-for-expenses/overview) | [See our OpenAPI spec](https://github.com/codatio/oas)
+[Explore solution](https://docs.codat.io/sync-for-expenses/overview) | [See our OpenAPI spec](https://github.com/codatio/oas)
 
-Not seeing the endpoints you're expecting? We've [reorganized our products](https://docs.codat.io/updates/230901-new-products), and you may be using a [different version of Sync for Expenses](https://docs.codat.io/sync-for-expenses-v1-api#/).
+Not seeing the endpoints you're expecting? We've [reorganized our solutions](https://docs.codat.io/updates/230901-new-products), and you may be using a [different version of Expenses](https://docs.codat.io/sync-for-expenses-v1-api#/).
 
 ---
 <!-- Start Codat Tags Table -->
@@ -56,6 +56,7 @@ Not seeing the endpoints you're expecting? We've [reorganized our products](http
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
+  * [Resource Management](#resource-management)
   * [Debugging](#debugging)
   * [Support](#support)
 
@@ -64,7 +65,20 @@ Not seeing the endpoints you're expecting? We've [reorganized our products](http
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-The SDK can be installed with either *pip* or *poetry* package managers.
+> [!NOTE]
+> **Python version upgrade policy**
+>
+> Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
+
+The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
+
+### uv
+
+*uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
+
+```bash
+uv add codat-sync-for-expenses
+```
 
 ### PIP
 
@@ -81,6 +95,37 @@ pip install codat-sync-for-expenses
 ```bash
 poetry add codat-sync-for-expenses
 ```
+
+### Shell and script usage with `uv`
+
+You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
+
+```shell
+uvx --from codat-sync-for-expenses python
+```
+
+It's also possible to write a standalone Python script without needing to set up a whole project like so:
+
+```python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "codat-sync-for-expenses",
+# ]
+# ///
+
+from codat_sync_for_expenses import CodatSyncExpenses
+
+sdk = CodatSyncExpenses(
+  # SDK arguments
+)
+
+# Rest of script here...
+```
+
+Once that is saved to a file, you can run it with `uv run script.py` where
+`script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
 ## Example Usage
@@ -102,44 +147,47 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ```python
 # Synchronous Example
 from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
-with CodatSyncExpenses() as codat_sync_expenses:
-    codat_sync_expenses.client_rate_limit_reached(request={
-        "event_type": "client.rateLimit.reached",
-        "generated_date": "2024-09-01T00:00:00Z",
-        "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
-        "payload": {
-            "daily_quota": 12000,
-            "expiry_date": "2024-09-01T12:14:14Z",
-            "quota_remaining": 0,
-        },
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.create(request={
+        "name": "Technicalium",
     })
 
-    # Use the SDK ...
+    # Handle response
+    print(res)
 ```
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
 from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
 
 async def main():
-    async with CodatSyncExpenses() as codat_sync_expenses:
-        await codat_sync_expenses.client_rate_limit_reached_async(request={
-            "event_type": "client.rateLimit.reached",
-            "generated_date": "2024-09-01T00:00:00Z",
-            "id": "743ec94a-8aa4-44bb-8bd4-e1855ee0e74b",
-            "payload": {
-                "daily_quota": 12000,
-                "expiry_date": "2024-09-01T12:14:14Z",
-                "quota_remaining": 0,
-            },
+
+    async with CodatSyncExpenses(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as codat_sync_expenses:
+
+        res = await codat_sync_expenses.companies.create_async(request={
+            "name": "Technicalium",
         })
 
-        # Use the SDK ...
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
@@ -151,43 +199,43 @@ asyncio.run(main())
 <details open>
 <summary>Available methods</summary>
 
-### [accounts](docs/sdks/accounts/README.md)
+### [Accounts](docs/sdks/accounts/README.md)
 
 * [create](docs/sdks/accounts/README.md#create) - Create account
 * [get_create_model](docs/sdks/accounts/README.md#get_create_model) - Get create account model
 
-### [adjustments](docs/sdks/adjustments/README.md)
+### [Adjustments](docs/sdks/adjustments/README.md)
 
 * [create](docs/sdks/adjustments/README.md#create) - Create adjustment transaction
 
-### [attachments](docs/sdks/attachments/README.md)
+### [Attachments](docs/sdks/attachments/README.md)
 
 * [upload](docs/sdks/attachments/README.md#upload) - Upload attachment
 
-### [bank_accounts](docs/sdks/bankaccounts/README.md)
+### [BankAccounts](docs/sdks/bankaccounts/README.md)
 
 * [create](docs/sdks/bankaccounts/README.md#create) - Create bank account
 * [get_create_model](docs/sdks/bankaccounts/README.md#get_create_model) - Get create bank account model
 
-
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create company
 * [delete](docs/sdks/companies/README.md#delete) - Delete a company
 * [get](docs/sdks/companies/README.md#get) - Get company
 * [list](docs/sdks/companies/README.md#list) - List companies
+* [replace](docs/sdks/companies/README.md#replace) - Replace company
 * [update](docs/sdks/companies/README.md#update) - Update company
 
-### [company_info](docs/sdks/companyinfo/README.md)
+### [CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [get](docs/sdks/companyinfo/README.md#get) - Get company info
 
-### [configuration](docs/sdks/configuration/README.md)
+### [Configuration](docs/sdks/configuration/README.md)
 
 * [get](docs/sdks/configuration/README.md#get) - Get company configuration
 * [set](docs/sdks/configuration/README.md#set) - Set company configuration
 
-### [connections](docs/sdks/connections/README.md)
+### [Connections](docs/sdks/connections/README.md)
 
 * [create](docs/sdks/connections/README.md#create) - Create connection
 * [create_partner_expense_connection](docs/sdks/connections/README.md#create_partner_expense_connection) - Create partner expense connection
@@ -196,19 +244,19 @@ asyncio.run(main())
 * [list](docs/sdks/connections/README.md#list) - List connections
 * [unlink](docs/sdks/connections/README.md#unlink) - Unlink connection
 
-### [customers](docs/sdks/customers/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
 * [create](docs/sdks/customers/README.md#create) - Create customer
 * [get](docs/sdks/customers/README.md#get) - Get customer
 * [list](docs/sdks/customers/README.md#list) - List customers
 * [update](docs/sdks/customers/README.md#update) - Update customer
 
-### [expenses](docs/sdks/expenses/README.md)
+### [Expenses](docs/sdks/expenses/README.md)
 
 * [create](docs/sdks/expenses/README.md#create) - Create expense transaction
 * [update](docs/sdks/expenses/README.md#update) - Update expense transactions
 
-### [manage_data](docs/sdks/managedata/README.md)
+### [ManageData](docs/sdks/managedata/README.md)
 
 * [get](docs/sdks/managedata/README.md#get) - Get data status
 * [get_pull_operation](docs/sdks/managedata/README.md#get_pull_operation) - Get pull operation
@@ -216,40 +264,40 @@ asyncio.run(main())
 * [refresh_all_data_types](docs/sdks/managedata/README.md#refresh_all_data_types) - Refresh all data
 * [refresh_data_type](docs/sdks/managedata/README.md#refresh_data_type) - Refresh data type
 
-### [mapping_options](docs/sdks/mappingoptions/README.md)
+### [MappingOptions](docs/sdks/mappingoptions/README.md)
 
 * [get_mapping_options](docs/sdks/mappingoptions/README.md#get_mapping_options) - Mapping options
 
-### [push_operations](docs/sdks/pushoperations/README.md)
+### [PushOperations](docs/sdks/pushoperations/README.md)
 
 * [get](docs/sdks/pushoperations/README.md#get) - Get push operation
 * [list](docs/sdks/pushoperations/README.md#list) - List push operations
 
-### [reimbursements](docs/sdks/reimbursements/README.md)
+### [Reimbursements](docs/sdks/reimbursements/README.md)
 
 * [create](docs/sdks/reimbursements/README.md#create) - Create reimbursable expense transaction
 * [update](docs/sdks/reimbursements/README.md#update) - Update reimbursable expense transaction
 
-### [suppliers](docs/sdks/suppliers/README.md)
+### [Suppliers](docs/sdks/suppliers/README.md)
 
 * [create](docs/sdks/suppliers/README.md#create) - Create supplier
 * [get](docs/sdks/suppliers/README.md#get) - Get supplier
 * [list](docs/sdks/suppliers/README.md#list) - List suppliers
 * [update](docs/sdks/suppliers/README.md#update) - Update supplier
 
-### [sync](docs/sdks/sync/README.md)
+### [Sync](docs/sdks/sync/README.md)
 
 * [get](docs/sdks/sync/README.md#get) - Get sync status
 * [get_last_successful_sync](docs/sdks/sync/README.md#get_last_successful_sync) - Last successful sync
 * [get_latest_sync](docs/sdks/sync/README.md#get_latest_sync) - Latest sync status
 * [list](docs/sdks/sync/README.md#list) - List sync statuses
 
-### [transaction_status](docs/sdks/transactionstatus/README.md)
+### [TransactionStatus](docs/sdks/transactionstatus/README.md)
 
 * [get](docs/sdks/transactionstatus/README.md#get) - Get sync transaction
 * [list](docs/sdks/transactionstatus/README.md#list) - List sync transactions
 
-### [transfers](docs/sdks/transfers/README.md)
+### [Transfers](docs/sdks/transfers/README.md)
 
 * [create](docs/sdks/transfers/README.md#create) - Create transfer transaction
 
@@ -272,20 +320,21 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 
+
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.attachments.upload(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 <!-- End File uploads [file-upload] -->
@@ -301,19 +350,20 @@ from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 from codat_sync_for_expenses.utils import BackoffStrategy, RetryConfig
 
+
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -323,19 +373,20 @@ from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 from codat_sync_for_expenses.utils import BackoffStrategy, RetryConfig
 
+
 with CodatSyncExpenses(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -343,29 +394,22 @@ with CodatSyncExpenses(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`CodatSyncExpensesError`](./src/codat_sync_for_expenses/models/errors/codatsyncexpenseserror.py) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will raise a errors.SDKError exception, which has the following properties:
-
-| Property        | Type             | Description           |
-|-----------------|------------------|-----------------------|
-| `.status_code`  | *int*            | The HTTP status code  |
-| `.message`      | *str*            | The error message     |
-| `.raw_response` | *httpx.Response* | The raw HTTP response |
-| `.body`         | *str*            | The response content  |
-
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create_async` method may raise the following exceptions:
-
-| Error Type          | Status Code                       | Content Type     |
-| ------------------- | --------------------------------- | ---------------- |
-| errors.ErrorMessage | 400, 401, 402, 403, 429, 500, 503 | application/json |
-| errors.SDKError     | 4XX, 5XX                          | \*/\*            |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
-
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import errors, shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
@@ -374,21 +418,51 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
     res = None
     try:
+
         res = codat_sync_expenses.companies.create(request={
             "name": "Technicalium",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Handle response
+        print(res)
 
-    except errors.ErrorMessage as e:
-        # handle e.data: errors.ErrorMessageData
-        raise(e)
-    except errors.SDKError as e:
-        # handle exception
-        raise(e)
+
+    except errors.CodatSyncExpensesError as e:
+        # The base class for HTTP error responses
+        print(e.message)
+        print(e.status_code)
+        print(e.body)
+        print(e.headers)
+        print(e.raw_response)
+
+        # Depending on the method different errors may be thrown
+        if isinstance(e, errors.ErrorMessage):
+            print(e.data.can_be_retried)  # Optional[str]
+            print(e.data.correlation_id)  # Optional[str]
+            print(e.data.detailed_error_code)  # Optional[int]
+            print(e.data.error)  # Optional[str]
+            print(e.data.service)  # Optional[str]
 ```
+
+### Error Classes
+**Primary errors:**
+* [`CodatSyncExpensesError`](./src/codat_sync_for_expenses/models/errors/codatsyncexpenseserror.py): The base class for HTTP error responses.
+  * [`ErrorMessage`](./src/codat_sync_for_expenses/models/errors/errormessage.py): Your `query` parameter was not correctly formed.
+
+<details><summary>Less common errors (5)</summary>
+
+<br />
+
+**Network errors:**
+* [`httpx.RequestError`](https://www.python-httpx.org/exceptions/#httpx.RequestError): Base class for request errors.
+    * [`httpx.ConnectError`](https://www.python-httpx.org/exceptions/#httpx.ConnectError): HTTP client was unable to make a request to a server.
+    * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
+
+
+**Inherit from [`CodatSyncExpensesError`](./src/codat_sync_for_expenses/models/errors/codatsyncexpenseserror.py)**:
+* [`ResponseValidationError`](./src/codat_sync_for_expenses/models/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -396,10 +470,11 @@ with CodatSyncExpenses(
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     server_url="https://api.codat.io",
@@ -407,13 +482,13 @@ with CodatSyncExpenses(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
@@ -515,21 +590,54 @@ You can set the security parameters through the `security` optional parameter wh
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 
+
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Resource Management [resource-management] -->
+## Resource Management
+
+The `CodatSyncExpenses` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+
+[context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
+
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+def main():
+
+    with CodatSyncExpenses(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as codat_sync_expenses:
+        # Rest of application here...
+
+
+# Or when using async:
+async def amain():
+
+    async with CodatSyncExpenses(
+        security=shared.Security(
+            auth_header="Basic BASE_64_ENCODED(API_KEY)",
+        ),
+    ) as codat_sync_expenses:
+        # Rest of application here...
+```
+<!-- End Resource Management [resource-management] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging

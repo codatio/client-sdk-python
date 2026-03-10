@@ -4,23 +4,25 @@
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 
+
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 ```
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
@@ -28,18 +30,19 @@ from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 
 async def main():
+
     async with CodatSyncExpenses(
         security=shared.Security(
             auth_header="Basic BASE_64_ENCODED(API_KEY)",
         ),
     ) as codat_sync_expenses:
+
         res = await codat_sync_expenses.companies.create_async(request={
             "name": "Technicalium",
         })
 
-        if res is not None:
-            # handle response
-            pass
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```

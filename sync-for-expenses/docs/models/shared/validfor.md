@@ -1,5 +1,13 @@
 # ValidFor
 
+## Example Usage
+
+```python
+from codat_sync_for_expenses.models.shared import ValidFor
+
+value = ValidFor.EXPENSE_TRANSACTIONS_PAYMENT
+```
+
 
 ## Values
 

@@ -2,6 +2,14 @@
 
 Available data types
 
+## Example Usage
+
+```python
+from codat_sync_for_expenses.models.shared import DataType
+
+value = DataType.ACCOUNT_TRANSACTIONS
+```
+
 
 ## Values
 

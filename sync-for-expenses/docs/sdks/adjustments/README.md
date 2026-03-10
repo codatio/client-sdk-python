@@ -1,5 +1,4 @@
 # Adjustments
-(*adjustments*)
 
 ## Overview
 
@@ -21,23 +20,26 @@ Adjustments represent write-offs and transaction alterations, such as foreign ex
 |-----------------------|-----------|
 | QuickBooks Desktop    | Yes       |
 
-### Example Usage
+### Example Usage: Create adjustment
 
+<!-- UsageSnippet language="python" operationID="create-adjustment-transaction" method="post" path="/companies/{companyId}/sync/expenses/adjustment-transactions" example="Create adjustment" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
 from decimal import Decimal
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.adjustments.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "request_body": [
             {
                 "currency": "USD",
+                "currency_rate": Decimal("1"),
                 "date_": "2024-05-21T00:00:00+00:00",
                 "id": "3357b3df-5f2e-465d-b9ba-226519dbb8f1",
                 "lines": [
@@ -53,7 +55,6 @@ with CodatSyncExpenses(
                         },
                         "tracking_refs": [
                             {
-                                "data_type": shared.TrackingRefAdjustmentTransactionDataType.TRACKING_CATEGORIES,
                                 "id": "80000003-1674553958",
                             },
                         ],
@@ -66,21 +67,79 @@ with CodatSyncExpenses(
                         "description": "credit line",
                         "tracking_refs": [
                             {
-                                "data_type": shared.TrackingRefAdjustmentTransactionDataType.TRACKING_CATEGORIES,
                                 "id": "80000003-1674553958",
                             },
                         ],
                     },
                 ],
-                "currency_rate": Decimal("1"),
                 "reference": "test reference",
             },
         ],
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Example 1
+
+<!-- UsageSnippet language="python" operationID="create-adjustment-transaction" method="post" path="/companies/{companyId}/sync/expenses/adjustment-transactions" example="Example 1" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.adjustments.create(request={
+        "request_body": [
+            {
+                "currency": "Iraqi Dinar",
+                "date_": "2022-10-23T00:00:00Z",
+                "id": "a13b8cfd-4823-489f-b930-8d52faa3dc07",
+                "lines": [],
+            },
+        ],
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Malformed query
+
+<!-- UsageSnippet language="python" operationID="create-adjustment-transaction" method="post" path="/companies/{companyId}/sync/expenses/adjustment-transactions" example="Malformed query" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.adjustments.create(request={
+        "request_body": [
+            {
+                "currency": "Iraqi Dinar",
+                "date_": "2022-10-23T00:00:00Z",
+                "id": "a13b8cfd-4823-489f-b930-8d52faa3dc07",
+                "lines": [],
+            },
+        ],
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -97,7 +156,8 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

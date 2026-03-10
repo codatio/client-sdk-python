@@ -1,5 +1,4 @@
 # TransactionStatus
-(*transaction_status*)
 
 ## Overview
 
@@ -16,24 +15,26 @@ Gets the status of a transaction for a sync
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-sync-transaction" method="get" path="/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.transaction_status.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -50,10 +51,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
@@ -61,25 +63,25 @@ Gets the transactions and status for a sync
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-sync-transactions" method="get" path="/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.transaction_status.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "sync_id": "6fb40d5e-b13e-11ed-afa1-0242ac120002",
-        "page": 1,
-        "page_size": 100,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -96,7 +98,8 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

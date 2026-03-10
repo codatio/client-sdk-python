@@ -1,5 +1,4 @@
 # ManageData
-(*manage_data*)
 
 ## Overview
 
@@ -19,22 +18,24 @@ Get the state of each data type for a company
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-data-status" method="get" path="/companies/{companyId}/dataStatus" example="Example" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.manage_data.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -51,10 +52,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get_pull_operation
 
@@ -62,23 +64,25 @@ Retrieve information about a single dataset or pull operation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-pull-operation" method="get" path="/companies/{companyId}/data/history/{datasetId}" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.manage_data.get_pull_operation(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "dataset_id": "71a4c0fb-8e15-45bd-958d-330b4e6e9f07",
+        "dataset_id": "fa5f3e86-bd80-49b8-853c-5fbba4b201f5",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -95,10 +99,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list_pull_operations
 
@@ -106,26 +111,26 @@ Gets the pull operation history (datasets) for a given company.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="list-pull-operations" method="get" path="/companies/{companyId}/data/history" example="Example" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.manage_data.list_pull_operations(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -142,10 +147,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## refresh_all_data_types
 
@@ -157,15 +163,18 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refresh-all-data-types" method="post" path="/companies/{companyId}/data/all" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     codat_sync_expenses.manage_data.refresh_all_data_types(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
@@ -183,10 +192,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## refresh_data_type
 
@@ -196,23 +206,25 @@ This is an asynchronous operation, and will bring updated data into Codat from t
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refresh-data-type" method="post" path="/companies/{companyId}/data/queue/{dataType}" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.manage_data.refresh_data_type(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "data_type": shared.SchemaDataType.INVOICES,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -229,7 +241,8 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |

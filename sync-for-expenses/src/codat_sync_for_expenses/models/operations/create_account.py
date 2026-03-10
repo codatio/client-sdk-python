@@ -4,7 +4,7 @@ from __future__ import annotations
 from codat_sync_for_expenses.models.shared import (
     accountprototype as shared_accountprototype,
 )
-from codat_sync_for_expenses.types import BaseModel
+from codat_sync_for_expenses.types import BaseModel, UNSET_SENTINEL
 from codat_sync_for_expenses.utils import (
     FieldMetadata,
     PathParamMetadata,
@@ -12,6 +12,7 @@ from codat_sync_for_expenses.utils import (
     RequestMetadata,
 )
 import pydantic
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -61,3 +62,21 @@ class CreateAccountRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
     r"""Time limit for the push operation to complete before it is timed out."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["accountPrototype", "allowSyncOnPushComplete", "timeoutInMinutes"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

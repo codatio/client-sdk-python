@@ -5,7 +5,10 @@ from codat_sync_for_expenses import utils
 from codat_sync_for_expenses._hooks import HookContext
 from codat_sync_for_expenses.models import errors, operations, shared
 from codat_sync_for_expenses.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from codat_sync_for_expenses.utils.unmarshal_json_response import (
+    unmarshal_json_response,
+)
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Suppliers(BaseSDK):
@@ -20,22 +23,37 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.CreateSupplierResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.CreateSupplierResponse:
         r"""Create supplier
 
         The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-suppliers-model).
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | Dynamics 365 Business Central | Yes       |
+        | FreeAgent                     | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | QuickBooks Desktop            | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Xero                          | Yes       |
+        | Zoho Books                    | Yes       |
 
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -44,12 +62,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.CreateSupplierRequest)
         request = cast(operations.CreateSupplierRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/suppliers",
             base_url=base_url,
@@ -60,10 +80,16 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.supplier, True, True, "json", OptionalNullable[shared.Supplier]
+                request.supplier if request is not None else None,
+                True,
+                True,
+                "json",
+                OptionalNullable[shared.Supplier],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -81,8 +107,10 @@ class Suppliers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="create-supplier",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -101,32 +129,25 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.CreateSupplierResponse]
-            )
+            return unmarshal_json_response(shared.CreateSupplierResponse, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def create_async(
         self,
@@ -137,22 +158,37 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.CreateSupplierResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.CreateSupplierResponse:
         r"""Create supplier
 
         The *Create supplier* endpoint creates a new [supplier](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-suppliers-model).
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | Dynamics 365 Business Central | Yes       |
+        | FreeAgent                     | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | QuickBooks Desktop            | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Xero                          | Yes       |
+        | Zoho Books                    | Yes       |
 
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -161,12 +197,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.CreateSupplierRequest)
         request = cast(operations.CreateSupplierRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/connections/{connectionId}/push/suppliers",
             base_url=base_url,
@@ -177,10 +215,16 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.supplier, True, True, "json", OptionalNullable[shared.Supplier]
+                request.supplier if request is not None else None,
+                True,
+                True,
+                "json",
+                OptionalNullable[shared.Supplier],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -198,8 +242,10 @@ class Suppliers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="create-supplier",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -218,32 +264,25 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.CreateSupplierResponse]
-            )
+            return unmarshal_json_response(shared.CreateSupplierResponse, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def get(
         self,
@@ -254,20 +293,35 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.Supplier]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Supplier:
         r"""Get supplier
 
         The *Get supplier* endpoint returns a single supplier for a given supplierId.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-company-data).
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-all-data-types).
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | Dynamics 365 Business Central | Yes       |
+        | FreeAgent                     | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | QuickBooks Desktop            | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Xero                          | Yes       |
+        | Zoho Books                    | Yes       |
 
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -276,12 +330,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetSupplierRequest)
         request = cast(operations.GetSupplierRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/data/suppliers/{supplierId}",
             base_url=base_url,
@@ -292,7 +348,9 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -310,8 +368,10 @@ class Suppliers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-supplier",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -330,30 +390,25 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Supplier])
+            return unmarshal_json_response(shared.Supplier, http_res)
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "409", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "409", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def get_async(
         self,
@@ -364,20 +419,35 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.Supplier]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Supplier:
         r"""Get supplier
 
         The *Get supplier* endpoint returns a single supplier for a given supplierId.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-company-data).
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-all-data-types).
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | Dynamics 365 Business Central | Yes       |
+        | FreeAgent                     | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | QuickBooks Desktop            | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Xero                          | Yes       |
+        | Zoho Books                    | Yes       |
 
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -386,12 +456,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.GetSupplierRequest)
         request = cast(operations.GetSupplierRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/data/suppliers/{supplierId}",
             base_url=base_url,
@@ -402,7 +474,9 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -420,8 +494,10 @@ class Suppliers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-supplier",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -440,30 +516,25 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Supplier])
+            return unmarshal_json_response(shared.Supplier, http_res)
         if utils.match_response(
-            http_res,
-            ["401", "402", "403", "404", "409", "429", "500", "503"],
-            "application/json",
+            http_res, ["401", "402", "403", "404", "409", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def list(
         self,
@@ -474,20 +545,35 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.Suppliers]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Suppliers:
         r"""List suppliers
 
         The *List suppliers* endpoint returns a list of [suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-company-data).
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-all-data-types).
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | Dynamics 365 Business Central | Yes       |
+        | FreeAgent                     | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | QuickBooks Desktop            | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Xero                          | Yes       |
+        | Zoho Books                    | Yes       |
 
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -496,12 +582,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListSuppliersRequest)
         request = cast(operations.ListSuppliersRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/companies/{companyId}/data/suppliers",
             base_url=base_url,
@@ -512,7 +600,9 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -530,8 +620,10 @@ class Suppliers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="list-suppliers",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -551,30 +643,27 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Suppliers])
+            return unmarshal_json_response(shared.Suppliers, http_res)
         if utils.match_response(
             http_res,
-            ["400", "401", "402", "403", "404", "409", "429", "500", "503"],
+            ["400", "401", "402", "403", "404", "409", "429"],
             "application/json",
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def list_async(
         self,
@@ -585,20 +674,35 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.Suppliers]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Suppliers:
         r"""List suppliers
 
         The *List suppliers* endpoint returns a list of [suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-company-data).
+        Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/sync-for-expenses-api#/operations/refresh-all-data-types).
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | Dynamics 365 Business Central | Yes       |
+        | FreeAgent                     | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | QuickBooks Desktop            | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Xero                          | Yes       |
+        | Zoho Books                    | Yes       |
 
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -607,12 +711,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.ListSuppliersRequest)
         request = cast(operations.ListSuppliersRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/companies/{companyId}/data/suppliers",
             base_url=base_url,
@@ -623,7 +729,9 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -641,8 +749,10 @@ class Suppliers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="list-suppliers",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -662,30 +772,27 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Suppliers])
+            return unmarshal_json_response(shared.Suppliers, http_res)
         if utils.match_response(
             http_res,
-            ["400", "401", "402", "403", "404", "409", "429", "500", "503"],
+            ["400", "401", "402", "403", "404", "409", "429"],
             "application/json",
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     def update(
         self,
@@ -696,21 +803,32 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.UpdateSupplierResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.UpdateSupplierResponse:
         r"""Update supplier
 
         The *Update supplier* endpoint updates an existing [supplier](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-suppliers-model).
+
+        ### Supported Integrations
+
+        | Integration       | Supported |
+        |-------------------|-----------|
+        | FreeAgent         | Yes       |
+        | QuickBooks Online | Yes       |
+        | Xero              | Yes       |
+
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -719,12 +837,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UpdateSupplierRequest)
         request = cast(operations.UpdateSupplierRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="PUT",
             path="/companies/{companyId}/connections/{connectionId}/push/suppliers/{supplierId}",
             base_url=base_url,
@@ -735,10 +855,16 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.supplier, True, True, "json", OptionalNullable[shared.Supplier]
+                request.supplier if request is not None else None,
+                True,
+                True,
+                "json",
+                OptionalNullable[shared.Supplier],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -756,8 +882,10 @@ class Suppliers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="update-supplier",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -776,32 +904,25 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.UpdateSupplierResponse]
-            )
+            return unmarshal_json_response(shared.UpdateSupplierResponse, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def update_async(
         self,
@@ -812,21 +933,32 @@ class Suppliers(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.UpdateSupplierResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.UpdateSupplierResponse:
         r"""Update supplier
 
         The *Update supplier* endpoint updates an existing [supplier](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) for a given company's connection.
 
         [Suppliers](https://docs.codat.io/sync-for-expenses-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Required data may vary by integration. To see what data to post, first call [Get create/update supplier model](https://docs.codat.io/sync-for-expenses-api#/operations/get-create-update-suppliers-model).
+
+        ### Supported Integrations
+
+        | Integration       | Supported |
+        |-------------------|-----------|
+        | FreeAgent         | Yes       |
+        | QuickBooks Online | Yes       |
+        | Xero              | Yes       |
+
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -835,12 +967,14 @@ class Suppliers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, operations.UpdateSupplierRequest)
         request = cast(operations.UpdateSupplierRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PUT",
             path="/companies/{companyId}/connections/{connectionId}/push/suppliers/{supplierId}",
             base_url=base_url,
@@ -851,10 +985,16 @@ class Suppliers(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.supplier, True, True, "json", OptionalNullable[shared.Supplier]
+                request.supplier if request is not None else None,
+                True,
+                True,
+                "json",
+                OptionalNullable[shared.Supplier],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -872,8 +1012,10 @@ class Suppliers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="update-supplier",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -892,29 +1034,22 @@ class Suppliers(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[shared.UpdateSupplierResponse]
-            )
+            return unmarshal_json_response(shared.UpdateSupplierResponse, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

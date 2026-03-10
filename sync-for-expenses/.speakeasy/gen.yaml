@@ -3,31 +3,58 @@ generation:
   sdkClassName: CodatSyncExpenses
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  versioningStrategy: automatic
+  persistentEdits: {}
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
   telemetryEnabled: true
 python:
-  version: 7.0.1
+  version: 8.0.0
   additionalDependencies:
     dev: {}
     main: {}
+  allowedRedefinedBuiltins:
+    - id
+    - object
+    - dir
+  asyncMode: both
   author: Codat
   authors:
     - Speakeasy
+  baseErrorName: CodatSyncExpensesError
   clientServerStatusCodesAsErrors: true
+  constFieldCasing: upper
   defaultErrorName: SDKError
   description: Push expenses to accounting software.
+  enableCustomCodeRegions: false
   enumFormat: enum
   fixFlags:
+    asyncPaginationSep2025: false
+    conflictResistantModelImportsFeb2026: false
     responseRequiredSep2024: false
   flattenGlobalSecurity: false
   flattenRequests: false
   flatteningOrder: parameters-first
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   imports:
     option: openapi
     paths:
@@ -36,11 +63,21 @@ python:
       operations: models/operations
       shared: models/shared
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
+  license: ""
   maxMethodParams: 0
   methodArguments: infer-optional-args
+  moduleName: ""
+  multipartArrayFormat: legacy
   outputModelSuffix: output
+  packageManager: poetry
   packageName: codat-sync-for-expenses
+  preApplyUnionDiscriminators: false
   projectUrls: {}
+  pytestFilterWarnings: []
+  pytestTimeout: 0
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
+  useAsyncHooks: false
