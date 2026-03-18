@@ -21,3 +21,9 @@ class CompanyConfiguration(BaseModel):
     customer: CustomerDetails
 
     supplier: SupplierDetails
+
+
+try:
+    CompanyConfiguration.model_rebuild()
+except NameError:
+    pass

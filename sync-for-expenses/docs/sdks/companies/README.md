@@ -1,5 +1,4 @@
 # Companies
-(*companies*)
 
 ## Overview
 
@@ -11,6 +10,7 @@ Create and manage your SMB users' companies.
 * [delete](#delete) - Delete a company
 * [get](#get) - Get company
 * [list](#list) - List companies
+* [replace](#replace) - Replace company
 * [update](#update) - Update company
 
 ## create
@@ -22,24 +22,95 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-expe
 
 If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
 
-### Example Usage
+### Example Usage: Malformed query
 
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="Malformed query" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.create(request={
+        "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: With a description
+
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="With a description" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.create(request={
+        "description": "Technology services, including web and app design and development",
+        "name": "Technicalium",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: With a tag
+
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="With a tag" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.create(request={
+        "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: With no description
+
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="With no description" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.create(request={
         "name": "Technicalium",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -56,10 +127,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 400, 401, 402, 403, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 400, 401, 402, 403, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## delete
 
@@ -71,15 +143,18 @@ Each company can have multiple [connections](https://docs.codat.io/sync-for-expe
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="delete-company" method="delete" path="/companies/{companyId}" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     codat_sync_expenses.companies.delete(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
@@ -97,10 +172,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## get
 
@@ -110,24 +186,70 @@ A [company](https://docs.codat.io/sync-for-expenses-api#/schemas/Company) repres
 Each company can have multiple [connections](https://docs.codat.io/sync-for-expenses-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
 
-### Example Usage
+### Example Usage: Parent multi-entity company
 
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" example="Parent multi-entity company" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Simple company
+
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" example="Simple company" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Subsidiary multi-entity company
+
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" example="Subsidiary multi-entity company" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -144,10 +266,11 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## list
 
@@ -156,27 +279,65 @@ with CodatSyncExpenses(
 A [company](https://docs.codat.io/sync-for-expenses-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/sync-for-expenses-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
-### Example Usage
+## Filter by tags
 
+The *List companies* endpoint supports the filtering of companies using [tags](https://docs.codat.io/using-the-api/managing-companies#add-metadata-to-a-company). It supports the following operators with [Codat’s query language](https://docs.codat.io/using-the-api/querying):
+
+- equals (`=`)
+- not equals (`!=`)
+- contains (`~`)
+
+For example, you can use the querying to filter companies tagged with a specific foreign key, region, or owning team: 
+- Foreign key: `uid = {yourCustomerId}`
+- Region: `region != uk`
+- Owning team and region: `region = uk && owningTeam = invoice-finance`
+
+### Example Usage: List of Companies
+
+<!-- UsageSnippet language="python" operationID="list-companies" method="get" path="/companies" example="List of Companies" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
+
     res = codat_sync_expenses.companies.list(request={
         "order_by": "-modifiedDate",
-        "page": 1,
-        "page_size": 100,
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "tags": "region=uk && team=invoice-finance",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
+
+```
+### Example Usage: One company
+
+<!-- UsageSnippet language="python" operationID="list-companies" method="get" path="/companies" example="One company" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.list(request={
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "tags": "region=uk && team=invoice-finance",
+    })
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -193,39 +354,200 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.ErrorMessage                    | 400, 401, 402, 403, 404, 429, 500, 503 | application/json                       |
-| errors.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
-## update
+## replace
 
-﻿Use the *Update company* endpoint to update both the name and description of the company. 
+﻿Use the *Replace company* endpoint to replace the existing name, description, and tags of the company. Calling the endpoint will replace existing values even if new values haven't been defined in the payload.
 
 A [company](https://docs.codat.io/sync-for-expenses-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/sync-for-expenses-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
-### Example Usage
+### Example Usage: Unauthorized
 
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" example="Unauthorized" -->
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
+
 
 with CodatSyncExpenses(
     security=shared.Security(
         auth_header="Basic BASE_64_ENCODED(API_KEY)",
     ),
 ) as codat_sync_expenses:
-    res = codat_sync_expenses.companies.update(request={
+
+    res = codat_sync_expenses.companies.replace(request={
+        "company_request_body": {
+            "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
+        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update description
+
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" example="Update description" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.replace(request={
+        "company_request_body": {
+            "description": "Additional documents required",
+            "name": "Same name",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update name
+
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" example="Update name" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.replace(request={
         "company_request_body": {
             "name": "New Name",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.ReplaceCompanyRequest](../../models/operations/replacecompanyrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
+
+### Response
+
+**[shared.Company](../../models/shared/company.md)**
+
+### Errors
+
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+
+## update
+
+﻿Use the *Update company* endpoint to update the name, description, or tags of the company.
+
+The *Update company* endpoint doesn't have any required fields. If any of the fields provided are `null` or not provided, they won't be included in the update.  
+
+A [company](https://docs.codat.io/sync-for-expenses-api#/schemas/Company) represents a business sharing access to their data.
+
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" example="Unauthorized" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.update(request={
+        "company_update_request": {
+            "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update name
+
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" example="Update name" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.update(request={
+        "company_update_request": {
+            "name": "New Name",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update tags
+
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" example="Update tags" -->
+```python
+from codat_sync_for_expenses import CodatSyncExpenses
+from codat_sync_for_expenses.models import shared
+
+
+with CodatSyncExpenses(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_expenses:
+
+    res = codat_sync_expenses.companies.update(request={
+        "company_update_request": {
+            "tags": {
+                "refrence": "new reference",
+            },
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -242,7 +564,8 @@ with CodatSyncExpenses(
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.ErrorMessage               | 401, 402, 403, 404, 429, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
+| errors.ErrorMessage     | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |

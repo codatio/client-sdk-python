@@ -5,7 +5,10 @@ from codat_sync_for_expenses import utils
 from codat_sync_for_expenses._hooks import HookContext
 from codat_sync_for_expenses.models import errors, operations, shared
 from codat_sync_for_expenses.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Optional, Union, cast
+from codat_sync_for_expenses.utils.unmarshal_json_response import (
+    unmarshal_json_response,
+)
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Attachments(BaseSDK):
@@ -21,30 +24,33 @@ class Attachments(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.Attachment]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Attachment:
         r"""Upload attachment
 
         The *Upload attachment* endpoint uploads an attachment in the accounting software against the given transactionId.
 
         [Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. Attachments for `Adjustment` and `Transfer` transaction types are not supported for any integrations.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Each accounting software supports different file formats and sizes.
 
-        | Integration       | File size | File extension                                                                                                                                 |Supported transaction type
-        |-------------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
-        | **Xero**              | 3 MB      | 7Z, BMP, CSV, DOC, DOCX, EML, GIF, JPEG, JPG, KEYNOTE, MSG, NUMBERS, ODF,   ODS, ODT, PAGES, PDF, PNG, PPT, PPTX, RAR, RTF, TIF, TIFF, TXT, XLS, XLSX,   ZIP | All supported types |
-        | **QuickBooks Online** | 100 MB    | AI, CSV, DOC, DOCX, EPS, GIF, JPEG, JPG, ODS, PAGES, PDF, PNG, RTF, TIF,   TXT, XLS, XLSX, XML                                                               |  `ReimbursableExpenses`, `ExpensePayment`, `ExpenseRefund` |
-        | **NetSuite**          | 100 MB    | BMP, CSV, XLS, XLSX, JSON, PDF, PJPG, PJPEG, PNG, TXT, SVG, TIF, TIFF,   DOC, DOCX, ZIP |`ExpensePayment`, `ExpenseRefund`                                                                     |
-        | **Dynamics 365 Business Central** | 350 MB | [No explicit requirements outlined](https://learn.microsoft.com/en-gb/dynamics365/business-central/ui-how-add-link-to-record#to-attach-a-file-to-a-purchase-invoice) for text, image, and video files. | All supported types
-        | **QuickBooks Desktop** | NA      | Does not support attachment upload | N/A                                                                                                                           |
-        | **FreeAgent** | 5MB      | PNG, X-PNG, JPEG, PJG, GIF, X-PDF
+        | Integration                       | File size | File extension                                        | Supported transactions |
+        |-----------------------------------|-----------|-------------------------------------------------------|------------------------|
+        | **Xero**                          | 3 MB      | 7Z, BMP, CSV, DOC, DOCX, EML, GIF, JPEG, JPG, KEYNOTE, MSG, NUMBERS, ODF,   ODS, ODT, PAGES, PDF, PNG, PPT, PPTX, RAR, RTF, TIF, TIFF, TXT, XLS, XLSX, ZIP | All supported types |
+        | **QuickBooks Online**             | 100 MB    | AI, CSV, DOC, DOCX, EPS, GIF, JPEG, JPG, ODS, PAGES, PDF, PNG, RTF, TIF, TXT, XLS, XLSX, XML                                                      | `expense-transactions.Payment`, `expense-transactions.Refund`, `reimbursable-expense-transactions` |
+        | **NetSuite**                      | 100 MB    | BMP, CSV, XLS, XLSX, JSON, PDF, PJPG, PJPEG, PNG, TXT, SVG, TIF, TIFF, DOC, DOCX, ZIP |`expense-transactions.Payment`, `expense-transactions.Refund`                                                                    |
+        | **Dynamics 365 Business Central** | 350 MB    | [No explicit requirements outlined](https://learn.microsoft.com/en-gb/dynamics365/business-central/ui-how-add-link-to-record#to-attach-a-file-to-a-purchase-invoice) for text, image, and video files. | All supported types
+        | **QuickBooks Desktop**            | NA        | Does not support attachment upload                     | N/A                    |
+        | **FreeAgent**                     | 5MB       | PNG, X-PNG, JPEG, PJG, GIF, X-PDF  | `expense-transactions.Payment`, `reimbursable-expense-transactions`
+        | **Zoho Books**                    | 5MB       | GIF, PNG, JPEG, JPG, BMP, PDF      | `expense-transactions.Payment`, `reimbursable-expense-transactions`        |
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -53,6 +59,8 @@ class Attachments(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -60,7 +68,7 @@ class Attachments(BaseSDK):
             )
         request = cast(operations.UploadExpenseAttachmentRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments",
             base_url=base_url,
@@ -71,14 +79,16 @@ class Attachments(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.attachment_upload,
+                request.attachment_upload if request is not None else None,
                 False,
                 True,
                 "multipart",
                 Optional[shared.AttachmentUpload],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -96,8 +106,10 @@ class Attachments(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="upload-expense-attachment",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -116,30 +128,25 @@ class Attachments(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
+            return unmarshal_json_response(shared.Attachment, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)
 
     async def upload_async(
         self,
@@ -151,30 +158,33 @@ class Attachments(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[shared.Attachment]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Attachment:
         r"""Upload attachment
 
         The *Upload attachment* endpoint uploads an attachment in the accounting software against the given transactionId.
 
         [Expense transactions](https://docs.codat.io/sync-for-expenses-api#/schemas/ExpenseTransaction) represent transactions made with a company debit or credit card. Attachments for `Adjustment` and `Transfer` transaction types are not supported for any integrations.
 
-        **Integration-specific behaviour**
+        **Integration-specific behavior**
 
         Each accounting software supports different file formats and sizes.
 
-        | Integration       | File size | File extension                                                                                                                                 |Supported transaction type
-        |-------------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
-        | **Xero**              | 3 MB      | 7Z, BMP, CSV, DOC, DOCX, EML, GIF, JPEG, JPG, KEYNOTE, MSG, NUMBERS, ODF,   ODS, ODT, PAGES, PDF, PNG, PPT, PPTX, RAR, RTF, TIF, TIFF, TXT, XLS, XLSX,   ZIP | All supported types |
-        | **QuickBooks Online** | 100 MB    | AI, CSV, DOC, DOCX, EPS, GIF, JPEG, JPG, ODS, PAGES, PDF, PNG, RTF, TIF,   TXT, XLS, XLSX, XML                                                               |  `ReimbursableExpenses`, `ExpensePayment`, `ExpenseRefund` |
-        | **NetSuite**          | 100 MB    | BMP, CSV, XLS, XLSX, JSON, PDF, PJPG, PJPEG, PNG, TXT, SVG, TIF, TIFF,   DOC, DOCX, ZIP |`ExpensePayment`, `ExpenseRefund`                                                                     |
-        | **Dynamics 365 Business Central** | 350 MB | [No explicit requirements outlined](https://learn.microsoft.com/en-gb/dynamics365/business-central/ui-how-add-link-to-record#to-attach-a-file-to-a-purchase-invoice) for text, image, and video files. | All supported types
-        | **QuickBooks Desktop** | NA      | Does not support attachment upload | N/A                                                                                                                           |
-        | **FreeAgent** | 5MB      | PNG, X-PNG, JPEG, PJG, GIF, X-PDF
+        | Integration                       | File size | File extension                                        | Supported transactions |
+        |-----------------------------------|-----------|-------------------------------------------------------|------------------------|
+        | **Xero**                          | 3 MB      | 7Z, BMP, CSV, DOC, DOCX, EML, GIF, JPEG, JPG, KEYNOTE, MSG, NUMBERS, ODF,   ODS, ODT, PAGES, PDF, PNG, PPT, PPTX, RAR, RTF, TIF, TIFF, TXT, XLS, XLSX, ZIP | All supported types |
+        | **QuickBooks Online**             | 100 MB    | AI, CSV, DOC, DOCX, EPS, GIF, JPEG, JPG, ODS, PAGES, PDF, PNG, RTF, TIF, TXT, XLS, XLSX, XML                                                      | `expense-transactions.Payment`, `expense-transactions.Refund`, `reimbursable-expense-transactions` |
+        | **NetSuite**                      | 100 MB    | BMP, CSV, XLS, XLSX, JSON, PDF, PJPG, PJPEG, PNG, TXT, SVG, TIF, TIFF, DOC, DOCX, ZIP |`expense-transactions.Payment`, `expense-transactions.Refund`                                                                    |
+        | **Dynamics 365 Business Central** | 350 MB    | [No explicit requirements outlined](https://learn.microsoft.com/en-gb/dynamics365/business-central/ui-how-add-link-to-record#to-attach-a-file-to-a-purchase-invoice) for text, image, and video files. | All supported types
+        | **QuickBooks Desktop**            | NA        | Does not support attachment upload                     | N/A                    |
+        | **FreeAgent**                     | 5MB       | PNG, X-PNG, JPEG, PJG, GIF, X-PDF  | `expense-transactions.Payment`, `reimbursable-expense-transactions`
+        | **Zoho Books**                    | 5MB       | GIF, PNG, JPEG, JPG, BMP, PDF      | `expense-transactions.Payment`, `reimbursable-expense-transactions`        |
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -183,6 +193,8 @@ class Attachments(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(
@@ -190,7 +202,7 @@ class Attachments(BaseSDK):
             )
         request = cast(operations.UploadExpenseAttachmentRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/companies/{companyId}/sync/expenses/syncs/{syncId}/transactions/{transactionId}/attachments",
             base_url=base_url,
@@ -201,14 +213,16 @@ class Attachments(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.attachment_upload,
+                request.attachment_upload if request is not None else None,
                 False,
                 True,
                 "multipart",
                 Optional[shared.AttachmentUpload],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -226,8 +240,10 @@ class Attachments(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="upload-expense-attachment",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -246,27 +262,22 @@ class Attachments(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[shared.Attachment])
+            return unmarshal_json_response(shared.Attachment, http_res)
         if utils.match_response(
-            http_res,
-            ["400", "401", "402", "403", "404", "429", "500", "503"],
-            "application/json",
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, errors.ErrorMessageData)
-            raise errors.ErrorMessage(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise errors.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise errors.SDKError("Unexpected response received", http_res)

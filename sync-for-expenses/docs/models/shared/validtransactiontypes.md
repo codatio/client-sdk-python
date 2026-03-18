@@ -1,5 +1,13 @@
 # ValidTransactionTypes
 
+## Example Usage
+
+```python
+from codat_sync_for_expenses.models.shared import ValidTransactionTypes
+
+value = ValidTransactionTypes.PAYMENT
+```
+
 
 ## Values
 

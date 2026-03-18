@@ -2,6 +2,14 @@
 
 The type of the linked reference
 
+## Example Usage
+
+```python
+from codat_sync_for_expenses.models.shared import TrackingRefAdjustmentTransactionDataType
+
+value = TrackingRefAdjustmentTransactionDataType.TRACKING_CATEGORIES
+```
+
 
 ## Values
 

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 from .accountingaddresstype import AccountingAddressType
-from .phonenumbertype import PhoneNumberType
 from .supplementaldata import SupplementalData, SupplementalDataTypedDict
 from codat_sync_for_expenses.types import (
     BaseModel,
@@ -61,44 +60,53 @@ class AccountingAddress(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["city", "country", "line1", "line2", "postalCode", "region"]
-        nullable_fields = ["city", "country", "line1", "line2", "postalCode", "region"]
-        null_default_fields = []
-
+        optional_fields = set(
+            ["city", "country", "line1", "line2", "postalCode", "region"]
+        )
+        nullable_fields = set(
+            ["city", "country", "line1", "line2", "postalCode", "region"]
+        )
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
-            serialized.pop(k, None)
+            val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
 
+class CompanyInformationType(str, Enum):
+    r"""The type of phone number"""
+
+    PRIMARY = "Primary"
+    LANDLINE = "Landline"
+    MOBILE = "Mobile"
+    FAX = "Fax"
+    UNKNOWN = "Unknown"
+
+
 class PhoneTypedDict(TypedDict):
-    type: PhoneNumberType
+    type: CompanyInformationType
     r"""The type of phone number"""
     number: NotRequired[Nullable[str]]
     r"""A phone number."""
 
 
 class Phone(BaseModel):
-    type: PhoneNumberType
+    type: CompanyInformationType
     r"""The type of phone number"""
 
     number: OptionalNullable[str] = UNSET
@@ -106,36 +114,31 @@ class Phone(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["number"]
-        nullable_fields = ["number"]
-        null_default_fields = []
-
+        optional_fields = set(["number"])
+        nullable_fields = set(["number"])
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
-            serialized.pop(k, None)
+            val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
 
 
-class CompanyInformationType(str, Enum):
+class CompanyInformationSchemasType(str, Enum):
     r"""The type of the weblink."""
 
     WEBSITE = "Website"
@@ -146,7 +149,7 @@ class CompanyInformationType(str, Enum):
 class WeblinkTypedDict(TypedDict):
     r"""Weblink associated with the company."""
 
-    type: NotRequired[CompanyInformationType]
+    type: NotRequired[CompanyInformationSchemasType]
     r"""The type of the weblink."""
     url: NotRequired[str]
     r"""The full URL for the weblink."""
@@ -155,11 +158,27 @@ class WeblinkTypedDict(TypedDict):
 class Weblink(BaseModel):
     r"""Weblink associated with the company."""
 
-    type: Optional[CompanyInformationType] = None
+    type: Optional[CompanyInformationSchemasType] = None
     r"""The type of the weblink."""
 
     url: Optional[str] = None
     r"""The full URL for the weblink."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["type", "url"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k, serialized.get(n))
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class CompanyInformationTypedDict(TypedDict):
@@ -247,7 +266,7 @@ class CompanyInformationTypedDict(TypedDict):
     r"""An array of phone numbers."""
     registration_number: NotRequired[Nullable[str]]
     r"""Registration number given to the linked company by the companies authority in the country of origin. In the UK this is Companies House."""
-    source_urls: NotRequired[Nullable[Dict[str, str]]]
+    source_urls: NotRequired[Nullable[Dict[str, Nullable[str]]]]
     r"""URL addresses for the accounting source.
 
     For example, for Xero integrations two URLs are returned. These have many potential use cases, such as [deep linking](https://developer.xero.com/documentation/api-guides/deep-link-xero).
@@ -375,7 +394,7 @@ class CompanyInformation(BaseModel):
     r"""Registration number given to the linked company by the companies authority in the country of origin. In the UK this is Companies House."""
 
     source_urls: Annotated[
-        OptionalNullable[Dict[str, str]], pydantic.Field(alias="sourceUrls")
+        OptionalNullable[Dict[str, Nullable[str]]], pydantic.Field(alias="sourceUrls")
     ] = UNSET
     r"""URL addresses for the accounting source.
 
@@ -402,56 +421,65 @@ class CompanyInformation(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "accountingPlatformRef",
-            "addresses",
-            "baseCurrency",
-            "companyLegalName",
-            "companyName",
-            "createdDate",
-            "financialYearStartDate",
-            "ledgerLockDate",
-            "phoneNumbers",
-            "registrationNumber",
-            "sourceUrls",
-            "supplementalData",
-            "taxNumber",
-            "webLinks",
-        ]
-        nullable_fields = [
-            "accountingPlatformRef",
-            "addresses",
-            "baseCurrency",
-            "companyLegalName",
-            "companyName",
-            "phoneNumbers",
-            "registrationNumber",
-            "sourceUrls",
-            "taxNumber",
-            "webLinks",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "accountingPlatformRef",
+                "addresses",
+                "baseCurrency",
+                "companyLegalName",
+                "companyName",
+                "createdDate",
+                "financialYearStartDate",
+                "ledgerLockDate",
+                "phoneNumbers",
+                "registrationNumber",
+                "sourceUrls",
+                "supplementalData",
+                "taxNumber",
+                "webLinks",
+            ]
+        )
+        nullable_fields = set(
+            [
+                "accountingPlatformRef",
+                "addresses",
+                "baseCurrency",
+                "companyLegalName",
+                "companyName",
+                "phoneNumbers",
+                "registrationNumber",
+                "sourceUrls",
+                "taxNumber",
+                "webLinks",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
-            serialized.pop(k, None)
+            val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m
+
+
+try:
+    AccountingAddress.model_rebuild()
+except NameError:
+    pass
+try:
+    CompanyInformation.model_rebuild()
+except NameError:
+    pass
