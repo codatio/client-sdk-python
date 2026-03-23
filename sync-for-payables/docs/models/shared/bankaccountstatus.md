@@ -2,6 +2,14 @@
 
 The current status of the bank account.
 
+## Example Usage
+
+```python
+from codat_sync_for_payables.models.shared import BankAccountStatus
+
+value = BankAccountStatus.ACTIVE
+```
+
 
 ## Values
 

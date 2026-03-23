@@ -522,7 +522,7 @@ class Bills(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bill_prototype,
+                request.bill_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -642,7 +642,7 @@ class Bills(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bill_prototype,
+                request.bill_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -774,7 +774,7 @@ class Bills(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bill_prototype,
+                request.bill_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -906,7 +906,7 @@ class Bills(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bill_prototype,
+                request.bill_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -1027,7 +1027,7 @@ class Bills(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.attachment_upload,
+                request.attachment_upload if request is not None else None,
                 False,
                 True,
                 "multipart",
@@ -1145,7 +1145,7 @@ class Bills(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.attachment_upload,
+                request.attachment_upload if request is not None else None,
                 False,
                 True,
                 "multipart",
