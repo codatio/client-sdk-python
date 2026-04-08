@@ -2,6 +2,14 @@
 
 Status of the source account.
 
+## Example Usage
+
+```python
+from codat_bankfeeds.models.shared import Status
+
+value = Status.PENDING
+```
+
 
 ## Values
 

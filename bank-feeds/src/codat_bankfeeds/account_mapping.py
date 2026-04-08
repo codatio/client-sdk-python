@@ -93,7 +93,7 @@ class AccountMapping(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bank_feed_account_mapping,
+                request.bank_feed_account_mapping if request is not None else None,
                 False,
                 True,
                 "json",
@@ -242,7 +242,7 @@ class AccountMapping(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bank_feed_account_mapping,
+                request.bank_feed_account_mapping if request is not None else None,
                 False,
                 True,
                 "json",

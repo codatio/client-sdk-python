@@ -2,6 +2,14 @@
 
 Type of transaction for the bank statement line.
 
+## Example Usage
+
+```python
+from codat_bankfeeds.models.shared import BankTransactionType
+
+value = BankTransactionType.UNKNOWN
+```
+
 
 ## Values
 

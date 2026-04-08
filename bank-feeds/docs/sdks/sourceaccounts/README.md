@@ -11,6 +11,7 @@ Provide and manage lists of source bank accounts.
 * [delete](#delete) - Delete source account
 * [delete_credentials](#delete_credentials) - Delete all source account credentials
 * [generate_credentials](#generate_credentials) - Generate source account credentials
+* [generate_otp](#generate_otp) - Generate one-time password
 * [list](#list) - List source accounts
 * [update](#update) - Update source account
 
@@ -21,9 +22,71 @@ The _Create Source Account_ endpoint allows you to create a representation of a 
 > ### Versioning
 > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
-### Example Usage
+### Example Usage: Malformed query
 
-<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" -->
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" example="Malformed query" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.source_accounts.create(request={
+        "request_body": {
+            "currency": "GBP",
+            "id": "<id>",
+            "modified_date": "2022-10-23T00:00:00Z",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Version 1
+
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" example="Version 1" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+from decimal import Decimal
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.source_accounts.create(request={
+        "request_body": {
+            "account_name": "account-081",
+            "account_number": "12345670",
+            "account_type": "Credit",
+            "balance": Decimal("99.99"),
+            "currency": "GBP",
+            "id": "acc-002",
+            "modified_date": "2023-01-09T14:14:14.1057478Z",
+            "sort_code": "123456",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Version 2
+
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" example="Version 2" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -78,7 +141,7 @@ The _Batch create source accounts_ endpoint allows you to create multiple repres
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="create-batch-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/batch" -->
+<!-- UsageSnippet language="python" operationID="create-batch-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/batch" example="Malformed query" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -228,7 +291,7 @@ The old credentials will still be valid until the revoke credentials endpoint is
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="generate-credentials" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials" -->
+<!-- UsageSnippet language="python" operationID="generate-credentials" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/credentials" example="Unauthorized" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -269,6 +332,58 @@ with CodatBankFeeds(
 | errors.ErrorMessage     | 401, 402, 403, 404, 429 | application/json        |
 | errors.ErrorMessage     | 500, 503                | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+
+## generate_otp
+
+The *Generate OTP* endpoint generates a one-time password (OTP) for a bank feed connection. The OTP is returned along with an expiry time, after which it will no longer be valid.
+
+> **For Sage only**
+>
+> Only call this endpoint for connections to Sage. Calling it for other integrations will return an error.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="generate-otp" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeeds/otp" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.source_accounts.generate_otp(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.GenerateOtpRequest](../../models/operations/generateotprequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `retries`                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)               | :heavy_minus_sign:                                                             | Configuration to override the default retry behavior of the client.            |
+
+### Response
+
+**[shared.GenerateOtpResponse](../../models/shared/generateotpresponse.md)**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## list
 
@@ -335,7 +450,7 @@ with CodatBankFeeds(
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="update-source-account" method="patch" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}" -->
+<!-- UsageSnippet language="python" operationID="update-source-account" method="patch" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts/{accountId}" example="Malformed query" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared

@@ -42,9 +42,36 @@ The method of mapping the source account to the target account varies depending 
 | QuickBooks Online     |             |                  | ✅                          |
 | Sage                  |             |                  | ✅                          |
 
-### Example Usage
+### Example Usage: Example
 
-<!-- UsageSnippet language="python" operationID="create-bank-account-mapping" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" -->
+<!-- UsageSnippet language="python" operationID="create-bank-account-mapping" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" example="Example" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.account_mapping.create(request={
+        "bank_feed_account_mapping": {
+            "source_account_id": "acc-002",
+            "target_account_id": "account-081",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Malformed query
+
+<!-- UsageSnippet language="python" operationID="create-bank-account-mapping" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" example="Malformed query" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
@@ -101,7 +128,7 @@ A bank feed account mapping is a specified link between the source account (prov
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-bank-account-mapping" method="get" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" -->
+<!-- UsageSnippet language="python" operationID="get-bank-account-mapping" method="get" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" example="Example" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
