@@ -2,6 +2,14 @@
 
 The type of routing number.
 
+## Example Usage
+
+```python
+from codat_bankfeeds.models.shared import Type
+
+value = Type.RTN
+```
+
 
 ## Values
 

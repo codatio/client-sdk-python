@@ -2,6 +2,14 @@
 
 Status of the bank account.
 
+## Example Usage
+
+```python
+from codat_bankfeeds.models.shared import BankAccountStatus
+
+value = BankAccountStatus.UNKNOWN
+```
+
 
 ## Values
 

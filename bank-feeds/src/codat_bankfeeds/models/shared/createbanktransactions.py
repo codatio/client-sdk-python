@@ -19,3 +19,9 @@ class CreateBankTransactions(BaseModel):
     r"""Unique identifier for a bank account."""
 
     transactions: List[BankTransactions]
+
+
+try:
+    CreateBankTransactions.model_rebuild()
+except NameError:
+    pass

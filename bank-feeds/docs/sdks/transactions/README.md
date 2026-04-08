@@ -22,9 +22,202 @@ Create new bank account transactions for a company's connections, and see previo
 The required properties may vary based on the integration. For detailed requirements specific to each accounting software, refer to the API reference examples.
 Alternatively, you can view the [Get create bank transaction model](https://docs.codat.io/bank-feeds-api#/operations/get-create-bank-transactions-model) for more information.
 
-### Example Usage
+### Example Usage: FreeAgent
 
-<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" -->
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" example="FreeAgent" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+from decimal import Decimal
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.transactions.create(request={
+        "create_bank_transactions": {
+            "account_id": "49cd5a42-b311-4750-9361-52e2ed1d4653",
+            "transactions": [
+                {
+                    "amount": Decimal("100"),
+                    "date_": "2023-08-22T10:21:00",
+                    "description": "Repayment of Credit Card",
+                    "id": "716422529",
+                    "transaction_type": shared.BankTransactionType.CREDIT,
+                },
+                {
+                    "amount": Decimal("-100"),
+                    "date_": "2023-08-22T10:22:00",
+                    "description": "Amazon Purchase",
+                    "id": "716422530",
+                    "transaction_type": shared.BankTransactionType.DEBIT,
+                },
+                {
+                    "amount": Decimal("-60"),
+                    "date_": "2023-08-22T10:23:00",
+                    "description": "Office Supplies",
+                    "id": "716422531",
+                    "transaction_type": shared.BankTransactionType.DEBIT,
+                },
+            ],
+        },
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Malformed query
+
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" example="Malformed query" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.transactions.create(request={
+        "create_bank_transactions": {
+            "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+            "transactions": [],
+        },
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Bank Feeds
+
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" example="QuickBooks Online Bank Feeds" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+from decimal import Decimal
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.transactions.create(request={
+        "create_bank_transactions": {
+            "account_id": "49cd5a42-b311-4750-9361-52e2ed1d4653",
+            "transactions": [
+                {
+                    "amount": Decimal("100"),
+                    "balance": Decimal("100"),
+                    "date_": "2023-08-22T10:21:00",
+                    "description": "Repayment of Credit Card",
+                    "id": "716422529",
+                    "transaction_type": shared.BankTransactionType.CREDIT,
+                },
+                {
+                    "amount": Decimal("-100"),
+                    "balance": Decimal("0"),
+                    "date_": "2023-08-22T10:22:00",
+                    "description": "Amazon Purchase",
+                    "id": "716422530",
+                    "transaction_type": shared.BankTransactionType.DEBIT,
+                },
+                {
+                    "amount": Decimal("-60"),
+                    "balance": Decimal("-60"),
+                    "date_": "2023-08-22T10:23:00",
+                    "description": "Office Supplies",
+                    "id": "716422531",
+                    "transaction_type": shared.BankTransactionType.DEBIT,
+                },
+            ],
+        },
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage
+
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" example="Sage" -->
+```python
+from codat_bankfeeds import CodatBankFeeds
+from codat_bankfeeds.models import shared
+from decimal import Decimal
+
+
+with CodatBankFeeds(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_bank_feeds:
+
+    res = codat_bank_feeds.transactions.create(request={
+        "create_bank_transactions": {
+            "account_id": "49cd5a42-b311-4750-9361-52e2ed1d4653",
+            "transactions": [
+                {
+                    "amount": Decimal("100"),
+                    "balance": Decimal("100"),
+                    "counterparty": "Bank of Example",
+                    "date_": "2023-08-22T10:21:00",
+                    "description": "Repayment of Credit Card",
+                    "id": "716422529",
+                    "reference": "Ref-12345",
+                    "transaction_type": shared.BankTransactionType.CREDIT,
+                },
+                {
+                    "amount": Decimal("-100"),
+                    "balance": Decimal("0"),
+                    "counterparty": "Amazon",
+                    "date_": "2023-08-22T10:22:00",
+                    "description": "Amazon Purchase",
+                    "id": "716422530",
+                    "reference": "Ref-12346",
+                    "transaction_type": shared.BankTransactionType.DEBIT,
+                },
+                {
+                    "amount": Decimal("-60"),
+                    "balance": Decimal("-60"),
+                    "counterparty": "Office Mart",
+                    "date_": "2023-08-22T10:23:00",
+                    "description": "Office Supplies",
+                    "id": "716422531",
+                    "reference": "Ref-12347",
+                    "transaction_type": shared.BankTransactionType.DEBIT,
+                },
+            ],
+        },
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" example="Xero" -->
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared

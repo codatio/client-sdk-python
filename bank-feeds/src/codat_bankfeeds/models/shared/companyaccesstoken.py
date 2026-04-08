@@ -28,3 +28,9 @@ class CompanyAccessToken(BaseModel):
 
     token_type: Annotated[str, pydantic.Field(alias="tokenType")]
     r"""The type of token."""
+
+
+try:
+    CompanyAccessToken.model_rebuild()
+except NameError:
+    pass

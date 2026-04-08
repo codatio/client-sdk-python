@@ -18,3 +18,9 @@ class StartScheduledSyncResult(BaseModel):
 
     sync_id: Annotated[str, pydantic.Field(alias="syncId")]
     r"""The unique identifier for the created sync."""
+
+
+try:
+    StartScheduledSyncResult.model_rebuild()
+except NameError:
+    pass

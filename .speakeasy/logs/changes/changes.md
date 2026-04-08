@@ -1,2 +1,2 @@
 ## Python SDK Changes:
-* `codat_sync_payables.suppliers.update()`: **Added**
+* `codat_bank_feeds.source_accounts.generate_otp()`: **Added**

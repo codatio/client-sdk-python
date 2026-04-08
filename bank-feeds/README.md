@@ -97,7 +97,7 @@ It's also possible to write a standalone Python script without needing to set up
 ```python
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.9"
+# requires-python = ">=3.10"
 # dependencies = [
 #     "codat-bankfeeds",
 # ]
@@ -233,6 +233,7 @@ asyncio.run(main())
 * [delete](docs/sdks/sourceaccounts/README.md#delete) - Delete source account
 * [delete_credentials](docs/sdks/sourceaccounts/README.md#delete_credentials) - Delete all source account credentials
 * [generate_credentials](docs/sdks/sourceaccounts/README.md#generate_credentials) - Generate source account credentials
+* [generate_otp](docs/sdks/sourceaccounts/README.md#generate_otp) - Generate one-time password
 * [list](docs/sdks/sourceaccounts/README.md#list) - List source accounts
 * [update](docs/sdks/sourceaccounts/README.md#update) - Update source account
 
