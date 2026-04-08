@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from codat_sync_for_payables.models.shared import (
-    companyrequestbody as shared_companyrequestbody,
+    supplierprototype as shared_supplierprototype,
 )
 from codat_sync_for_payables.types import BaseModel, UNSET_SENTINEL
 from codat_sync_for_payables.utils import (
@@ -16,15 +16,17 @@ from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class ReplaceCompanyRequestTypedDict(TypedDict):
+class UpdateSupplierRequestTypedDict(TypedDict):
     company_id: str
     r"""Unique identifier for a company."""
-    company_request_body: NotRequired[
-        shared_companyrequestbody.CompanyRequestBodyTypedDict
-    ]
+    connection_id: str
+    r"""Unique identifier for a connection."""
+    supplier_id: str
+    r"""Unique identifier for a supplier."""
+    supplier_prototype: NotRequired[shared_supplierprototype.SupplierPrototypeTypedDict]
 
 
-class ReplaceCompanyRequest(BaseModel):
+class UpdateSupplierRequest(BaseModel):
     company_id: Annotated[
         str,
         pydantic.Field(alias="companyId"),
@@ -32,14 +34,28 @@ class ReplaceCompanyRequest(BaseModel):
     ]
     r"""Unique identifier for a company."""
 
-    company_request_body: Annotated[
-        Optional[shared_companyrequestbody.CompanyRequestBody],
+    connection_id: Annotated[
+        str,
+        pydantic.Field(alias="connectionId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
+    r"""Unique identifier for a connection."""
+
+    supplier_id: Annotated[
+        str,
+        pydantic.Field(alias="supplierId"),
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
+    r"""Unique identifier for a supplier."""
+
+    supplier_prototype: Annotated[
+        Optional[shared_supplierprototype.SupplierPrototype],
         FieldMetadata(request=RequestMetadata(media_type="application/json")),
     ] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["CompanyRequestBody"])
+        optional_fields = set(["supplierPrototype"])
         serialized = handler(self)
         m = {}
 

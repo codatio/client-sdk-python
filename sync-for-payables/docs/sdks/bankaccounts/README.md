@@ -45,6 +45,35 @@ with CodatSyncPayables(
     print(res)
 
 ```
+### Example Usage: Created bank account
+
+<!-- UsageSnippet language="python" operationID="create-bank-account" method="post" path="/companies/{companyId}/connections/{connectionId}/payables/bankAccounts" example="Created bank account" -->
+```python
+from codat_sync_for_payables import CodatSyncPayables
+from codat_sync_for_payables.models import shared
+
+
+with CodatSyncPayables(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as codat_sync_payables:
+
+    res = codat_sync_payables.bank_accounts.create(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "bank_account_prototype": {
+            "name": "<value>",
+            "account_type": shared.BankAccountType.DEBIT,
+            "account_number": "<value>",
+            "currency": "GBP",
+        },
+    })
+
+    # Handle response
+    print(res)
+
+```
 ### Example Usage: Malformed query
 
 <!-- UsageSnippet language="python" operationID="create-bank-account" method="post" path="/companies/{companyId}/connections/{connectionId}/payables/bankAccounts" example="Malformed query" -->

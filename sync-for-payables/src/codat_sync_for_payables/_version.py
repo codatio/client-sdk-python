@@ -3,10 +3,12 @@
 import importlib.metadata
 
 __title__: str = "codat-sync-for-payables"
-__version__: str = "9.0.0"
+__version__: str = "9.0.1"
 __openapi_doc_version__: str = "3.0.0"
-__gen_version__: str = "2.812.2"
-__user_agent__: str = "speakeasy-sdk/python 9.0.0 2.812.2 3.0.0 codat-sync-for-payables"
+__gen_version__: str = "2.869.10"
+__user_agent__: str = (
+    "speakeasy-sdk/python 9.0.1 2.869.10 3.0.0 codat-sync-for-payables"
+)
 
 try:
     if __package__ is not None:

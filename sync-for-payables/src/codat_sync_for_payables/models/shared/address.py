@@ -27,7 +27,7 @@ class AddressTypedDict(TypedDict):
     region: NotRequired[Nullable[str]]
     r"""Region of the customer address."""
     country: NotRequired[Nullable[str]]
-    r"""Country of the customer's address. For NetSuite, use the 2-digit [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) country code."""
+    r"""Country of the address. We recommend using the 2-digit ISO 3166 country code (e.g. `GB`, `US`, `FR`) as this is accepted by all supported platforms."""
     postal_code: NotRequired[Nullable[str]]
     r"""Postal code or zip code."""
 
@@ -49,7 +49,7 @@ class Address(BaseModel):
     r"""Region of the customer address."""
 
     country: OptionalNullable[str] = UNSET
-    r"""Country of the customer's address. For NetSuite, use the 2-digit [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) country code."""
+    r"""Country of the address. We recommend using the 2-digit ISO 3166 country code (e.g. `GB`, `US`, `FR`) as this is accepted by all supported platforms."""
 
     postal_code: Annotated[
         OptionalNullable[str], pydantic.Field(alias="postalCode")
@@ -69,7 +69,7 @@ class Address(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -84,3 +84,9 @@ class Address(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    Address.model_rebuild()
+except NameError:
+    pass
