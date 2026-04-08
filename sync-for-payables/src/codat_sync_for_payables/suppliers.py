@@ -35,6 +35,17 @@ class Suppliers(BaseSDK):
 
         For example, to retrieve only active suppliers (i.e. `status=Active`) or suppliers created within the specified number of days (e.g. `sourceModifiedDate>2023-12-15T00:00:00.000Z`), query the endpoint as follows: `/payables/suppliers?query=sourceModifiedDate>2023-12-15T00:00:00.000Z&&status=Active`.For example, to retrieve active suppliers modified after a particular date use `query=sourceModifiedDate>2023-12-15T00:00:00.000Z&&status=Active`.
 
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | FreeAgent                     | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Xero                          | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Zoho Books                    | Yes       |
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -152,6 +163,17 @@ class Suppliers(BaseSDK):
 
         For example, to retrieve only active suppliers (i.e. `status=Active`) or suppliers created within the specified number of days (e.g. `sourceModifiedDate>2023-12-15T00:00:00.000Z`), query the endpoint as follows: `/payables/suppliers?query=sourceModifiedDate>2023-12-15T00:00:00.000Z&&status=Active`.For example, to retrieve active suppliers modified after a particular date use `query=sourceModifiedDate>2023-12-15T00:00:00.000Z&&status=Active`.
 
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | FreeAgent                     | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Xero                          | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Zoho Books                    | Yes       |
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -265,6 +287,17 @@ class Suppliers(BaseSDK):
 
         [Suppliers](https://docs.codat.io/sync-for-payables-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | FreeAgent                     | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Xero                          | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Zoho Books                    | Yes       |
+
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -300,7 +333,7 @@ class Suppliers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.supplier_prototype,
+                request.supplier_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -383,6 +416,17 @@ class Suppliers(BaseSDK):
 
         [Suppliers](https://docs.codat.io/sync-for-payables-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
 
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | FreeAgent                     | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Xero                          | Yes       |
+        | Oracle NetSuite               | Yes       |
+        | Sage Intacct                  | Yes       |
+        | Zoho Books                    | Yes       |
+
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -418,7 +462,7 @@ class Suppliers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.supplier_prototype,
+                request.supplier_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -466,6 +510,278 @@ class Suppliers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
+            return unmarshal_json_response(shared.Supplier, http_res)
+        if utils.match_response(
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
+        ):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+
+        raise errors.SDKError("Unexpected response received", http_res)
+
+    def update(
+        self,
+        *,
+        request: Union[
+            operations.UpdateSupplierRequest, operations.UpdateSupplierRequestTypedDict
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Supplier:
+        r"""Update supplier
+
+        The *Update supplier* endpoint updates an existing [supplier](https://docs.codat.io/sync-for-payables-api#/schemas/Supplier) for a given company's connection.
+
+        [Suppliers](https://docs.codat.io/sync-for-payables-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+
+        This is a full-replace PUT endpoint. Any fields not included in the request body will be cleared on the supplier record.
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | FreeAgent                     | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Xero                          | Yes       |
+        | Oracle NetSuite               | No        |
+        | Sage Intacct                  | No        |
+        | Zoho Books                    | No        |
+
+        ### Platform-specific behavior
+
+        - **Xero**: Archived suppliers cannot be updated (returns `400`). Suppliers must be unarchived manually in the Xero UI before updating.
+        - **QuickBooks Online**: Currency can only be set when creating a supplier, and cannot be changed via update.
+
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, operations.UpdateSupplierRequest)
+        request = cast(operations.UpdateSupplierRequest, request)
+
+        req = self._build_request(
+            method="PUT",
+            path="/companies/{companyId}/connections/{connectionId}/payables/suppliers/{supplierId}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.supplier_prototype if request is not None else None,
+                False,
+                True,
+                "json",
+                Optional[shared.SupplierPrototype],
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+            else:
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["408", "429", "5XX"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="update-supplier",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(shared.Supplier, http_res)
+        if utils.match_response(
+            http_res, ["400", "401", "402", "403", "404", "429"], "application/json"
+        ):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, ["500", "503"], "application/json"):
+            response_data = unmarshal_json_response(errors.ErrorMessageData, http_res)
+            raise errors.ErrorMessage(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.SDKError("API error occurred", http_res, http_res_text)
+
+        raise errors.SDKError("Unexpected response received", http_res)
+
+    async def update_async(
+        self,
+        *,
+        request: Union[
+            operations.UpdateSupplierRequest, operations.UpdateSupplierRequestTypedDict
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> shared.Supplier:
+        r"""Update supplier
+
+        The *Update supplier* endpoint updates an existing [supplier](https://docs.codat.io/sync-for-payables-api#/schemas/Supplier) for a given company's connection.
+
+        [Suppliers](https://docs.codat.io/sync-for-payables-api#/schemas/Supplier) are people or organizations that provide something, such as a product or service.
+
+        This is a full-replace PUT endpoint. Any fields not included in the request body will be cleared on the supplier record.
+
+        ### Supported Integrations
+
+        | Integration                   | Supported |
+        |-------------------------------|-----------|
+        | FreeAgent                     | Yes       |
+        | QuickBooks Online             | Yes       |
+        | Xero                          | Yes       |
+        | Oracle NetSuite               | No        |
+        | Sage Intacct                  | No        |
+        | Zoho Books                    | No        |
+
+        ### Platform-specific behavior
+
+        - **Xero**: Archived suppliers cannot be updated (returns `400`). Suppliers must be unarchived manually in the Xero UI before updating.
+        - **QuickBooks Online**: Currency can only be set when creating a supplier, and cannot be changed via update.
+
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, operations.UpdateSupplierRequest)
+        request = cast(operations.UpdateSupplierRequest, request)
+
+        req = self._build_request_async(
+            method="PUT",
+            path="/companies/{companyId}/connections/{connectionId}/payables/suppliers/{supplierId}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.supplier_prototype if request is not None else None,
+                False,
+                True,
+                "json",
+                Optional[shared.SupplierPrototype],
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+            else:
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["408", "429", "5XX"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="update-supplier",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=[
+                "400",
+                "401",
+                "402",
+                "403",
+                "404",
+                "429",
+                "4XX",
+                "500",
+                "503",
+                "5XX",
+            ],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(shared.Supplier, http_res)
         if utils.match_response(
             http_res, ["400", "401", "402", "403", "404", "429"], "application/json"

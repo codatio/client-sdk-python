@@ -2,6 +2,14 @@
 
 Status of the supplier.
 
+## Example Usage
+
+```python
+from codat_sync_for_payables.models.shared import SupplierStatus
+
+value = SupplierStatus.UNKNOWN
+```
+
 
 ## Values
 

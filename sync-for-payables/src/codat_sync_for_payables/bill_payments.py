@@ -296,7 +296,7 @@ class BillPayments(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bill_payment_prototype,
+                request.bill_payment_prototype if request is not None else None,
                 False,
                 True,
                 "json",
@@ -417,7 +417,7 @@ class BillPayments(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.bill_payment_prototype,
+                request.bill_payment_prototype if request is not None else None,
                 False,
                 True,
                 "json",
