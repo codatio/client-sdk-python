@@ -1,2 +1,10 @@
 ## Python SDK Changes:
-* `codat_bank_feeds.source_accounts.generate_otp()`: **Added**
+* `codat_bank_feeds.companies.create()`:  `response.data_connections[].integration_key` **Changed**
+* `codat_bank_feeds.companies.get()`:  `response.data_connections[].integration_key` **Changed**
+* `codat_bank_feeds.companies.list()`:  `response.results[].data_connections[].integration_key` **Changed**
+* `codat_bank_feeds.companies.replace()`:  `response.data_connections[].integration_key` **Changed**
+* `codat_bank_feeds.companies.update()`:  `response.data_connections[].integration_key` **Changed**
+* `codat_bank_feeds.connections.create()`:  `response.integration_key` **Changed**
+* `codat_bank_feeds.connections.get()`:  `response.integration_key` **Changed**
+* `codat_bank_feeds.connections.list()`:  `response.results[].integration_key` **Changed**
+* `codat_bank_feeds.connections.unlink()`:  `response.integration_key` **Changed**

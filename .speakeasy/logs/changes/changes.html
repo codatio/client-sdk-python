@@ -98,7 +98,15 @@
 <body><h2 id="python-sdk-changes">Python SDK Changes:</h2>
 
 <ul>
-<li><code>codat_bank_feeds.source_accounts.generate_otp()</code>: <strong>Added</strong></li>
+<li><code>codat_bank_feeds.companies.create()</code>:  <code>response.data_connections[].integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.companies.get()</code>:  <code>response.data_connections[].integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.companies.list()</code>:  <code>response.results[].data_connections[].integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.companies.replace()</code>:  <code>response.data_connections[].integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.companies.update()</code>:  <code>response.data_connections[].integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.connections.create()</code>:  <code>response.integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.connections.get()</code>:  <code>response.integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.connections.list()</code>:  <code>response.results[].integration_key</code> <strong>Changed</strong></li>
+<li><code>codat_bank_feeds.connections.unlink()</code>:  <code>response.integration_key</code> <strong>Changed</strong></li>
 </ul>
 </body>
 </html>

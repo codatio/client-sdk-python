@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: 07093ad1-99d8-4bbd-a29c-a624e1b0e25a
 management:
-  docChecksum: 5585d6d3f1630763832805877be3a651
+  docChecksum: 4d9c9e0c2c4bcc00392c83527d11c46c
   docVersion: 3.0.0
-  speakeasyVersion: 1.761.1
-  generationVersion: 2.879.6
-  releaseVersion: 12.0.0
-  configChecksum: 899f4d1eca1f67625288c43cf7a833d1
+  speakeasyVersion: 1.761.5
+  generationVersion: 2.879.13
+  releaseVersion: 12.0.1
+  configChecksum: 57a91bdcb4345a704c4facfd6c2b8085
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: bank-feeds
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=bank-feeds
   published: true
 persistentEdits:
-  generation_id: 53283e82-6b0e-451d-a486-fe034649b233
-  pristine_commit_hash: 644a69f58c246fb616655a13ab016ca8e7893aaf
-  pristine_tree_hash: 0e477b42efadacbc5bacd06485e7ce7d10b620b5
+  generation_id: 4b113934-9422-46d8-b65d-a29e32f279ff
+  pristine_commit_hash: bfcfeda407aa4c6cf65097fa9227965805631f4a
+  pristine_tree_hash: 270200580b4bf15eff969267f4bdccd28f5c5d9a
 features:
   python:
     additionalDependencies: 1.0.0
@@ -339,8 +339,8 @@ trackedFiles:
     pristine_git_object: c79edb11bd2ca64d886d93cb120d12da03228300
   docs/models/shared/connection.md:
     id: 906ff4b2d85c
-    last_write_checksum: sha1:b05a7f95aeb2b5e87db1e78a6919c7e015ea49fb
-    pristine_git_object: 373f82d60f722fc56a84a50208f769f262566ae4
+    last_write_checksum: sha1:787f23adbf740f289b45bc6f2b4c365581885724
+    pristine_git_object: 8cca7306a4fc3548c8e8ec849143e88b7abd7a96
   docs/models/shared/connections.md:
     id: f1fe5197905a
     last_write_checksum: sha1:4b2bee44d11f447b172efd1f9173e9dc635bf06c
@@ -595,8 +595,8 @@ trackedFiles:
     pristine_git_object: cb9c15d314c1930557401074329ed7a737147919
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:bc8d6d9eeba41d3a2c61b143aa6493181cefc335
-    pristine_git_object: 04e9a5c1e2b5af1756e896f5db891d01eb6df7be
+    last_write_checksum: sha1:e78f47e3228e5b543a5082a01c12a77542fa5361
+    pristine_git_object: cfd423aa98e22d08f796a4adcb15636b18838117
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:e564526de6247218eafd3c7510ffd6f6e17440b7
@@ -623,8 +623,8 @@ trackedFiles:
     pristine_git_object: 1064e5a914040b0602312739b3061c0255340d0e
   src/codat_bankfeeds/_version.py:
     id: 9cd61e9dc5d6
-    last_write_checksum: sha1:ea251966aab17cdc5874f69c3b3c9fc166bca6b0
-    pristine_git_object: 64fc38d207e39a24ea2ce5ee28b071659bc826b3
+    last_write_checksum: sha1:bc272abdec0f39dd4691eb8d5dbe285a20b0d588
+    pristine_git_object: 2129286f581cb4d07859a8b6583a4a7dac804ef3
   src/codat_bankfeeds/account_mapping.py:
     id: 3f6b142ab22a
     last_write_checksum: sha1:3fd6eaec607684d738c440e1248c8aee1c741cda
@@ -903,8 +903,8 @@ trackedFiles:
     pristine_git_object: ba06aa41f4363f6c65ad5de32e58d4391d606637
   src/codat_bankfeeds/models/shared/connection.py:
     id: 6cb70bda6430
-    last_write_checksum: sha1:6a5d4425d6477381d3b72b251c53ee45418d425d
-    pristine_git_object: 233722826c067b868eeaa76600d7735b38729854
+    last_write_checksum: sha1:d2edbeee3417e3eb12c5ba9a2fe52a121ea296bb
+    pristine_git_object: 49419303ef793babbf7ad9c01a670aead0f1003f
   src/codat_bankfeeds/models/shared/connections.py:
     id: 54b9c539f3b5
     last_write_checksum: sha1:8aa60dc96c4cf48e46cce641b01ce81f46833e51
@@ -2487,7 +2487,15 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Python SDK Changes:
-  * `codat_bank_feeds.source_accounts.generate_otp()`: **Added**
+  * `codat_bank_feeds.companies.create()`:  `response.data_connections[].integration_key` **Changed**
+  * `codat_bank_feeds.companies.get()`:  `response.data_connections[].integration_key` **Changed**
+  * `codat_bank_feeds.companies.list()`:  `response.results[].data_connections[].integration_key` **Changed**
+  * `codat_bank_feeds.companies.replace()`:  `response.data_connections[].integration_key` **Changed**
+  * `codat_bank_feeds.companies.update()`:  `response.data_connections[].integration_key` **Changed**
+  * `codat_bank_feeds.connections.create()`:  `response.integration_key` **Changed**
+  * `codat_bank_feeds.connections.get()`:  `response.integration_key` **Changed**
+  * `codat_bank_feeds.connections.list()`:  `response.results[].integration_key` **Changed**
+  * `codat_bank_feeds.connections.unlink()`:  `response.integration_key` **Changed**
 generatedFiles:
   - .gitattributes
   - .python-version
