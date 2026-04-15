@@ -1,4 +1,4 @@
-speakeasyVersion: 1.761.1
+speakeasyVersion: 1.761.5
 sources:
     accounting-source:
         sourceNamespace: accounting-source
@@ -16,8 +16,8 @@ sources:
             - main
     bank-feeds-source:
         sourceNamespace: bank-feeds-source
-        sourceRevisionDigest: sha256:db973c9d8c06047299854a7aa58c29bee90109d9230c0d3014c5f37c9116b7ea
-        sourceBlobDigest: sha256:ea9603cd302e3ac9fb6b395903cff7fe65012374fe509a445472baf9daca0e35
+        sourceRevisionDigest: sha256:169b50aca543aab236e24029ee5037bb8230d7f9149b9705da680973a86e62d0
+        sourceBlobDigest: sha256:d15376235a83cfd95449e02f7a2fcffac242798aa337954333c4a81174231e3f
         tags:
             - latest
             - 3.0.0
@@ -108,10 +108,10 @@ targets:
     bank-feeds-library:
         source: bank-feeds-source
         sourceNamespace: bank-feeds-source
-        sourceRevisionDigest: sha256:db973c9d8c06047299854a7aa58c29bee90109d9230c0d3014c5f37c9116b7ea
-        sourceBlobDigest: sha256:ea9603cd302e3ac9fb6b395903cff7fe65012374fe509a445472baf9daca0e35
+        sourceRevisionDigest: sha256:169b50aca543aab236e24029ee5037bb8230d7f9149b9705da680973a86e62d0
+        sourceBlobDigest: sha256:d15376235a83cfd95449e02f7a2fcffac242798aa337954333c4a81174231e3f
         codeSamplesNamespace: bank-feeds-source-python-code-samples
-        codeSamplesRevisionDigest: sha256:e437a5ef9bc603021968cea5e57a6b3655d67482522b5fa45728dab3ef3f4e5f
+        codeSamplesRevisionDigest: sha256:fd3f6921ecda6f9af41cdc1bca2b8cf337636273f59e959117b0fc28e30b593b
     banking-library:
         source: banking-source
         sourceNamespace: banking-source
