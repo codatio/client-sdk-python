@@ -2,6 +2,14 @@
 
 The option type.
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import PushOptionType
+
+value = PushOptionType.ARRAY
+```
+
 
 ## Values
 

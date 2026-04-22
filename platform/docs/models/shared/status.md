@@ -2,6 +2,14 @@
 
 The current status of the dataset.
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import Status
+
+value = Status.INITIAL
+```
+
 
 ## Values
 

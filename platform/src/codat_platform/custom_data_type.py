@@ -74,7 +74,7 @@ class CustomDataType(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.custom_data_type_configuration,
+                request.custom_data_type_configuration if request is not None else None,
                 False,
                 True,
                 "json",
@@ -105,17 +105,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -201,7 +191,7 @@ class CustomDataType(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.custom_data_type_configuration,
+                request.custom_data_type_configuration if request is not None else None,
                 False,
                 True,
                 "json",
@@ -232,17 +222,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -344,17 +324,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -456,17 +426,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -568,19 +528,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "451",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -684,19 +632,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "451",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -796,18 +732,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "451",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -905,18 +830,7 @@ class CustomDataType(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "451",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 

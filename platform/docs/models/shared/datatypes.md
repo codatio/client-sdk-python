@@ -2,6 +2,14 @@
 
 Available data types
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import DataTypes
+
+value = DataTypes.ACCOUNT_TRANSACTIONS
+```
+
 
 ## Values
 

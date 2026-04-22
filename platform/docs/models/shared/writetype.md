@@ -2,6 +2,14 @@
 
 Type of write request.
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import WriteType
+
+value = WriteType.CREATE
+```
+
 
 ## Values
 

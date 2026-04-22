@@ -2,6 +2,14 @@
 
 The type of feature.
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import FeatureType
+
+value = FeatureType.GET
+```
+
 
 ## Values
 

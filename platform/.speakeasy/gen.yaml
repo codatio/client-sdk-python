@@ -11,6 +11,7 @@ generation:
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
     sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -26,7 +27,7 @@ generation:
     skipResponseBodyAssertions: false
   telemetryEnabled: true
 python:
-  version: 5.0.0
+  version: 5.0.1
   additionalDependencies:
     dev: {}
     main: {}
@@ -45,6 +46,8 @@ python:
   enableCustomCodeRegions: false
   enumFormat: enum
   fixFlags:
+    asyncPaginationSep2025: false
+    conflictResistantModelImportsFeb2026: false
     responseRequiredSep2024: false
   flattenGlobalSecurity: false
   flattenRequests: false

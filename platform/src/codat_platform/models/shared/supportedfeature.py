@@ -21,3 +21,9 @@ class SupportedFeature(BaseModel):
 
     feature_type: Annotated[FeatureType, pydantic.Field(alias="featureType")]
     r"""The type of feature."""
+
+
+try:
+    SupportedFeature.model_rebuild()
+except NameError:
+    pass
