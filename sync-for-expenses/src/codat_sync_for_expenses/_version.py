@@ -3,11 +3,11 @@
 import importlib.metadata
 
 __title__: str = "codat-sync-for-expenses"
-__version__: str = "8.0.0"
+__version__: str = "8.0.1"
 __openapi_doc_version__: str = "prealpha"
-__gen_version__: str = "2.856.1"
+__gen_version__: str = "2.881.4"
 __user_agent__: str = (
-    "speakeasy-sdk/python 8.0.0 2.856.1 prealpha codat-sync-for-expenses"
+    "speakeasy-sdk/python 8.0.1 2.881.4 prealpha codat-sync-for-expenses"
 )
 
 try:

@@ -1,4 +1,4 @@
-speakeasyVersion: 1.761.5
+speakeasyVersion: 1.761.9
 sources:
     accounting-source:
         sourceNamespace: accounting-source
@@ -75,8 +75,8 @@ sources:
             - "1.1"
     sync-for-expenses-source:
         sourceNamespace: sync-for-expenses-source
-        sourceRevisionDigest: sha256:5dfc2374e127deec41d3939693c268068f3649d794687399f56d9e49685e9c5f
-        sourceBlobDigest: sha256:87c0a544209788904d0cba68b864dbfc7f554dc69335339c71f52f146931ae26
+        sourceRevisionDigest: sha256:11af6475e2c0576d71adee597a3315d14622ac764c9627301b129c2701d72041
+        sourceBlobDigest: sha256:34aa4d8a3385871bfb861e1ac69865cc6dbd2d2f776983533959baedd2a3da0e
         tags:
             - latest
             - prealpha
@@ -156,10 +156,10 @@ targets:
     sync-for-expenses-library:
         source: sync-for-expenses-source
         sourceNamespace: sync-for-expenses-source
-        sourceRevisionDigest: sha256:5dfc2374e127deec41d3939693c268068f3649d794687399f56d9e49685e9c5f
-        sourceBlobDigest: sha256:87c0a544209788904d0cba68b864dbfc7f554dc69335339c71f52f146931ae26
+        sourceRevisionDigest: sha256:11af6475e2c0576d71adee597a3315d14622ac764c9627301b129c2701d72041
+        sourceBlobDigest: sha256:34aa4d8a3385871bfb861e1ac69865cc6dbd2d2f776983533959baedd2a3da0e
         codeSamplesNamespace: sync-for-expenses-source-python-code-samples
-        codeSamplesRevisionDigest: sha256:e3caf5ee3c300a67f60328a4414edc58c832b4024f36ea2d17998e1065218710
+        codeSamplesRevisionDigest: sha256:141e93bf0e80c81b7d6e8217483f61a7e04c8c460545ca5b84897def8e172749
     sync-for-payables-library:
         source: sync-for-payables-source
         sourceNamespace: sync-for-payables-source
