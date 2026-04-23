@@ -46,8 +46,6 @@ class ConnectionTypedDict(TypedDict):
     r"""Unique identifier for a company's data connection."""
     integration_id: str
     r"""A Codat ID representing the integration."""
-    integration_key: str
-    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
     source_id: str
     r"""A source-specific ID used to distinguish between different sources originating from the same data connection. In general, a data connection is a single data source. However, for TrueLayer, `sourceId` is associated with a specific bank and has a many-to-one relationship with the `integrationId`."""
     source_type: SourceType
@@ -79,6 +77,8 @@ class ConnectionTypedDict(TypedDict):
     > Not all dates from Codat will contain information about time zones.
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
+    integration_key: NotRequired[str]
+    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
     last_sync: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -123,9 +123,6 @@ class Connection(BaseModel):
     integration_id: Annotated[str, pydantic.Field(alias="integrationId")]
     r"""A Codat ID representing the integration."""
 
-    integration_key: Annotated[str, pydantic.Field(alias="integrationKey")]
-    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
-
     source_id: Annotated[str, pydantic.Field(alias="sourceId")]
     r"""A source-specific ID used to distinguish between different sources originating from the same data connection. In general, a data connection is a single data source. However, for TrueLayer, `sourceId` is associated with a specific bank and has a many-to-one relationship with the `integrationId`."""
 
@@ -163,6 +160,11 @@ class Connection(BaseModel):
     > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.
     """
 
+    integration_key: Annotated[
+        Optional[str], pydantic.Field(alias="integrationKey")
+    ] = None
+    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
+
     last_sync: Annotated[Optional[str], pydantic.Field(alias="lastSync")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -196,7 +198,9 @@ class Connection(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["lastSync", "dataConnectionErrors", "connectionInfo"])
+        optional_fields = set(
+            ["integrationKey", "lastSync", "dataConnectionErrors", "connectionInfo"]
+        )
         nullable_fields = set(["dataConnectionErrors", "connectionInfo"])
         serialized = handler(self)
         m = {}
