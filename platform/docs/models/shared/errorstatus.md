@@ -2,6 +2,14 @@
 
 The current status of a transient error. Null statuses indicate that the error is not transient.
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import ErrorStatus
+
+value = ErrorStatus.ACTIVE
+```
+
 
 ## Values
 
