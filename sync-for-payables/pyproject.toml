@@ -1,7 +1,7 @@
 
 [project]
 name = "codat-sync-for-payables"
-version = "9.0.1"
+version = "9.0.2"
 description = "Streamline your customers' accounts payable workflow."
 authors = [{ name = "Speakeasy" },]
 readme = "README-PYPI.md"
