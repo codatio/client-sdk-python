@@ -38,6 +38,9 @@ info:
     | Customers | Get, create, and update customers. |
     | Suppliers | Get, create, and update suppliers. |
     <!-- End Codat Tags Table -->
+  contact:
+    name: Codat
+    email: support@codat.io
   termsOfService: 'https://www.codat.io/legals/'
 security:
   - auth_header: []
@@ -91,6 +94,8 @@ x-codat-speakeasy-pagination:
 tags:
   - name: Companies
     description: Create and manage your SMB users' companies.
+  - name: Connection management
+    description: Configure UI and retrieve access tokens for authentication used by **Connections SDK**.
   - name: Connections
     description: Create new and manage existing data connections for a company.
   - name: Company info
@@ -680,12 +685,7 @@ paths:
               type: object
               properties:
                 platformKey:
-                  type: string
-                  minLength: 4
-                  maxLength: 4
-                  pattern: '[a-z]{4}'
-                  example: gbol
-                  description: 'A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys.'
+                  $ref: '#/components/parameters/platformKey/schema'
       responses:
         '200':
           description: OK
@@ -825,15 +825,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update connection
-              x-internal: true
-              type: object
-              properties:
-                status:
-                  $ref: '#/components/schemas/Connection/definitions/dataConnectionStatus'
-                  description: The current authorization status of the data connection.
-                  nullable: true
-              additionalProperties: false
+              $ref: '#/components/schemas/UpdateConnectionStatus'
             examples:
               Example:
                 value:
@@ -884,7 +876,7 @@ paths:
         - $ref: '#/components/parameters/companyId'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -935,8 +927,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/Not-Found'
-        '409':
-          $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/Too-Many-Requests'
         '500':
@@ -6694,77 +6684,9 @@ paths:
                     required: true
                 Sandbox:
                   value:
-                    type: Object
-                    displayName: Bank Account
-                    description: An account that bank transactions may be recorded against
-                    properties:
-                      accountName:
-                        type: String
-                        displayName: Name
-                        description: The name of the bank account in the originating system
-                        required: true
-                      accountType:
-                        type: String
-                        displayName: Account Type
-                        description: The type of account
-                        required: true
-                      nominalCode:
-                        type: String
-                        displayName: Nominal Code
-                        description: The external reference given to each nominal account for a business
-                        required: true
-                      sortCode:
-                        type: String
-                        displayName: Sort Code
-                        description: The sort code for the bank account
-                        required: true
-                      accountNumber:
-                        type: String
-                        displayName: Account Number
-                        description: The account number for the bank account
-                        required: true
-                      iBan:
-                        type: String
-                        displayName: IBAN
-                        description: The international bank account number of the account. Often used when making or receiving international payments
-                        required: true
-                      currency:
-                        type: String
-                        displayName: Currency
-                        description: The currency of the bank account
-                        required: true
-                      balance:
-                        type: Number
-                        displayName: Balance
-                        description: The balance of the bank account
-                        required: true
-                      availableBalance:
-                        type: Number
-                        displayName: Available Balance
-                        description: The available balance of the bank account
-                        required: true
-                      overdraftLimit:
-                        type: Number
-                        displayName: Overdraft Limit
-                        description: The pre-arranged overdraft limit of the account
-                        required: true
-                      institution:
-                        type: String
-                        displayName: Institution
-                        description: The institution of the bank account
-                        required: true
-                      metadata:
-                        type: Object
-                        displayName: Metadata
-                        description: Miscellaneous data about the item
-                        properties:
-                          isDeleted:
-                            type: Boolean
-                            displayName: IsDeleted
-                            description: A boolean to indicate whether the object has been deleted
-                            required: true
-                        required: true
-                    required: true
+                    expiresIn: 86400
+                    accessToken: string
+                    tokenType: Bearer
         '401':
           $ref: '#/components/responses/Unauthorized'
         '402':
@@ -6795,7 +6717,7 @@ paths:
         - $ref: '#/components/parameters/orderBy'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -8053,6 +7975,14 @@ paths:
       - $ref: '#/components/parameters/companyId'
       - $ref: '#/components/parameters/customerId'
     get:
+      summary: Get CORS settings (old)
+      operationId: get-connection-management-cors-settings
+      x-speakeasy-group: cors
+      deprecated: true
+      x-speakeasy-deprecation-message: |
+        The new [Get CORS settings](https://docs.codat.io/platform-api#/operations/get-cors-settings) endpoint replaces this endpoint and includes additional functionality.
+        Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
+      x-speakeasy-deprecation-replacement: get-cors-settings
       tags:
         - Customers
       summary: Get customer
@@ -8623,7 +8553,7 @@ paths:
               $ref: '#/components/schemas/Customer'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -8674,14 +8604,14 @@ paths:
               $ref: '#/components/schemas/Customer'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateCustomerResponse'
               examples: {}
         '400':
-          $ref: '#/components/responses/BadRequest'
+          $ref: '#/components/responses/Malformed-Query'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '402':
@@ -8719,7 +8649,7 @@ paths:
         - $ref: '#/components/parameters/orderBy'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -9898,7 +9828,7 @@ paths:
                   status: Active
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -9912,8 +9842,6 @@ paths:
           $ref: '#/components/responses/Payment-Required'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/Not-Found'
         '429':
           $ref: '#/components/responses/Too-Many-Requests'
         '500':
@@ -12115,7 +12043,7 @@ components:
           $ref: '#/components/schemas/DataStatus/properties/dataType'
           description: 'The type of data being pushed, eg invoices, customers.'
         companyId:
-          $ref: '#/components/parameters/companyId/schema'
+          $ref: '#/paths/~1companies~1%7BcompanyId%7D~1syncSettings/post/requestBody/content/application~1json/schema/allOf/0/properties/companyId'
         pushOperationKey:
           type: string
           format: uuid
@@ -13027,6 +12955,7 @@ components:
     UpdateExpenseRequest:
       title: Updating expense transaction request
       type: object
+      description: "\uFEFFA webhook consumer is an HTTP endpoint that developers can configure to subscribe to Codat's supported event types.\n\nSee our documentation for more details on [Codat's webhook service](https://docs.codat.io/using-the-api/webhooks/overview).\n"
       properties:
         type:
           type: string
@@ -13295,7 +13224,7 @@ components:
         default: false
       description: 'When updating data in the destination platform Codat checks the `sourceModifiedDate` against the `lastupdated` date from the accounting software, if they''re different Codat will return an error suggesting you should initiate another pull of the data. If this is set to `true` then the update will override this check.'
   responses:
-    BadRequest:
+    Bad-Request:
       description: The request made is not valid.
       content:
         application/json:
@@ -13310,6 +13239,15 @@ components:
                 correlationId: bc997528a9d7abb9161ef45f05d38599
                 canBeRetried: Unknown
                 detailedErrorCode: 0
+    ConnectionManagementAllowedOrigins:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConnectionManagementAllowedOrigins'
+          examples:
+            Allowed origins:
+              $ref: '#/components/examples/connectionManagementAllowedOriginsResponse'
     Malformed-Query:
       description: Your `query` parameter was not correctly formed
       content:
@@ -13416,8 +13354,8 @@ components:
                 correlationId: 0a40c2f31fc8f992fb88b0853e4166f3
                 canBeRetried: Unknown
                 detailedErrorCode: 0
-    Conflict:
-      description: The data type's dataset has not been requested or is still syncing.
+    Too-Many-Requests:
+      description: Too many requests were made in a given amount of time. Wait a short period and then try again.
       content:
         application/json:
           schema:
@@ -13425,9 +13363,9 @@ components:
           examples:
             Conflict:
               value:
-                statusCode: 409
+                statusCode: 429
                 service: PublicApi
-                error: The data set has not been requested.
+                error: You have made too many requests in a given amount of time; please retry later.
                 correlationId: bc997528a9d7abb9161ef45f05d38599
                 canBeRetried: Unknown
                 detailedErrorCode: 0
@@ -13455,10 +13393,10 @@ components:
           examples:
             Conflict:
               value:
-                statusCode: 429
-                service: PublicApi
-                error: You have made too many requests in a given amount of time; please retry later.
-                correlationId: bc997528a9d7abb9161ef45f05d38599
+                statusCode: 451
+                service: StdznCustomData
+                error: Platform 'qudb' is not currently available for compliance purposes.
+                correlationId: f63017dabb9b87865573bea95a51e55d
                 canBeRetried: Unknown
                 detailedErrorCode: 0
     Internal-Server-Error:
@@ -13491,6 +13429,121 @@ components:
                 correlationId: bc997528a9d7abb9161ef45f05d38599
                 canBeRetried: Unknown
                 detailedErrorCode: 0
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        $ref: '#/paths/~1companies~1%7BcompanyId%7D~1syncSettings/post/requestBody/content/application~1json/schema/allOf/0/properties/companyId'
+      description: Unique identifier for a company.
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 2e9d2c44-f675-40ba-8049-353bfcb5e171
+        description: Unique identifier for a company's data connection.
+      description: Unique identifier for a connection.
+    customDataIdentifier:
+      name: customDataIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+        example: DynamicsPurchaseOrders
+      description: Unique identifier for a custom data type.
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        example: 1
+        default: 1
+      description: 'Page number. [Read more](https://docs.codat.io/using-the-api/paging).'
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        format: int32
+        default: 100
+        example: 100
+        minimum: 1
+        maximum: 5000
+      description: 'Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging).'
+    productIdentifier:
+      name: productIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+        examples:
+          - bank-feeds
+          - lending
+          - payables
+          - expenses
+      description: Human-readable product identifier for a product.
+    query:
+      name: query
+      in: query
+      required: false
+      schema:
+        type: string
+      example: id=e3334455-1aed-4e71-ab43-6bccf12092ee
+      description: 'Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).'
+    orderBy:
+      name: orderBy
+      in: query
+      required: false
+      schema:
+        type: string
+        example: '-modifiedDate'
+      description: 'Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results).'
+    dataType:
+      name: dataType
+      description: The key of a Codat data type.
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/DataType'
+    datasetId:
+      name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Unique identifier for the dataset that completed its sync.
+      description: Unique identifier for the dataset that completed its sync.
+    platformKey:
+      name: platformKey
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 4
+        maxLength: 4
+        pattern: '[a-z]{4}'
+        example: gbol
+        description: 'A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys.'
+      description: A unique 4-letter key to represent a platform in each integration.
+    webhookId:
+      name: webhookId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/WebhookConsumer/properties/id'
+      description: Unique identifier for the webhook consumer.
+  examples:
+    connectionManagementAllowedOriginsResponse:
+      value:
+        allowedOrigins:
+          - 'https://www.bank-of-dave.com'
   securitySchemes:
     auth_header:
       name: Authorization

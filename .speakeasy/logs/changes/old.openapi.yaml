@@ -91,6 +91,8 @@ x-codat-speakeasy-pagination:
 tags:
   - name: Companies
     description: Create and manage your SMB users' companies.
+  - name: Connection management
+    description: Configure UI and retrieve access tokens for authentication used by **Connections SDK**.
   - name: Connections
     description: Create new and manage existing data connections for a company.
   - name: Company info
@@ -680,12 +682,7 @@ paths:
               type: object
               properties:
                 platformKey:
-                  type: string
-                  minLength: 4
-                  maxLength: 4
-                  pattern: '[a-z]{4}'
-                  example: gbol
-                  description: 'A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys.'
+                  $ref: '#/components/parameters/platformKey/schema'
       responses:
         '200':
           description: OK
@@ -825,15 +822,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update connection
-              x-internal: true
-              type: object
-              properties:
-                status:
-                  $ref: '#/components/schemas/Connection/definitions/dataConnectionStatus'
-                  description: The current authorization status of the data connection.
-                  nullable: true
-              additionalProperties: false
+              $ref: '#/components/schemas/UpdateConnectionStatus'
             examples:
               Example:
                 value:
@@ -884,7 +873,7 @@ paths:
         - $ref: '#/components/parameters/companyId'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -935,8 +924,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/Not-Found'
-        '409':
-          $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/Too-Many-Requests'
         '500':
@@ -6722,6 +6709,14 @@ paths:
     parameters:
       - $ref: '#/components/parameters/companyId'
     get:
+      summary: Get CORS settings (old)
+      operationId: get-connection-management-cors-settings
+      x-speakeasy-group: cors
+      deprecated: true
+      x-speakeasy-deprecation-message: |
+        The new [Get CORS settings](https://docs.codat.io/platform-api#/operations/get-cors-settings) endpoint replaces this endpoint and includes additional functionality.
+        Update your integrations to use the new path `/corsSettings` as the existing route will be removed in a future release.
+      x-speakeasy-deprecation-replacement: get-cors-settings
       tags:
         - Customers
       summary: List customers
@@ -7989,7 +7984,7 @@ paths:
       summary: Get customer
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -8539,8 +8534,11 @@ paths:
   '/companies/{companyId}/connections/{connectionId}/push/customers':
     parameters:
       - $ref: '#/components/parameters/companyId'
-      - $ref: '#/components/parameters/connectionId'
-    post:
+      - $ref: '#/components/parameters/datasetId'
+    get:
+      summary: Get pull operation
+      operationId: get-pull-operation
+      x-speakeasy-name-override: get-pull-operation
       tags:
         - Customers
       summary: Create customer
@@ -8553,15 +8551,40 @@ paths:
             schema:
               $ref: '#/components/schemas/Customer'
       responses:
-        '200':
-          description: Success
+        '201':
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCustomerResponse'
               examples: {}
         '400':
-          $ref: '#/components/responses/BadRequest'
+          $ref: '#/components/responses/Bad-Request'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/Payment-Required'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/Too-Many-Requests'
+        '500':
+          $ref: '#/components/responses/Internal-Server-Error'
+        '503':
+          $ref: '#/components/responses/Service-Unavailable'
+  '/webhooks/{webhookId}':
+    parameters:
+      - $ref: '#/components/parameters/webhookId'
+    delete:
+      summary: Delete webhook consumer
+      operationId: delete-webhook-consumer
+      x-speakeasy-name-override: delete-consumer
+      description: "\uFEFF\x55\x73\x65\x20\x74\x68\x65\x20\x2A\x44\x65\x6C\x65\x74\x65\x20\x77\x65\x62\x68\x6F\x6F\x6B\x20\x63\x6F\x6E\x73\x75\x6D\x65\x72\x2A\x20\x65\x6E\x64\x70\x6F\x69\x6E\x74\x20\x74\x6F\x20\x64\x65\x6C\x65\x74\x65\x20\x61\x6E\x20\x65\x78\x69\x73\x74\x69\x6E\x67\x20\x77\x65\x62\x68\x6F\x6F\x6F\x6B\x20\x63\x6F\x6E\x73\x75\x6D\x65\x72\x2C\x20\x70\x72\x6F\x76\x69\x64\x69\x6E\x67\x20\x69\x74\x73\x20\x76\x61\x6C\x69\x64\x20\x60\x69\x64\x60\x20\x61\x73\x20\x61\x20\x70\x61\x72\x61\x6D\x65\x74\x65\x72\x2E\n\n\x5B\x57\x65\x62\x68\x6F\x6F\x6B\x20\x63\x6F\x6E\x73\x75\x6D\x65\x72\x5D\x28\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x6F\x63\x73\x2E\x63\x6F\x64\x61\x74\x2E\x69\x6F\x2F\x70\x6C\x61\x74\x66\x6F\x72\x6D\x2D\x61\x70\x69\x23\x2F\x73\x63\x68\x65\x6D\x61\x73\x2F\x57\x65\x62\x68\x6F\x6F\x6B\x43\x6F\x6E\x73\x75\x6D\x65\x72\x29\x20\x69\x73\x20\x61\x6E\x20\x48\x54\x54\x50\x20\x65\x6E\x64\x70\x6F\x69\x6E\x74\x20\x74\x68\x61\x74\x20\x79\x6F\x75\x20\x63\x6F\x6E\x66\x69\x67\x75\x72\x65\x20\x74\x6F\x20\x73\x75\x62\x73\x63\x72\x69\x62\x65\x20\x74\x6F\x20\x73\x70\x65\x63\x69\x66\x69\x63\x20\x65\x76\x65\x6E\x74\x73\x2E\x20\x53\x65\x65\x20\x6F\x75\x72\x20\x64\x6F\x63\x75\x6D\x65\x6E\x74\x61\x74\x69\x6F\x6E\x20\x66\x6F\x72\x20\x6D\x6F\x72\x65\x20\x64\x65\x74\x61\x69\x6C\x73\x20\x6F\x6E\x20\x5B\x43\x6F\x64\x61\x74\x27\x73\x20\x77\x65\x62\x68\x6F\x6F\x6B\x20\x73\x65\x72\x76\x69\x63\x65\x5D\x28\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x6F\x63\x73\x2E\x63\x6F\x64\x61\x74\x2E\x69\x6F\x2F\x75\x73\x69\x6E\x67\x2D\x74\x68\x65\x2D\x61\x70\x69\x2F\x77\x65\x62\x68\x6F\x6F\x6B\x73\x2F\x6F\x76\x65\x72\x76\x69\x65\x77\x29\x2E"
+      tags:
+        - Webhooks
+      responses:
+        '204':
+          description: No content
         '401':
           $ref: '#/components/responses/Unauthorized'
         '402':
@@ -8619,8 +8642,6 @@ paths:
           $ref: '#/components/responses/Payment-Required'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/Not-Found'
         '429':
           $ref: '#/components/responses/Too-Many-Requests'
         '500':
@@ -9463,12 +9484,13 @@ paths:
       - $ref: '#/components/parameters/companyId'
       - $ref: '#/components/parameters/supplierId'
     get:
+      summary: Get branding
       tags:
         - Suppliers
       summary: Get supplier
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -9829,7 +9851,7 @@ paths:
                   status: Active
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -9843,8 +9865,6 @@ paths:
           $ref: '#/components/responses/Payment-Required'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/Not-Found'
         '429':
           $ref: '#/components/responses/Too-Many-Requests'
         '500':
@@ -11937,7 +11957,7 @@ components:
           $ref: '#/components/schemas/DataStatus/properties/dataType'
           description: 'The type of data being pushed, eg invoices, customers.'
         companyId:
-          $ref: '#/components/parameters/companyId/schema'
+          $ref: '#/paths/~1companies~1%7BcompanyId%7D~1syncSettings/post/requestBody/content/application~1json/schema/allOf/0/properties/companyId'
         pushOperationKey:
           type: string
           format: uuid
@@ -12827,6 +12847,7 @@ components:
     UpdateExpenseRequest:
       title: Updating expense transaction request
       type: object
+      description: "\uFEFF\x41\x20\x77\x65\x62\x68\x6F\x6F\x6B\x20\x63\x6F\x6E\x73\x75\x6D\x65\x72\x20\x69\x73\x20\x61\x6E\x20\x48\x54\x54\x50\x20\x65\x6E\x64\x70\x6F\x69\x6E\x74\x20\x74\x68\x61\x74\x20\x64\x65\x76\x65\x6C\x6F\x70\x65\x72\x73\x20\x63\x61\x6E\x20\x63\x6F\x6E\x66\x69\x67\x75\x72\x65\x20\x74\x6F\x20\x73\x75\x62\x73\x63\x72\x69\x62\x65\x20\x74\x6F\x20\x43\x6F\x64\x61\x74\x27\x73\x20\x73\x75\x70\x70\x6F\x72\x74\x65\x64\x20\x65\x76\x65\x6E\x74\x20\x74\x79\x70\x65\x73\x2E\n\n\x53\x65\x65\x20\x6F\x75\x72\x20\x64\x6F\x63\x75\x6D\x65\x6E\x74\x61\x74\x69\x6F\x6E\x20\x66\x6F\x72\x20\x6D\x6F\x72\x65\x20\x64\x65\x74\x61\x69\x6C\x73\x20\x6F\x6E\x20\x5B\x43\x6F\x64\x61\x74\x27\x73\x20\x77\x65\x62\x68\x6F\x6F\x6B\x20\x73\x65\x72\x76\x69\x63\x65\x5D\x28\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x6F\x63\x73\x2E\x63\x6F\x64\x61\x74\x2E\x69\x6F\x2F\x75\x73\x69\x6E\x67\x2D\x74\x68\x65\x2D\x61\x70\x69\x2F\x77\x65\x62\x68\x6F\x6F\x6B\x73\x2F\x6F\x76\x65\x72\x76\x69\x65\x77\x29\x2E\n"
       properties:
         type:
           type: string
@@ -13095,7 +13116,7 @@ components:
         default: false
       description: 'When updating data in the destination platform Codat checks the `sourceModifiedDate` against the `lastupdated` date from the accounting software, if they''re different Codat will return an error suggesting you should initiate another pull of the data. If this is set to `true` then the update will override this check.'
   responses:
-    BadRequest:
+    Bad-Request:
       description: The request made is not valid.
       content:
         application/json:
@@ -13110,6 +13131,15 @@ components:
                 correlationId: bc997528a9d7abb9161ef45f05d38599
                 canBeRetried: Unknown
                 detailedErrorCode: 0
+    ConnectionManagementAllowedOrigins:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConnectionManagementAllowedOrigins'
+          examples:
+            Allowed origins:
+              $ref: '#/components/examples/connectionManagementAllowedOriginsResponse'
     Malformed-Query:
       description: Your `query` parameter was not correctly formed
       content:
@@ -13216,8 +13246,8 @@ components:
                 correlationId: 0a40c2f31fc8f992fb88b0853e4166f3
                 canBeRetried: Unknown
                 detailedErrorCode: 0
-    Conflict:
-      description: The data type's dataset has not been requested or is still syncing.
+    Too-Many-Requests:
+      description: Too many requests were made in a given amount of time. Wait a short period and then try again.
       content:
         application/json:
           schema:
@@ -13225,9 +13255,9 @@ components:
           examples:
             Conflict:
               value:
-                statusCode: 409
+                statusCode: 429
                 service: PublicApi
-                error: The data set has not been requested.
+                error: You have made too many requests in a given amount of time; please retry later.
                 correlationId: bc997528a9d7abb9161ef45f05d38599
                 canBeRetried: Unknown
                 detailedErrorCode: 0
@@ -13255,10 +13285,10 @@ components:
           examples:
             Conflict:
               value:
-                statusCode: 429
-                service: PublicApi
-                error: You have made too many requests in a given amount of time; please retry later.
-                correlationId: bc997528a9d7abb9161ef45f05d38599
+                statusCode: 451
+                service: StdznCustomData
+                error: Platform 'qudb' is not currently available for compliance purposes.
+                correlationId: f63017dabb9b87865573bea95a51e55d
                 canBeRetried: Unknown
                 detailedErrorCode: 0
     Internal-Server-Error:
@@ -13291,6 +13321,121 @@ components:
                 correlationId: bc997528a9d7abb9161ef45f05d38599
                 canBeRetried: Unknown
                 detailedErrorCode: 0
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        $ref: '#/paths/~1companies~1%7BcompanyId%7D~1syncSettings/post/requestBody/content/application~1json/schema/allOf/0/properties/companyId'
+      description: Unique identifier for a company.
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: 2e9d2c44-f675-40ba-8049-353bfcb5e171
+        description: Unique identifier for a company's data connection.
+      description: Unique identifier for a connection.
+    customDataIdentifier:
+      name: customDataIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+        example: DynamicsPurchaseOrders
+      description: Unique identifier for a custom data type.
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        example: 1
+        default: 1
+      description: 'Page number. [Read more](https://docs.codat.io/using-the-api/paging).'
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        format: int32
+        default: 100
+        example: 100
+        minimum: 1
+        maximum: 5000
+      description: 'Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging).'
+    productIdentifier:
+      name: productIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+        examples:
+          - bank-feeds
+          - lending
+          - payables
+          - expenses
+      description: Human-readable product identifier for a product.
+    query:
+      name: query
+      in: query
+      required: false
+      schema:
+        type: string
+      example: id=e3334455-1aed-4e71-ab43-6bccf12092ee
+      description: 'Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).'
+    orderBy:
+      name: orderBy
+      in: query
+      required: false
+      schema:
+        type: string
+        example: '-modifiedDate'
+      description: 'Field to order results by. [Read more](https://docs.codat.io/using-the-api/ordering-results).'
+    dataType:
+      name: dataType
+      description: The key of a Codat data type.
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/DataType'
+    datasetId:
+      name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Unique identifier for the dataset that completed its sync.
+      description: Unique identifier for the dataset that completed its sync.
+    platformKey:
+      name: platformKey
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 4
+        maxLength: 4
+        pattern: '[a-z]{4}'
+        example: gbol
+        description: 'A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys.'
+      description: A unique 4-letter key to represent a platform in each integration.
+    webhookId:
+      name: webhookId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/WebhookConsumer/properties/id'
+      description: Unique identifier for the webhook consumer.
+  examples:
+    connectionManagementAllowedOriginsResponse:
+      value:
+        allowedOrigins:
+          - 'https://www.bank-of-dave.com'
   securitySchemes:
     auth_header:
       name: Authorization

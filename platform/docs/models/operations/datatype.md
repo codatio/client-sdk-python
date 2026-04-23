@@ -2,6 +2,14 @@
 
 Data types that support supplemental data
 
+## Example Usage
+
+```python
+from codat_platform.models.operations import DataType
+
+value = DataType.CHART_OF_ACCOUNTS
+```
+
 
 ## Values
 

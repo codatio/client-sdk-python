@@ -2,6 +2,14 @@
 
 The type of platform of the connection.
 
+## Example Usage
+
+```python
+from codat_platform.models.shared import SourceType
+
+value = SourceType.ACCOUNTING
+```
+
 
 ## Values
 
