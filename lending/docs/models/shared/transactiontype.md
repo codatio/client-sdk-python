@@ -10,6 +10,14 @@ The type of the platform transaction:
 - `Refund` — Refunds to a customer's credit or debit card.  
 - `Transfer` — Secure transfer of funds to the seller's bank account.  
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import TransactionType
+
+value = TransactionType.PAYMENT
+```
+
 
 ## Values
 

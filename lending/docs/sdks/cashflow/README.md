@@ -10,9 +10,134 @@
 
 Gets the latest cash flow statement for a company.
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.financial_statements.cash_flow.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "period_length": 4,
+        "periods_to_compare": 20,
+        "start_month": "2022-10-23T00:00:00Z",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreshBooks
+
+<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" example="FreshBooks" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.financial_statements.cash_flow.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "period_length": 4,
+        "periods_to_compare": 20,
+        "start_month": "2022-10-23T00:00:00Z",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.financial_statements.cash_flow.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "period_length": 4,
+        "periods_to_compare": 20,
+        "start_month": "2022-10-23T00:00:00Z",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.financial_statements.cash_flow.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "period_length": 4,
+        "periods_to_compare": 20,
+        "start_month": "2022-10-23T00:00:00Z",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.financial_statements.cash_flow.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "period_length": 4,
+        "periods_to_compare": 20,
+        "start_month": "2022-10-23T00:00:00Z",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="get-accounting-cash-flow-statement" method="get" path="/companies/{companyId}/data/financials/cashFlowStatement" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

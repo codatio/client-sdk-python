@@ -20,7 +20,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" -->
+<!-- UsageSnippet language="python" operationID="create-bank-transactions" method="post" path="/companies/{companyId}/connections/{connectionId}/push/bankAccounts/{accountId}/bankTransactions" example="Malformed query" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

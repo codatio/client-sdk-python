@@ -51,7 +51,7 @@ with CodatLending(
 
 ### Response
 
-**[httpx.Response](../../models/.md)**
+**[httpx.Response](../../models/data.md)**
 
 ### Errors
 
@@ -70,9 +70,400 @@ The *Get customer* endpoint returns a single customer for a given customerId.
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (Netherlands)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Exact (Netherlands)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Exact (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreshBooks
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="FreshBooks" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: KashFlow
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="KashFlow" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 200cloud
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Sage 200cloud" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Wave
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Wave" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "customer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="get-accounting-customer" method="get" path="/companies/{companyId}/data/customers/{customerId}" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -174,9 +565,417 @@ The *List customers* endpoint returns a list of [customers](https://docs.codat.i
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" -->
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (Netherlands)
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Exact (Netherlands)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (UK)
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Exact (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreshBooks
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="FreshBooks" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: KashFlow
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="KashFlow" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 200cloud
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Sage 200cloud" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Wave
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Wave" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.customers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="list-accounting-customers" method="get" path="/companies/{companyId}/data/customers" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

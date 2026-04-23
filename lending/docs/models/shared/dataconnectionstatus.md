@@ -2,6 +2,14 @@
 
 The current authorization status of the data connection.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import DataConnectionStatus
+
+value = DataConnectionStatus.PENDING_AUTH
+```
+
 
 ## Values
 

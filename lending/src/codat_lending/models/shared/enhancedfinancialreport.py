@@ -98,7 +98,7 @@ class ReportItem(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -131,10 +131,20 @@ class EnhancedFinancialReport(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
                     m[k] = val
 
         return m
+
+
+try:
+    ReportItem.model_rebuild()
+except NameError:
+    pass
+try:
+    EnhancedFinancialReport.model_rebuild()
+except NameError:
+    pass

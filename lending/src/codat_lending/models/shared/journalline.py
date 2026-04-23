@@ -53,7 +53,7 @@ class ContactReference(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -92,7 +92,7 @@ class JournalLineTracking(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -190,7 +190,7 @@ class JournalLine(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -205,3 +205,17 @@ class JournalLine(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    ContactReference.model_rebuild()
+except NameError:
+    pass
+try:
+    JournalLineTracking.model_rebuild()
+except NameError:
+    pass
+try:
+    JournalLine.model_rebuild()
+except NameError:
+    pass

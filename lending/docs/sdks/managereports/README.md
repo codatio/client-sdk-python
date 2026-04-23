@@ -17,7 +17,7 @@ This action triggers the system to refresh and pull the necessary data from the 
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="generate-report" method="post" path="/companies/{companyId}/reports/{reportType}" -->
+<!-- UsageSnippet language="python" operationID="generate-report" method="post" path="/companies/{companyId}/reports/{reportType}" example="Report" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

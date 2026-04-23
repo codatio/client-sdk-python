@@ -2,6 +2,14 @@
 
 Name of underlying data type.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import JournalEntryRecordRefDataType
+
+value = JournalEntryRecordRefDataType.BANK_TRANSACTIONS
+```
+
 
 ## Values
 

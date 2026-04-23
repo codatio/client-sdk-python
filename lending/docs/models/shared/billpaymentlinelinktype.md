@@ -2,6 +2,14 @@
 
 Types of links to bill payment lines.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import BillPaymentLineLinkType
+
+value = BillPaymentLineLinkType.UNKNOWN
+```
+
 
 ## Values
 

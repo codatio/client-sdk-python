@@ -12,6 +12,14 @@ Types of payment line links, either:
 `Manual Journal`  
 `Discount` - ID refers to the payment
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import PaymentLinkType
+
+value = PaymentLinkType.UNKNOWN
+```
+
 
 ## Values
 

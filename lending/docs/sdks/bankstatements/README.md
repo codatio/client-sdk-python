@@ -67,7 +67,7 @@ When you use the [*Upload data*](https://docs.codat.io/lending-api#/operations/u
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-bank-statement-upload-configuration" method="get" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/configuration" -->
+<!-- UsageSnippet language="python" operationID="get-bank-statement-upload-configuration" method="get" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/configuration" example="Codat" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -118,7 +118,7 @@ Each data connection can only have one configuration for each company and extern
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="set-bank-statement-upload-configuration" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/configuration" -->
+<!-- UsageSnippet language="python" operationID="set-bank-statement-upload-configuration" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/configuration" example="Codat" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -222,7 +222,7 @@ Make sure you created configuration for the account using the [*Set upload confi
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="upload-bank-statement-data" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/dataset/{datasetId}/upload" -->
+<!-- UsageSnippet language="python" operationID="upload-bank-statement-data" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/dataset/{datasetId}/upload" example="Malformed query" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import operations, shared

@@ -2,6 +2,14 @@
 
 The current status of the push operation.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import PushOperationStatus
+
+value = PushOperationStatus.PENDING
+```
+
 
 ## Values
 

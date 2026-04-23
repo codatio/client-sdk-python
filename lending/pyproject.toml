@@ -1,7 +1,7 @@
 
 [project]
 name = "codat-lending"
-version = "11.0.0"
+version = "11.0.1"
 description = "Make credit decisions backed by enhanced financials, metrics, reports, and data integrity features."
 authors = [{ name = "Speakeasy" },]
 readme = "README-PYPI.md"

@@ -16,9 +16,297 @@ The *Get order* endpoint returns a single order for a given orderId.
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Amazon Seller Central
 
-<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" -->
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Amazon Seller Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: BigCommerce
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="BigCommerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Clover
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Clover" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Lightspeed K Trial
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Lightspeed K Trial" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Mollie" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie Test
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Mollie Test" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Partner Commerce
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Partner Commerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: PrestaShop
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="PrestaShop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Shopify
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Shopify" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Square
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Square" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: SumUp
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="SumUp" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: WooCommerce
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="WooCommerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zettle
+
+<!-- UsageSnippet language="python" operationID="get-commerce-order" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders/{orderId}" example="Zettle" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -69,9 +357,309 @@ The *List orders* endpoint returns a list of [orders](https://docs.codat.io/lend
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Amazon Seller Central
 
-<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" -->
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Amazon Seller Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: BigCommerce
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="BigCommerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Clover
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Clover" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Lightspeed K Trial
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Lightspeed K Trial" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Mollie" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie Test
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Mollie Test" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Partner Commerce
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Partner Commerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: PrestaShop
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="PrestaShop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Shopify
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Shopify" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Square
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Square" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: SumUp
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="SumUp" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: WooCommerce
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="WooCommerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.orders.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zettle
+
+<!-- UsageSnippet language="python" operationID="list-commerce-orders" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-orders" example="Zettle" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

@@ -16,9 +16,201 @@ The *Get transfer* endpoint returns a single transfer for a given transferId.
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transfer_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-transfer" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers/{transferId}" example="Sage Intacct" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -69,9 +261,209 @@ The *List transfers* endpoint returns a list of [transfers](https://docs.codat.i
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" -->
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.transfers.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="list-accounting-transfers" method="get" path="/companies/{companyId}/connections/{connectionId}/data/transfers" example="Sage Intacct" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

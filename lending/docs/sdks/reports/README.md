@@ -13,9 +13,347 @@
 
 Returns aged creditors report for company that shows the total balance owed by a business to its suppliers over time.
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (Netherlands)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Exact (Netherlands)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Exact (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: MYOB AccountRight and Essentials
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="MYOB AccountRight and Essentials" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 200cloud
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Sage 200cloud" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_creditors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-creditors-report" method="get" path="/companies/{companyId}/reports/agedCreditor" example="Xero" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -63,9 +401,347 @@ with CodatLending(
 
 Returns aged debtors report for company that shows the total outstanding balance due from customers to the business over time.
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreshBooks
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="FreshBooks" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: KashFlow
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="KashFlow" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: MYOB AccountRight and Essentials
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="MYOB AccountRight and Essentials" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 200cloud
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Sage 200cloud" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from datetime import date
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.reports.get_aged_debtors(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "number_of_periods": 12,
+        "period_length_days": 30,
+        "report_date": date.fromisoformat("2022-12-31"),
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="get-accounting-aged-debtors-report" method="get" path="/companies/{companyId}/reports/agedDebtor" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

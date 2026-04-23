@@ -2,6 +2,14 @@
 
 Status of the account
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import AccountStatus
+
+value = AccountStatus.UNKNOWN
+```
+
 
 ## Values
 

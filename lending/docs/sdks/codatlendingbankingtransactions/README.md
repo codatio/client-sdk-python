@@ -16,9 +16,33 @@ The *Get transaction* endpoint returns a single transaction for a given transact
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Basiq
 
-<!-- UsageSnippet language="python" operationID="get-banking-transaction" method="get" path="/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}" -->
+<!-- UsageSnippet language="python" operationID="get-banking-transaction" method="get" path="/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}" example="Basiq" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.banking.transactions.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "transaction_id": "<id>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Plaid
+
+<!-- UsageSnippet language="python" operationID="get-banking-transaction" method="get" path="/companies/{companyId}/connections/{connectionId}/data/banking-transactions/{transactionId}" example="Plaid" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -69,9 +93,34 @@ The *List transactions* endpoint returns a list of [transactions](https://docs.c
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Basiq
 
-<!-- UsageSnippet language="python" operationID="list-banking-transactions" method="get" path="/companies/{companyId}/connections/{connectionId}/data/banking-transactions" -->
+<!-- UsageSnippet language="python" operationID="list-banking-transactions" method="get" path="/companies/{companyId}/connections/{connectionId}/data/banking-transactions" example="Basiq" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.banking.transactions.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Plaid
+
+<!-- UsageSnippet language="python" operationID="list-banking-transactions" method="get" path="/companies/{companyId}/connections/{connectionId}/data/banking-transactions" example="Plaid" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

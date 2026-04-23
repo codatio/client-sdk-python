@@ -47,7 +47,7 @@ with CodatLending(
 
 ### Response
 
-**[httpx.Response](../../models/.md)**
+**[httpx.Response](../../models/data.md)**
 
 ### Errors
 

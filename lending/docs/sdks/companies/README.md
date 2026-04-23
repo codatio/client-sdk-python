@@ -22,9 +22,78 @@ Each company can have multiple [connections](https://docs.codat.io/lending-api#/
 
 If forbidden characters (see `name` pattern) are present in the request, a company will be created with the forbidden characters removed. For example, `Company (Codat[1])` with be created as `Company Codat1`.
 
-### Example Usage
+### Example Usage: Malformed query
 
-<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" -->
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="Malformed query" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.create(request={
+        "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: With a description
+
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="With a description" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.create(request={
+        "description": "Technology services, including web and app design and development",
+        "name": "Technicalium",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: With a tag
+
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="With a tag" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.create(request={
+        "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: With no description
+
+<!-- UsageSnippet language="python" operationID="create-company" method="post" path="/companies" example="With no description" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -117,9 +186,53 @@ A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a bus
 Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
 
-### Example Usage
+### Example Usage: Parent multi-entity company
 
-<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" -->
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" example="Parent multi-entity company" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Simple company
+
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" example="Simple company" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Subsidiary multi-entity company
+
+<!-- UsageSnippet language="python" operationID="get-company" method="get" path="/companies/{companyId}" example="Subsidiary multi-entity company" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -179,9 +292,33 @@ For example, you can use the querying to filter companies tagged with a specific
 - Region: `region != uk`
 - Owning team and region: `region = uk && owningTeam = invoice-finance`
 
-### Example Usage
+### Example Usage: List of Companies
 
-<!-- UsageSnippet language="python" operationID="list-companies" method="get" path="/companies" -->
+<!-- UsageSnippet language="python" operationID="list-companies" method="get" path="/companies" example="List of Companies" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.list(request={
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+        "tags": "region=uk && team=invoice-finance",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: One company
+
+<!-- UsageSnippet language="python" operationID="list-companies" method="get" path="/companies" example="One company" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -230,9 +367,61 @@ with CodatLending(
 A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
 Each company can have multiple [connections](https://docs.codat.io/lending-api#/schemas/Connection) to different data sources, such as one connection to Xero for accounting data, two connections to Plaid for two bank accounts, and a connection to Zettle for POS data.
 
-### Example Usage
+### Example Usage: Unauthorized
 
-<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" -->
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" example="Unauthorized" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.replace(request={
+        "company_request_body": {
+            "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update description
+
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" example="Update description" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.replace(request={
+        "company_request_body": {
+            "description": "Additional documents required",
+            "name": "Same name",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update name
+
+<!-- UsageSnippet language="python" operationID="replace-company" method="put" path="/companies/{companyId}" example="Update name" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -283,9 +472,60 @@ The *Update company* endpoint doesn't have any required fields. If any of the fi
 
 A [company](https://docs.codat.io/lending-api#/schemas/Company) represents a business sharing access to their data.
 
-### Example Usage
+### Example Usage: Unauthorized
 
-<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" -->
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" example="Unauthorized" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.update(request={
+        "company_update_request": {
+            "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update name
+
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" example="Update name" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.companies.update(request={
+        "company_update_request": {
+            "name": "New Name",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Update tags
+
+<!-- UsageSnippet language="python" operationID="update-company" method="patch" path="/companies/{companyId}" example="Update tags" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

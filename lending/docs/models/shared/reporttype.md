@@ -1,5 +1,13 @@
 # ReportType
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import ReportType
+
+value = ReportType.CATEGORIZED_BANK_STATEMENT
+```
+
 
 ## Values
 

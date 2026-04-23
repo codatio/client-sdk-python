@@ -2,6 +2,14 @@
 
 The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import PropertieAccountType
+
+value = PropertieAccountType.CHECKING
+```
+
 
 ## Values
 
