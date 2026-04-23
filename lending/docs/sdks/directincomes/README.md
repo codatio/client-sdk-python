@@ -51,7 +51,7 @@ with CodatLending(
 
 ### Response
 
-**[httpx.Response](../../models/.md)**
+**[httpx.Response](../../models/data.md)**
 
 ### Errors
 
@@ -70,9 +70,177 @@ The *Get direct income* endpoint returns a single direct income for a given dire
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "direct_income_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-accounting-direct-income" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes/{directIncomeId}" example="Xero" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -174,9 +342,184 @@ The *List direct incomes* endpoint returns a list of [direct incomes](https://do
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" -->
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounts_receivable.direct_incomes.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="list-accounting-direct-incomes" method="get" path="/companies/{companyId}/connections/{connectionId}/data/directIncomes" example="Xero" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

@@ -18,7 +18,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-commerce-product-category" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories/{productId}" -->
+<!-- UsageSnippet language="python" operationID="get-commerce-product-category" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories/{productId}" example="Lightspeed K Trial" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -71,7 +71,7 @@ Before using this endpoint, you must have [retrieved data for the company](https
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="list-commerce-product-categories" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories" -->
+<!-- UsageSnippet language="python" operationID="list-commerce-product-categories" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-productCategories" example="Lightspeed K Trial" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

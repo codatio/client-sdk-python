@@ -67,8 +67,6 @@ class ConnectionTypedDict(TypedDict):
     r"""Unique identifier for a company's data connection."""
     integration_id: str
     r"""A Codat ID representing the integration."""
-    integration_key: str
-    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
     link_url: str
     r"""The link URL your customers can use to authorize access to their business application."""
     platform_name: str
@@ -81,6 +79,8 @@ class ConnectionTypedDict(TypedDict):
     r"""The current authorization status of the data connection."""
     connection_info: NotRequired[Nullable[Dict[str, Any]]]
     data_connection_errors: NotRequired[Nullable[List[DataConnectionErrorTypedDict]]]
+    integration_key: NotRequired[str]
+    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
     last_sync: NotRequired[str]
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
 
@@ -145,9 +145,6 @@ class Connection(BaseModel):
     integration_id: Annotated[str, pydantic.Field(alias="integrationId")]
     r"""A Codat ID representing the integration."""
 
-    integration_key: Annotated[str, pydantic.Field(alias="integrationKey")]
-    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
-
     link_url: Annotated[str, pydantic.Field(alias="linkUrl")]
     r"""The link URL your customers can use to authorize access to their business application."""
 
@@ -171,6 +168,11 @@ class Connection(BaseModel):
         OptionalNullable[List[DataConnectionError]],
         pydantic.Field(alias="dataConnectionErrors"),
     ] = UNSET
+
+    integration_key: Annotated[
+        Optional[str], pydantic.Field(alias="integrationKey")
+    ] = None
+    r"""A unique four-character ID that identifies the platform of the company's data connection. This ensures continuity if the platform changes its name in the future."""
 
     last_sync: Annotated[Optional[str], pydantic.Field(alias="lastSync")] = None
     r"""In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:
@@ -196,14 +198,16 @@ class Connection(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["connectionInfo", "dataConnectionErrors", "lastSync"])
+        optional_fields = set(
+            ["connectionInfo", "dataConnectionErrors", "integrationKey", "lastSync"]
+        )
         nullable_fields = set(["connectionInfo", "dataConnectionErrors"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -218,3 +222,9 @@ class Connection(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    Connection.model_rebuild()
+except NameError:
+    pass

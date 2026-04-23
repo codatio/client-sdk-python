@@ -16,9 +16,273 @@ The *Get bank account* endpoint returns a single account for a given accountId.
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Dynamics 365 Business Central
 
-<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: KashFlow
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="KashFlow" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.get(request={
+        "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="get-accounting-bank-account" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts/{accountId}" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -69,9 +333,284 @@ The *List bank accounts* endpoint returns a list of [bank accounts](https://docs
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Dynamics 365 Business Central
 
-<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" -->
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreeAgent
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: KashFlow
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="KashFlow" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.accounting_bank_data.accounts.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="list-accounting-bank-accounts" method="get" path="/companies/{companyId}/connections/{connectionId}/data/bankAccounts" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

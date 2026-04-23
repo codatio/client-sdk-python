@@ -17,9 +17,49 @@ The *Create payment* endpoint creates a new [payment](https://docs.codat.io/lend
 
 Required data may vary by integration. To see what data to post, first call [Get create payment model](https://docs.codat.io/lending-api#/operations/get-create-payments-model).
 
-### Example Usage
+### Example Usage: Malformed query
 
-<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" -->
+<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" example="Malformed query" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from decimal import Decimal
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.create(request={
+        "accounting_payment": {
+            "currency": "GBP",
+            "date_": "2022-10-23T00:00:00Z",
+            "lines": [
+                {
+                    "allocated_on_date": "2022-10-23T00:00:00Z",
+                    "amount": Decimal("8277.93"),
+                },
+            ],
+            "modified_date": "2022-10-23T00:00:00Z",
+            "payment_method_ref": {
+                "id": "EILBDVJVNUAGVKRQ",
+                "name": "AliPay",
+            },
+            "source_modified_date": "2022-10-23T00:00:00Z",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" example="QuickBooks Desktop" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -75,6 +115,167 @@ with CodatLending(
     print(res)
 
 ```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from decimal import Decimal
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.create(request={
+        "accounting_payment": {
+            "account_ref": {
+                "id": "1200",
+                "name": "Bank Current Account",
+            },
+            "currency": "GBP",
+            "currency_rate": Decimal("1"),
+            "customer_ref": {
+                "id": "CUST1",
+            },
+            "date_": "2023-03-17T11:47:04.792Z",
+            "lines": [
+                {
+                    "allocated_on_date": "2023-02-11T11:47:04.792Z",
+                    "amount": Decimal("4"),
+                    "links": [
+                        {
+                            "amount": Decimal("-4"),
+                            "currency_rate": Decimal("1"),
+                            "id": "INV-31",
+                            "type": shared.PaymentLinkType.INVOICE,
+                        },
+                    ],
+                },
+            ],
+            "note": "note 07/03 14.31",
+            "payment_method_ref": {
+                "id": "4405",
+            },
+            "reference": "ref",
+            "total_amount": Decimal("4"),
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from decimal import Decimal
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.create(request={
+        "accounting_payment": {
+            "account_ref": {
+                "id": "9a25937b267a11e797950a57719b2edb",
+                "name": "Current",
+            },
+            "currency": "GBP",
+            "currency_rate": Decimal("1"),
+            "customer_ref": {
+                "company_name": "Stanley test customer",
+                "id": "30444c5bd4964fd787c7f8e2e5301ce1",
+            },
+            "date_": "2023-03-20T11:47:04.792Z",
+            "lines": [
+                {
+                    "allocated_on_date": "2023-02-11T11:47:04.792Z",
+                    "amount": Decimal("0.17"),
+                    "links": [
+                        {
+                            "amount": Decimal("-0.17"),
+                            "currency_rate": Decimal("1"),
+                            "id": "bb85db9226d7450fb99eb83e7fb37505",
+                            "type": shared.PaymentLinkType.INVOICE,
+                        },
+                    ],
+                },
+            ],
+            "note": "Need to send products asap.",
+            "reference": "normal payment 20/03 17.05",
+            "total_amount": Decimal("0.17"),
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="create-payment" method="post" path="/companies/{companyId}/connections/{connectionId}/push/payments" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from decimal import Decimal
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.create(request={
+        "accounting_payment": {
+            "account_ref": {
+                "id": "81",
+            },
+            "customer_ref": {
+                "id": "19",
+            },
+            "date_": "2022-03-12T00:00:00",
+            "lines": [
+                {
+                    "amount": Decimal("0"),
+                    "links": [
+                        {
+                            "amount": Decimal("-1.1"),
+                            "id": "246",
+                            "type": shared.PaymentLinkType.INVOICE,
+                        },
+                        {
+                            "amount": Decimal("1.1"),
+                            "id": "280",
+                            "type": shared.PaymentLinkType.CREDIT_NOTE,
+                        },
+                    ],
+                },
+            ],
+            "total_amount": Decimal("0"),
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
 
 ### Parameters
 
@@ -105,9 +306,285 @@ The *Get create payment model* endpoint returns the expected data for the reques
 
 See the *response examples* for integration-specific indicative models.
 
-### Example Usage
+### Example Usage: FreeAgent
 
-<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" -->
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="FreeAgent" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: FreshBooks
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="FreshBooks" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: MYOB AccountRight and Essentials
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="MYOB AccountRight and Essentials" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Oracle NetSuite
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Oracle NetSuite" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Desktop
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="QuickBooks Desktop" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="QuickBooks Online" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: QuickBooks Online Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="QuickBooks Online Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage 50 (UK)
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Sage 50 (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Business Cloud Accounting
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Sage Business Cloud Accounting" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Sage Intacct" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sandbox
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Sandbox" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Xero
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Xero" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.payments.get_create_model(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Zoho Books
+
+<!-- UsageSnippet language="python" operationID="get-create-payment-model" method="get" path="/companies/{companyId}/connections/{connectionId}/options/payments" example="Zoho Books" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

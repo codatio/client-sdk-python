@@ -16,9 +16,101 @@ The *Get journal* endpoint returns a single journal for a given journalId.
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="get-accounting-journal" method="get" path="/companies/{companyId}/data/journals/{journalId}" -->
+<!-- UsageSnippet language="python" operationID="get-accounting-journal" method="get" path="/companies/{companyId}/data/journals/{journalId}" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "journal_id": "<id>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="get-accounting-journal" method="get" path="/companies/{companyId}/data/journals/{journalId}" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "journal_id": "<id>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (Netherlands)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-journal" method="get" path="/companies/{companyId}/data/journals/{journalId}" example="Exact (Netherlands)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "journal_id": "<id>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (UK)
+
+<!-- UsageSnippet language="python" operationID="get-accounting-journal" method="get" path="/companies/{companyId}/data/journals/{journalId}" example="Exact (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "journal_id": "<id>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="get-accounting-journal" method="get" path="/companies/{companyId}/data/journals/{journalId}" example="Sage Intacct" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -68,9 +160,105 @@ The *List journals* endpoint returns a list of [journals](https://docs.codat.io/
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Clear Books
 
-<!-- UsageSnippet language="python" operationID="list-accounting-journals" method="get" path="/companies/{companyId}/data/journals" -->
+<!-- UsageSnippet language="python" operationID="list-accounting-journals" method="get" path="/companies/{companyId}/data/journals" example="Clear Books" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Dynamics 365 Business Central
+
+<!-- UsageSnippet language="python" operationID="list-accounting-journals" method="get" path="/companies/{companyId}/data/journals" example="Dynamics 365 Business Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (Netherlands)
+
+<!-- UsageSnippet language="python" operationID="list-accounting-journals" method="get" path="/companies/{companyId}/data/journals" example="Exact (Netherlands)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Exact (UK)
+
+<!-- UsageSnippet language="python" operationID="list-accounting-journals" method="get" path="/companies/{companyId}/data/journals" example="Exact (UK)" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.transactions.journals.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Sage Intacct
+
+<!-- UsageSnippet language="python" operationID="list-accounting-journals" method="get" path="/companies/{companyId}/data/journals" example="Sage Intacct" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

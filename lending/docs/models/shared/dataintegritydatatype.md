@@ -1,5 +1,13 @@
 # DataIntegrityDataType
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import DataIntegrityDataType
+
+value = DataIntegrityDataType.BANKING_ACCOUNTS
+```
+
 
 ## Values
 

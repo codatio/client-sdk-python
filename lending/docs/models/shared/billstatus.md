@@ -2,6 +2,14 @@
 
 Current state of the bill.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import BillStatus
+
+value = BillStatus.UNKNOWN
+```
+
 
 ## Values
 

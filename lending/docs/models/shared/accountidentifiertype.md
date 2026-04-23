@@ -2,6 +2,14 @@
 
 Type of account
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import AccountIdentifierType
+
+value = AccountIdentifierType.ACCOUNT
+```
+
 
 ## Values
 

@@ -66,7 +66,7 @@ class BankAccounts(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.accounting_bank_account,
+                request.accounting_bank_account if request is not None else None,
                 True,
                 True,
                 "json",
@@ -97,18 +97,7 @@ class BankAccounts(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -190,7 +179,7 @@ class BankAccounts(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.accounting_bank_account,
+                request.accounting_bank_account if request is not None else None,
                 True,
                 True,
                 "json",
@@ -221,18 +210,7 @@ class BankAccounts(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -341,17 +319,7 @@ class BankAccounts(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -458,17 +426,7 @@ class BankAccounts(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=[
-                "401",
-                "402",
-                "403",
-                "404",
-                "429",
-                "4XX",
-                "500",
-                "503",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 

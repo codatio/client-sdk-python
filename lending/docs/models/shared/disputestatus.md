@@ -2,6 +2,14 @@
 
 Current status of the dispute
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import DisputeStatus
+
+value = DisputeStatus.WON
+```
+
 
 ## Values
 

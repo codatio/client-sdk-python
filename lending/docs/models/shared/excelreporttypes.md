@@ -2,6 +2,14 @@
 
 The type of the report requested in the query string.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import ExcelReportTypes
+
+value = ExcelReportTypes.AUDIT
+```
+
 
 ## Values
 

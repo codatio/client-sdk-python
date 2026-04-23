@@ -2,6 +2,14 @@
 
 Allowed name of the 'dataType'.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import BillLineItemDataType
+
+value = BillLineItemDataType.PURCHASE_ORDERS
+```
+
 
 ## Values
 

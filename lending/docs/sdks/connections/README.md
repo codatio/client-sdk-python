@@ -18,9 +18,34 @@ Create new and manage existing data connections for a company.
 
 Use the [List Integrations](https://docs.codat.io/platform-api#/operations/list-integrations) endpoint to access valid platform keys. 
 
-### Example Usage
+### Example Usage: Connection
 
-<!-- UsageSnippet language="python" operationID="create-connection" method="post" path="/companies/{companyId}/connections" -->
+<!-- UsageSnippet language="python" operationID="create-connection" method="post" path="/companies/{companyId}/connections" example="Connection" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.connections.create(request={
+        "request_body": {
+            "platform_key": "gbol",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="python" operationID="create-connection" method="post" path="/companies/{companyId}/connections" example="Unauthorized" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -112,7 +137,7 @@ with CodatLending(
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-connection" method="get" path="/companies/{companyId}/connections/{connectionId}" -->
+<!-- UsageSnippet language="python" operationID="get-connection" method="get" path="/companies/{companyId}/connections/{connectionId}" example="Connection" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -159,7 +184,7 @@ with CodatLending(
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="list-connections" method="get" path="/companies/{companyId}/connections" -->
+<!-- UsageSnippet language="python" operationID="list-connections" method="get" path="/companies/{companyId}/connections" example="Connections" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -207,7 +232,7 @@ with CodatLending(
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="unlink-connection" method="patch" path="/companies/{companyId}/connections/{connectionId}" -->
+<!-- UsageSnippet language="python" operationID="unlink-connection" method="patch" path="/companies/{companyId}/connections/{connectionId}" example="Example" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

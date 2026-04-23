@@ -2,6 +2,14 @@
 
 Status of the source account.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import SourceAccountStatus
+
+value = SourceAccountStatus.PENDING
+```
+
 
 ## Values
 

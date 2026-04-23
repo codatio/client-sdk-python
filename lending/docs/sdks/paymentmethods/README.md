@@ -16,9 +16,177 @@ The *Get payment method* endpoint returns a single payment method for a given pa
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Amazon Seller Central
 
-<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" -->
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="Amazon Seller Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: BigCommerce
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="BigCommerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Clover
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="Clover" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Lightspeed K Trial
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="Lightspeed K Trial" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="Mollie" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie Test
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="Mollie Test" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Square
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="Square" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "payment_method_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: SumUp
+
+<!-- UsageSnippet language="python" operationID="get-commerce-payment-method" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods/{paymentMethodId}" example="SumUp" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -69,9 +237,184 @@ The *List payment methods* endpoint returns a list of [payment methods](https://
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Amazon Seller Central
 
-<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" -->
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="Amazon Seller Central" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: BigCommerce
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="BigCommerce" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Clover
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="Clover" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Lightspeed K Trial
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="Lightspeed K Trial" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="Mollie" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Mollie Test
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="Mollie Test" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Square
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="Square" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.payment_methods.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: SumUp
+
+<!-- UsageSnippet language="python" operationID="list-commerce-payment-methods" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-paymentMethods" example="SumUp" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

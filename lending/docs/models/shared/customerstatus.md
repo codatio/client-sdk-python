@@ -2,6 +2,14 @@
 
 Status of customer.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import CustomerStatus
+
+value = CustomerStatus.UNKNOWN
+```
+
 
 ## Values
 

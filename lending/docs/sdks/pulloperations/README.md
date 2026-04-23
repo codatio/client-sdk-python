@@ -60,7 +60,7 @@ Gets the pull operation history (datasets) for a given company.
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="list-pull-operations" method="get" path="/companies/{companyId}/data/history" -->
+<!-- UsageSnippet language="python" operationID="list-pull-operations" method="get" path="/companies/{companyId}/data/history" example="Example" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

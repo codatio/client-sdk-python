@@ -15,9 +15,71 @@ The _Create Source Account_ endpoint allows you to create a representation of a 
 > ### Versioning
 > If you are integrating the Bank Feeds solution with Codat after August 1, 2024, please use the v2 version of the API, as detailed in the schema below. For integrations completed before August 1, 2024, select the v1 version from the schema dropdown below.
 
-### Example Usage
+### Example Usage: Malformed query
 
-<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" -->
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" example="Malformed query" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.source_accounts.create(request={
+        "request_body": {
+            "currency": "GBP",
+            "id": "<id>",
+            "modified_date": "2022-10-23T00:00:00Z",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Version 1
+
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" example="Version 1" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+from decimal import Decimal
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.source_accounts.create(request={
+        "request_body": {
+            "account_name": "account-081",
+            "account_number": "12345670",
+            "account_type": "Credit",
+            "balance": Decimal("99.99"),
+            "currency": "GBP",
+            "id": "acc-002",
+            "modified_date": "2023-01-09T14:14:14.1057478Z",
+            "sort_code": "123456",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Version 2
+
+<!-- UsageSnippet language="python" operationID="create-source-account" method="post" path="/companies/{companyId}/connections/{connectionId}/connectionInfo/bankFeedAccounts" example="Version 2" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -96,9 +158,36 @@ The method of mapping the source account to the target account varies depending 
 | QuickBooks Online     |             |                  | ✅                          |
 | Sage                  |             |                  | ✅                          |
 
-### Example Usage
+### Example Usage: Example
 
-<!-- UsageSnippet language="python" operationID="create-bank-account-mapping" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" -->
+<!-- UsageSnippet language="python" operationID="create-bank-account-mapping" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" example="Example" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.loan_writeback.source_accounts.create_mapping(request={
+        "bank_feed_bank_account_mapping": {
+            "source_account_id": "acc-002",
+            "target_account_id": "account-081",
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Malformed query
+
+<!-- UsageSnippet language="python" operationID="create-bank-account-mapping" method="post" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" example="Malformed query" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -155,7 +244,7 @@ A bank feed account mapping is a specified link between the source account (prov
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-bank-account-mapping" method="get" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" -->
+<!-- UsageSnippet language="python" operationID="get-bank-account-mapping" method="get" path="/companies/{companyId}/connections/{connectionId}/bankFeedAccounts/mapping" example="Example" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

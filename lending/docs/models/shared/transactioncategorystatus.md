@@ -2,6 +2,14 @@
 
 The status of the transaction category.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import TransactionCategoryStatus
+
+value = TransactionCategoryStatus.UNKNOWN
+```
+
 
 ## Values
 

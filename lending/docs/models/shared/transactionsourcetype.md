@@ -2,6 +2,14 @@
 
 The type of source the transaction arose.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import TransactionSourceType
+
+value = TransactionSourceType.FEE
+```
+
 
 ## Values
 

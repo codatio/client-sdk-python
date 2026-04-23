@@ -2,6 +2,14 @@
 
 Type of payment.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import PaymentType
+
+value = PaymentType.CASH
+```
+
 
 ## Values
 

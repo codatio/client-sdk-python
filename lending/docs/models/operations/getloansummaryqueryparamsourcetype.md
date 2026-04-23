@@ -2,6 +2,14 @@
 
 Data source type.
 
+## Example Usage
+
+```python
+from codat_lending.models.operations import GetLoanSummaryQueryParamSourceType
+
+value = GetLoanSummaryQueryParamSourceType.BANKING
+```
+
 
 ## Values
 

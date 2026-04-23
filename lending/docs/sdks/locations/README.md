@@ -16,9 +16,81 @@ The *Get location* endpoint returns a single location for a given locationId.
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
 
 
-### Example Usage
+### Example Usage: Clover
 
-<!-- UsageSnippet language="python" operationID="get-commerce-location" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations/{locationId}" -->
+<!-- UsageSnippet language="python" operationID="get-commerce-location" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations/{locationId}" example="Clover" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.locations.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "location_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Lightspeed K Trial
+
+<!-- UsageSnippet language="python" operationID="get-commerce-location" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations/{locationId}" example="Lightspeed K Trial" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.locations.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "location_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Shopify
+
+<!-- UsageSnippet language="python" operationID="get-commerce-location" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations/{locationId}" example="Shopify" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.locations.get(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+        "location_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Square
+
+<!-- UsageSnippet language="python" operationID="get-commerce-location" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations/{locationId}" example="Square" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
@@ -69,9 +141,78 @@ The *List locations* endpoint returns a list of [locations](https://docs.codat.i
 Before using this endpoint, you must have [retrieved data for the company](https://docs.codat.io/lending-api#/operations/refresh-company-data).
     
 
-### Example Usage
+### Example Usage: Clover
 
-<!-- UsageSnippet language="python" operationID="list-commerce-locations" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations" -->
+<!-- UsageSnippet language="python" operationID="list-commerce-locations" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations" example="Clover" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.locations.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Lightspeed K Trial
+
+<!-- UsageSnippet language="python" operationID="list-commerce-locations" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations" example="Lightspeed K Trial" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.locations.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Shopify
+
+<!-- UsageSnippet language="python" operationID="list-commerce-locations" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations" example="Shopify" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.sales.locations.list(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
+
+    # Handle response
+    print(res)
+
+```
+### Example Usage: Square
+
+<!-- UsageSnippet language="python" operationID="list-commerce-locations" method="get" path="/companies/{companyId}/connections/{connectionId}/data/commerce-locations" example="Square" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

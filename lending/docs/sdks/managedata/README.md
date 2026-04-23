@@ -12,7 +12,7 @@ Get the state of each data type for a company
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-data-status" method="get" path="/companies/{companyId}/dataStatus" -->
+<!-- UsageSnippet language="python" operationID="get-data-status" method="get" path="/companies/{companyId}/dataStatus" example="Example" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

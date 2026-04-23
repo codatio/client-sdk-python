@@ -2,6 +2,14 @@
 
 The status of the report generation.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import ReportOperationStatus
+
+value = ReportOperationStatus.IN_PROGRESS
+```
+
 
 ## Values
 

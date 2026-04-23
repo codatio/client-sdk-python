@@ -2,6 +2,14 @@
 
 Current state of the credit note.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import CreditNoteStatus
+
+value = CreditNoteStatus.UNKNOWN
+```
+
 
 ## Values
 

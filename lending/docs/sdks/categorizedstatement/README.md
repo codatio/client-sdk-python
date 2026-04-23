@@ -16,7 +16,7 @@ The _Get categorized bank statement_ endpoint provides a fully categorized list 
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="get-categorized-bank-statement" method="get" path="/companies/{companyId}/reports/enhancedCashFlow/transactions" -->
+<!-- UsageSnippet language="python" operationID="get-categorized-bank-statement" method="get" path="/companies/{companyId}/reports/enhancedCashFlow/transactions" example="Categorized bank statement" -->
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared

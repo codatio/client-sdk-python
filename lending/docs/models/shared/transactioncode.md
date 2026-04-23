@@ -2,6 +2,14 @@
 
 Code to identify the underlying transaction.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import TransactionCode
+
+value = TransactionCode.UNKNOWN
+```
+
 
 ## Values
 

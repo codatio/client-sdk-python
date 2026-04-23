@@ -2,6 +2,14 @@
 
 The datatype being referred to.
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import LoanSummaryRecordRefType
+
+value = LoanSummaryRecordRefType.ACCOUNTS
+```
+
 
 ## Values
 

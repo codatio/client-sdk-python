@@ -2,6 +2,14 @@
 
 The type of phone number
 
+## Example Usage
+
+```python
+from codat_lending.models.shared import PhoneNumberType
+
+value = PhoneNumberType.PRIMARY
+```
+
 
 ## Values
 
