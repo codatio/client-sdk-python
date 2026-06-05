@@ -42,14 +42,6 @@ if TYPE_CHECKING:
     from .bills import Bills, BillsTypedDict
     from .billstatus import BillStatus
     from .billtaxrateref import BillTaxRateRef, BillTaxRateRefTypedDict
-    from .clientratelimitwebhook import (
-        ClientRateLimitWebhook,
-        ClientRateLimitWebhookTypedDict,
-    )
-    from .clientratelimitwebhookpayload import (
-        ClientRateLimitWebhookPayload,
-        ClientRateLimitWebhookPayloadTypedDict,
-    )
     from .codatfile import CodatFile, CodatFileTypedDict
     from .companies import Companies, CompaniesTypedDict
     from .company import Company, CompanyTypedDict
@@ -135,10 +127,6 @@ __all__ = [
     "BillTypedDict",
     "Bills",
     "BillsTypedDict",
-    "ClientRateLimitWebhook",
-    "ClientRateLimitWebhookPayload",
-    "ClientRateLimitWebhookPayloadTypedDict",
-    "ClientRateLimitWebhookTypedDict",
     "CodatFile",
     "CodatFileTypedDict",
     "Companies",
@@ -235,10 +223,6 @@ _dynamic_imports: dict[str, str] = {
     "BillStatus": ".billstatus",
     "BillTaxRateRef": ".billtaxrateref",
     "BillTaxRateRefTypedDict": ".billtaxrateref",
-    "ClientRateLimitWebhook": ".clientratelimitwebhook",
-    "ClientRateLimitWebhookTypedDict": ".clientratelimitwebhook",
-    "ClientRateLimitWebhookPayload": ".clientratelimitwebhookpayload",
-    "ClientRateLimitWebhookPayloadTypedDict": ".clientratelimitwebhookpayload",
     "CodatFile": ".codatfile",
     "CodatFileTypedDict": ".codatfile",
     "Companies": ".companies",

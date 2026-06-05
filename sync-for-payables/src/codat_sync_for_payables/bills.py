@@ -1313,8 +1313,6 @@ class Bills(BaseSDK):
 
         [Bills](https://docs.codat.io/sync-for-payables-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
 
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support downloading a bill attachment.
-
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1423,8 +1421,6 @@ class Bills(BaseSDK):
         The *Download bill attachment* endpoint downloads a specific attachment for a given `billId` and `attachmentId`.
 
         [Bills](https://docs.codat.io/sync-for-payables-api#/schemas/Bill) are invoices that represent the SMB's financial obligations to their supplier for a purchase of goods or services.
-
-        Check out our [coverage explorer](https://knowledge.codat.io/supported-features/accounting?view=tab-by-data-type&dataType=bills) for integrations that support downloading a bill attachment.
 
 
         :param request: The request object to send.
