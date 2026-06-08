@@ -28,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 9.0.2
+  version: 9.1.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -40,6 +40,7 @@ python:
   authors:
     - Speakeasy
   baseErrorName: CodatSyncPayablesError
+  bodyVariantOverloads: false
   clientServerStatusCodesAsErrors: true
   constFieldCasing: upper
   defaultErrorName: SDKError
@@ -68,14 +69,18 @@ python:
   license: ""
   maxMethodParams: 0
   methodArguments: infer-optional-args
+  methodTimeoutArgument: timeout-ms
+  methodTimeoutUnits: milliseconds
   moduleName: ""
   multipartArrayFormat: legacy
+  optionalDependencies: {}
   outputModelSuffix: output
   packageManager: poetry
   packageName: codat-sync-for-payables
   preApplyUnionDiscriminators: false
   pytestFilterWarnings: []
   pytestTimeout: 0
+  rawResponseHelpers: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

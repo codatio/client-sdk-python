@@ -1,35 +1,35 @@
 lockVersion: 2.0.0
 id: 0722f07c-657c-4062-93f1-39ee3fe757d0
 management:
-  docChecksum: 384bfbce0790e3cb0ef8a6a311ab8782
+  docChecksum: 15fd85bd3a6195af019f2ccc20d6905b
   docVersion: 3.0.0
-  speakeasyVersion: 1.761.9
-  generationVersion: 2.881.4
-  releaseVersion: 9.0.2
-  configChecksum: 77deec0af6a2d388b65c1ff1128bd4e4
+  speakeasyVersion: 1.770.0
+  generationVersion: 2.893.0
+  releaseVersion: 9.1.0
+  configChecksum: 2de4c2a1de24ce98381be07412233dfa
   repoURL: https://github.com/codatio/client-sdk-python.git
   repoSubDirectory: sync-for-payables
   installationURL: https://github.com/codatio/client-sdk-python.git#subdirectory=sync-for-payables
   published: true
 persistentEdits:
-  generation_id: cebfa75e-092f-4774-b378-65f648f413f7
-  pristine_commit_hash: 74cd4cbc0f3632d62669edd7236272d696e0c76f
-  pristine_tree_hash: ba1b09cf55b09af560955e9d2f7735ef305ff797
+  generation_id: 034e1552-0a99-409b-bf2f-bc5fad37cbf4
+  pristine_commit_hash: f6b52fca5593a33bff92dbfb0f5ed08f9ba6f580
+  pristine_tree_hash: 6a6c20c415cace12dbc652bcb84ae104d1ede76f
 features:
   python:
-    additionalDependencies: 1.0.0
+    additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.7
-    core: 6.0.21
+    core: 6.0.24
     decimal: 1.0.0
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
-    envVarSecurityUsage: 0.3.2
-    examples: 3.0.3
+    envVarSecurityUsage: 0.3.3
+    examples: 3.0.4
     globalSecurity: 3.0.7
     globalSecurityCallbacks: 1.0.0
     globalServerURLs: 3.2.1
-    methodArguments: 1.0.2
+    methodArguments: 1.1.0
     multipartFileContentType: 1.0.0
     nameOverrides: 3.0.3
     nullables: 1.0.2
@@ -37,8 +37,7 @@ features:
     retries: 3.0.5
     sdkHooks: 1.2.1
     serverEventsSentinels: 0.1.0
-    uploadStreams: 1.0.0
-    webhooks: 2.0.0
+    uploadStreams: 1.0.2
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -248,14 +247,6 @@ trackedFiles:
     id: d83ee0d22ada
     last_write_checksum: sha1:bbf08dc0016f96dfd9e6d60da991c20fdb680348
     pristine_git_object: 28d67e255cd6ec8036f7cae8b52fbd3402f2028b
-  docs/models/shared/clientratelimitwebhook.md:
-    id: b22baadb776e
-    last_write_checksum: sha1:ac83140fd86cd53811c6368c5d8055e1d5d07b6b
-    pristine_git_object: 686f8f82a9ee065a80e77232c14a689d411ed380
-  docs/models/shared/clientratelimitwebhookpayload.md:
-    id: acee7ef96850
-    last_write_checksum: sha1:a432a91dac42c55dd2dff7da3d7af5cf112c5414
-    pristine_git_object: 52e2c78d219f5b49c2b31e4af8ca8a6d8c90d18e
   docs/models/shared/codatfile.md:
     id: 91427b129f50
     last_write_checksum: sha1:6960c7b2f193c1796bcb1568c4f94a395bc55e9e
@@ -390,8 +381,8 @@ trackedFiles:
     pristine_git_object: f047b0862415ac30e7b1995641c4deccdbb72a8f
   docs/sdks/bills/README.md:
     id: 2a9c97966ab7
-    last_write_checksum: sha1:d496d673c61d57b4df2eba3e6915e3615d521907
-    pristine_git_object: 41ba038a59dc4302a22cc944881e447b64ce6192
+    last_write_checksum: sha1:fd8586784ec8a50057f0add03516e2e57c84c339
+    pristine_git_object: 2e234e1bf38ca491924a861d7a0d01a463739103
   docs/sdks/companies/README.md:
     id: 67e8a49afa67
     last_write_checksum: sha1:cd12a044e2f22c856ae6d9cb60ce51d0b2b243a9
@@ -422,8 +413,8 @@ trackedFiles:
     pristine_git_object: cb9c15d314c1930557401074329ed7a737147919
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:0eca5d0f19436426f1ef1b067d7097c449d3576d
-    pristine_git_object: 95d8920ce1e7bddab5d9f52cb65995c379a255e8
+    last_write_checksum: sha1:0a921ce5b38034c2c53b726529bbbdd78adbe754
+    pristine_git_object: a597b20e8955835c48d74a6ede7950728395b58e
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:d4b43d576372b8e73925ed9d58899b58d467046e
@@ -438,20 +429,20 @@ trackedFiles:
     pristine_git_object: 833c68cd526fe34aab2b7e7c45f974f7f4b9e120
   src/codat_sync_for_payables/_hooks/__init__.py:
     id: ecdc2078be05
-    last_write_checksum: sha1:e3111289afd28ad557c21d9e2f918caabfb7037d
-    pristine_git_object: 2ee66cdd592fe41731c24ddd407c8ca31c50aec1
+    last_write_checksum: sha1:45a380490e968d8d95994dd97554ac60eeb6ae60
+    pristine_git_object: e763be4b171bbcf9c16caeaf381f8c92ce8d8e6e
   src/codat_sync_for_payables/_hooks/sdkhooks.py:
     id: d1b2be05cafa
-    last_write_checksum: sha1:12c5b8996603ad9a70785fbd98ac54abc4b07dea
-    pristine_git_object: 6bc2f2e337f4b0d9412015ed72ff76eeced66ae2
+    last_write_checksum: sha1:8203530143c20992f5f36d43d6864bfe8ebbc7ab
+    pristine_git_object: 4e609f86a5d96caae26ce622235e091f265dfa07
   src/codat_sync_for_payables/_hooks/types.py:
     id: 2c8c60b7bea8
     last_write_checksum: sha1:cd79ed18d372dae4489b31df1edde9a50dc8681f
     pristine_git_object: 4c4a0dfe5d3f88de010120b7cc131799fe918073
   src/codat_sync_for_payables/_version.py:
     id: e4b8c113880b
-    last_write_checksum: sha1:f675c75a95f449052b1c781047bff4ed35429b25
-    pristine_git_object: 3a78fa4bca74dbd5333780ecf7c77c393ba67955
+    last_write_checksum: sha1:b0db1de2257e05db4cc2fb4b7c8c44b1a59a2e28
+    pristine_git_object: b8ba1219a7843ae7e7d8ac10321ae543cb1b94ea
   src/codat_sync_for_payables/bank_accounts.py:
     id: bffbddbd7457
     last_write_checksum: sha1:73a2d1955930822ddbe3fc2004a21828c0cd78c1
@@ -466,8 +457,8 @@ trackedFiles:
     pristine_git_object: 1c7c0d4abc4edc240a0f772394f89dad3ef30bca
   src/codat_sync_for_payables/bills.py:
     id: aa53d7af4704
-    last_write_checksum: sha1:bb0cf0abc275974f9c7a5524eb08c4c11618956d
-    pristine_git_object: 2cd20e93f9af37c554f88c1e8f5b7f2b9b86796e
+    last_write_checksum: sha1:cddc0f8b2608bbf7ce7ef0f57b36588b66df89f5
+    pristine_git_object: 472d297c478cb3394a3c6422475c25e66d5ec3d8
   src/codat_sync_for_payables/companies.py:
     id: 5ace7f193226
     last_write_checksum: sha1:ee821a26a893a15b25999f9fdfda7fea4047f975
@@ -614,8 +605,8 @@ trackedFiles:
     pristine_git_object: 2fe0d0c7e0bf288f8cacf65fb18f98f8e19d67fb
   src/codat_sync_for_payables/models/shared/__init__.py:
     id: 6972bb31b96d
-    last_write_checksum: sha1:9074abb66b9bf30dfdbbc75e40000bc8b825b6d8
-    pristine_git_object: cae4f6941f469b6a45cf0991241d5642da26acab
+    last_write_checksum: sha1:5bf7f9a669290726b9a5c66e977100a26d2cf305
+    pristine_git_object: 9f391cc6da58f6abcdb28562a18b2c06dd2667ed
   src/codat_sync_for_payables/models/shared/accountmappingoption.py:
     id: e4677bacb499
     last_write_checksum: sha1:bba98c75bc9b29943d02576292ec4c97892b2737
@@ -704,14 +695,6 @@ trackedFiles:
     id: f309bc18729f
     last_write_checksum: sha1:d3466043ce1112339ca5b4c695d5058cfd35c87d
     pristine_git_object: 5fc6fd6862696322095eb4fdeb2d9c5ceae66c70
-  src/codat_sync_for_payables/models/shared/clientratelimitwebhook.py:
-    id: 689400e4cd03
-    last_write_checksum: sha1:cedbadeee0ff34ce2c5d443df720568df8b3f60f
-    pristine_git_object: d67fc03b195cbdd51ec711a604472f369112b0af
-  src/codat_sync_for_payables/models/shared/clientratelimitwebhookpayload.py:
-    id: 0ad79ee918ad
-    last_write_checksum: sha1:2652081c946d03d4dab19eea9724c950f95632f7
-    pristine_git_object: ce0ea5c23e48272b1111f1a3daee82db5c72adb6
   src/codat_sync_for_payables/models/shared/codatfile.py:
     id: f9604dae6b8c
     last_write_checksum: sha1:a23f1facc77ab3db913eb8fba3c1fe0fd7b33960
@@ -830,8 +813,12 @@ trackedFiles:
     pristine_git_object: 81ffdd371c9dcea04de273decdb2ac478769110b
   src/codat_sync_for_payables/types/__init__.py:
     id: 36f0e2eb152f
-    last_write_checksum: sha1:140ebdd01a46f92ffc710c52c958c4eba3cf68ed
-    pristine_git_object: fc76fe0c5505e29859b5d2bb707d48fd27661b8c
+    last_write_checksum: sha1:f9ad14217f832e74f594285960125add50324be9
+    pristine_git_object: faa268137bc01c9d08cfadc4797017db48747a96
+  src/codat_sync_for_payables/types/base64fileinput.py:
+    id: b850e61be8fd
+    last_write_checksum: sha1:4780e893d3853b5a6e28d9a6ca3ee102ce0f502d
+    pristine_git_object: 25fc53989ed497649363f983219fc58705c8bf87
   src/codat_sync_for_payables/types/basemodel.py:
     id: 667dff5631eb
     last_write_checksum: sha1:10d84aedeb9d35edfdadf2c3020caa1d24d8b584
@@ -882,8 +869,8 @@ trackedFiles:
     pristine_git_object: c04e0db82b68eca041f2cb2614d748fbac80fd41
   src/codat_sync_for_payables/utils/requestbodies.py:
     id: c47ad4a91d5f
-    last_write_checksum: sha1:41e2d2d2d3ecc394c8122ca4d4b85e1c3e03f054
-    pristine_git_object: 1de32b6d26f46590232f398fdba6ce0072f1659c
+    last_write_checksum: sha1:e1fef575283b7fe7fe2ad392dbbb3fb105309124
+    pristine_git_object: 591415af8e64baa410627b507d2740afb5387d13
   src/codat_sync_for_payables/utils/retries.py:
     id: e5ae3a416299
     last_write_checksum: sha1:471372f5c5d1dd5583239c9cf3c75f1b636e5d87
@@ -1928,17 +1915,6 @@ examples:
           application/json: {"statusCode": 400, "service": "PublicApi", "error": "Error processing request - not valid.", "correlationId": "bc997528a9d7abb9161ef45f05d38599", "canBeRetried": "Unknown", "detailedErrorCode": 0}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Python SDK Changes:
-  * `codat_sync_payables.companies.list()`:  `response.results[].data_connections[].integration_key` **Changed**
-  * `codat_sync_payables.companies.create()`:  `response.data_connections[].integration_key` **Changed**
-  * `codat_sync_payables.companies.replace()`:  `response.data_connections[].integration_key` **Changed**
-  * `codat_sync_payables.companies.update()`:  `response.data_connections[].integration_key` **Changed**
-  * `codat_sync_payables.companies.get()`:  `response.data_connections[].integration_key` **Changed**
-  * `codat_sync_payables.connections.list()`:  `response.results[].integration_key` **Changed**
-  * `codat_sync_payables.connections.create()`:  `response.integration_key` **Changed**
-  * `codat_sync_payables.connections.get()`:  `response.integration_key` **Changed**
-  * `codat_sync_payables.connections.unlink()`:  `response.integration_key` **Changed**
 generatedFiles:
   - .gitattributes
   - .python-version
