@@ -1,4 +1,4 @@
-# Written by sdk-codegen (cutover/emit_workflow_stubs.py); do not edit by hand.
+# Written by sdk-codegen (emit_workflow_stubs.py); do not edit by hand.
 # Publishing no longer runs in this repo. The packaging checks, the PyPI upload,
 # the tag and the GitHub release all run centrally in publish-python.yml in
 # Codat SDK Codegen - no check has been dropped, they just moved. This stub
