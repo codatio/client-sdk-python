@@ -33,7 +33,6 @@ with CodatPlatform(
 
     res = cp_client.read_data.get_validation_results(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "dataset_id": "0812af6e-436a-491f-9056-db91cb961ad3",
     })
 
     # Handle response
