@@ -1,7 +1,5 @@
 # DataType
 
-Data types that support supplemental data
-
 ## Example Usage
 
 ```python

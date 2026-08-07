@@ -531,12 +531,6 @@ with CodatPlatform(
 ) as cp_client:
 
     cp_client.companies.refresh_product_data(request={
-        "request_body": {
-            "data_types": [
-                "invoices",
-                "payments",
-            ],
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "product_identifier": "bank-feeds",
     })
@@ -727,21 +721,6 @@ with CodatPlatform(
 ) as cp_client:
 
     cp_client.companies.set_company_sync_settings(request={
-        "request_body": {
-            "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-            "settings": [
-                {
-                    "data_type": shared.DataType.INVOICES,
-                    "fetch_on_first_link": True,
-                    "is_locked": True,
-                    "months_to_sync": 24,
-                    "sync_from_utc": "2020-01-01T12:00:00.000Z",
-                    "sync_from_window": 24,
-                    "sync_order": 0,
-                    "sync_schedule": 24,
-                },
-            ],
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -838,11 +817,7 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.companies.update(request={
-        "company_update_request": {
-            "tags": {
-                "refrence": "new reference",
-            },
-        },
+        "company_update_request": {},
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

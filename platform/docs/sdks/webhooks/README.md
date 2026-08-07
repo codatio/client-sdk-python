@@ -9,6 +9,7 @@ Create and manage webhooks that listen to Codat's events.
 * [create_consumer](#create_consumer) - Create webhook consumer
 * [delete_consumer](#delete_consumer) - Delete webhook consumer
 * [list_consumers](#list_consumers) - List webhook consumers
+* [rotate_zapier_key](#rotate_zapier_key) - Rotate Zapier key
 
 ## create_consumer
 
@@ -178,3 +179,54 @@ with CodatPlatform(
 | errors.ErrorMessage     | 400, 401, 402, 403, 429 | application/json        |
 | errors.ErrorMessage     | 500, 503                | application/json        |
 | errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+
+## rotate_zapier_key
+
+﻿The *Rotate Zapier key* endpoint returns the Zapier integration key needed to configure Zaps triggered by Codat's webhooks. 
+
+If a key has already been created, calling this will revoke that existing key.
+
+The key changes each time this endpoint is called. If you are already using our Zapier integration and called this endpoint again, you need to reauthenticate using the latest integration key returned in the response.
+
+Our Zapier integration makes it simple for you to set up and receive user notifications in your preferred ways, such as via email or Slack. See our [Zapier documentation](https://docs.codat.io/using-the-api/webhooks/zapier-integration) for detailed instructions on setting up this integration.
+
+
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="rotate-zapier-key" method="post" path="/webhooks/integrationKeys/zapier" example="Integration key" -->
+```python
+from codat_platform import CodatPlatform
+from codat_platform.models import shared
+
+
+with CodatPlatform(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cp_client:
+
+    res = cp_client.webhooks.rotate_zapier_key()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[shared.WebhookZapierKey](../../models/shared/webhookzapierkey.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ErrorMessage | 401, 402, 403, 429  | application/json    |
+| errors.ErrorMessage | 500, 503            | application/json    |
+| errors.SDKError     | 4XX, 5XX            | \*/\*               |
