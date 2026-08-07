@@ -1,7 +1,5 @@
 # TrackingRefDataType
 
-The type of the linked reference
-
 ## Example Usage
 
 ```python

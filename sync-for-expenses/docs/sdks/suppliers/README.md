@@ -51,16 +51,7 @@ with CodatSyncExpenses(
 
     res = codat_sync_expenses.suppliers.create(request={
         "supplier": {
-            "addresses": [
-                {
-                    "city": "Bakersfield",
-                    "country": "USA",
-                    "line1": "Unit 51",
-                    "line2": "Bakersfield Industrial Estate",
-                    "region": "California",
-                    "type": shared.AccountingAddressType.BILLING,
-                },
-            ],
+            "addresses": [],
             "contact_name": "Kelly's Industrial Supplies",
             "default_currency": "string",
             "email_address": "sales@kellysupplies.com",
@@ -73,18 +64,7 @@ with CodatSyncExpenses(
             "registration_number": "string",
             "source_modified_date": "2022-10-23T00:00:00Z",
             "status": shared.SupplierStatus.UNKNOWN,
-            "supplemental_data": {
-                "content": {
-                    "property1": {
-                        "property1": "<value>",
-                        "property2": "<value>",
-                    },
-                    "property2": {
-                        "property1": "<value>",
-                        "property2": "<value>",
-                    },
-                },
-            },
+            "supplemental_data": {},
             "supplier_name": "Kelly's Industrial Supplies",
             "tax_number": "string",
         },
@@ -1110,16 +1090,7 @@ with CodatSyncExpenses(
 
     res = codat_sync_expenses.suppliers.update(request={
         "supplier": {
-            "addresses": [
-                {
-                    "city": "Bakersfield",
-                    "country": "USA",
-                    "line1": "Unit 51",
-                    "line2": "Bakersfield Industrial Estate",
-                    "region": "California",
-                    "type": shared.AccountingAddressType.BILLING,
-                },
-            ],
+            "addresses": [],
             "contact_name": "Kelly's Industrial Supplies",
             "default_currency": "string",
             "email_address": "sales@kellysupplies.com",
@@ -1132,18 +1103,7 @@ with CodatSyncExpenses(
             "registration_number": "string",
             "source_modified_date": "2022-10-23T00:00:00Z",
             "status": shared.SupplierStatus.UNKNOWN,
-            "supplemental_data": {
-                "content": {
-                    "property1": {
-                        "property1": "<value>",
-                        "property2": "<value>",
-                    },
-                    "property2": {
-                        "property1": "<value>",
-                        "property2": "<value>",
-                    },
-                },
-            },
+            "supplemental_data": {},
             "supplier_name": "Kelly's Industrial Supplies",
             "tax_number": "string",
         },

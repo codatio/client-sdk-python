@@ -29,7 +29,6 @@ with CodatSyncExpenses(
 
     res = codat_sync_expenses.push_operations.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "push_operation_key": "660e8684-c0fb-4468-9e2a-b2e3b115d747",
     })
 
     # Handle response

@@ -1,13 +1,11 @@
 # Type
 
-The type of phone number
-
 ## Example Usage
 
 ```python
 from codat_sync_for_expenses.models.shared import Type
 
-value = Type.PRIMARY
+value = Type.FAX
 ```
 
 
@@ -15,8 +13,8 @@ value = Type.PRIMARY
 
 | Name       | Value      |
 | ---------- | ---------- |
-| `PRIMARY`  | Primary    |
+| `FAX`      | Fax        |
 | `LANDLINE` | Landline   |
 | `MOBILE`   | Mobile     |
-| `FAX`      | Fax        |
+| `PRIMARY`  | Primary    |
 | `UNKNOWN`  | Unknown    |

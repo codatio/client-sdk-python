@@ -1,8 +1,10 @@
 # BankAccountReference
 
+Links to the Account transactions data type.
+
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          | Example                              |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `id`                                 | *Optional[str]*                      | :heavy_minus_sign:                   | Identifier of the bank account.      | 787dfb37-5707-4dc0-8a86-8d74e4cc78ea |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `id`                                           | *Optional[str]*                                | :heavy_minus_sign:                             | Bank account 'id' for the account transaction. |

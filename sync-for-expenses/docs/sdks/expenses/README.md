@@ -35,7 +35,6 @@ The *Create expense* endpoint creates an [expense transaction](https://docs.coda
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -45,45 +44,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.expenses.create(request={
-        "request_body": [
-            {
-                "bank_account_ref": {
-                    "id": "97",
-                },
-                "contact_ref": {
-                    "id": "430",
-                },
-                "currency": "GBP",
-                "currency_rate": Decimal("1"),
-                "id": "a44135b0-6882-489a-83fe-a0c57a4afb19",
-                "issue_date": "2024-05-21T00:00:00+00:00",
-                "lines": [
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="35",
-                        ),
-                        invoice_to=shared.InvoiceTo(
-                            id="504",
-                            type=shared.InvoiceToType.CUSTOMER,
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="23_Bills",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="DEPARTMENT_3",
-                            ),
-                            shared.TrackingRef(),
-                        ],
-                    ),
-                ],
-                "merchant_name": "Amazon UK",
-                "notes": "amazon purchase",
-                "type": shared.ExpenseTransactionType.PAYMENT,
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -97,7 +58,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -107,45 +67,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.expenses.create(request={
-        "request_body": [
-            {
-                "bank_account_ref": {
-                    "id": "97",
-                },
-                "contact_ref": {
-                    "id": "430",
-                },
-                "currency": "GBP",
-                "currency_rate": Decimal("1"),
-                "id": "a44135b0-6882-489a-83fe-a0c57a4afb19",
-                "issue_date": "2024-05-21T00:00:00+00:00",
-                "lines": [
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="35",
-                        ),
-                        invoice_to=shared.InvoiceTo(
-                            id="504",
-                            type=shared.InvoiceToType.CUSTOMER,
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="23_Bills",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="DEPARTMENT_3",
-                            ),
-                            shared.TrackingRef(),
-                        ],
-                    ),
-                ],
-                "merchant_name": "Amazon UK",
-                "notes": "amazon purchase",
-                "type": shared.ExpenseTransactionType.PAYMENT,
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -159,7 +81,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -169,44 +90,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.expenses.create(request={
-        "request_body": [
-            {
-                "bank_account_ref": {
-                    "id": "97",
-                },
-                "contact_ref": {
-                    "id": "430",
-                },
-                "currency": "GBP",
-                "currency_rate": Decimal("1"),
-                "id": "4d7c6929-7770-412b-91bb-44d3bc71d111",
-                "issue_date": "2024-05-21T00:00:00+00:00",
-                "lines": [
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="35",
-                        ),
-                        invoice_to=shared.InvoiceTo(
-                            id="504",
-                            type=shared.InvoiceToType.CUSTOMER,
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="23_Bills",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="DEPARTMENT_5",
-                            ),
-                        ],
-                    ),
-                ],
-                "merchant_name": "Amazon UK",
-                "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-                "type": shared.ExpenseTransactionType.PAYMENT,
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -220,7 +104,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -230,39 +113,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.expenses.create(request={
-        "request_body": [
-            {
-                "bank_account_ref": {
-                    "id": "97",
-                },
-                "contact_ref": {
-                    "id": "430",
-                },
-                "currency": "GBP",
-                "id": "7008d3f2-aeb4-11ed-afa1-0242ac120002",
-                "issue_date": "2024-02-17T00:00:00+00:00",
-                "lines": [
-                    shared.ExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="42",
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="23_Bills",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="DEPARTMENT_6",
-                            ),
-                        ],
-                    ),
-                ],
-                "merchant_name": "Amazon UK",
-                "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-                "type": shared.ExpenseTransactionType.REFUND,
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -320,7 +171,6 @@ The following integrations are supported for the [Payment](https://docs.codat.io
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -336,24 +186,11 @@ with CodatSyncExpenses(
             },
             "contact_ref": {
                 "id": "40e3e57c-2322-4898-966c-ca41adfd23fd",
+                "type": shared.ExpenseContactRefType.SUPPLIER,
             },
             "currency": "GBP",
             "issue_date": "2022-06-28T00:00:00.000Z",
-            "lines": [
-                shared.ExpenseTransactionLine(
-                    account_ref=shared.RecordRef(
-                        id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                    ),
-                    invoice_to=None,
-                    item_ref=None,
-                    net_amount=Decimal("100"),
-                    tax_amount=Decimal("20"),
-                    tax_rate_ref=shared.RecordRef(
-                        id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                    ),
-                    tracking_refs=None,
-                ),
-            ],
+            "lines": [],
             "merchant_name": "Amazon UK",
             "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
             "type": shared.UpdateExpenseRequestType.PAYMENT,
@@ -388,31 +225,12 @@ with CodatSyncExpenses(
             },
             "contact_ref": {
                 "id": "430",
+                "type": shared.ExpenseContactRefType.SUPPLIER,
             },
             "currency": "GBP",
             "currency_rate": Decimal("1"),
             "issue_date": "2024-05-21T00:00:00+00:00",
-            "lines": [
-                shared.ExpenseTransactionLine(
-                    account_ref=shared.RecordRef(
-                        id="35",
-                    ),
-                    invoice_to=shared.InvoiceTo(
-                        id="504",
-                        type=shared.InvoiceToType.CUSTOMER,
-                    ),
-                    net_amount=Decimal("100"),
-                    tax_amount=Decimal("20"),
-                    tax_rate_ref=shared.RecordRef(
-                        id="23_Bills",
-                    ),
-                    tracking_refs=[
-                        shared.TrackingRef(
-                            id="DEPARTMENT_5",
-                        ),
-                    ],
-                ),
-            ],
+            "lines": [],
             "merchant_name": "Amazon UK",
             "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
             "type": shared.UpdateExpenseRequestType.PAYMENT,
