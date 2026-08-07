@@ -1,0 +1,9 @@
+# SourceAccountV2BatchCreateResponse
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `result`                                                                                                     | [Optional[shared.SourceAccountV2BatchCreateResult]](../../models/shared/sourceaccountv2batchcreateresult.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `source_account_id`                                                                                          | *Optional[str]*                                                                                              | :heavy_minus_sign:                                                                                           | Unique ID for the source account.                                                                            |

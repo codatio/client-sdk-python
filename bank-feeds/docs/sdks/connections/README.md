@@ -33,9 +33,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.connections.create(request={
-        "request_body": {
-            "platform_key": "gbol",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -58,9 +55,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.connections.create(request={
-        "request_body": {
-            "platform_key": "gbol",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

@@ -1,0 +1,7 @@
+from __future__ import annotations
+from typing import Union, List
+from typing_extensions import TypeAliasType
+from codat_bankfeeds.models.operations.response_body_typed_dict import ResponseBodyTypedDict
+from codat_bankfeeds.models.operations.create_batch_source_account_response_body_typed_dict import CreateBatchSourceAccountResponseBodyTypedDict
+
+CreateBatchSourceAccountResponseTypedDict = TypeAliasType("CreateBatchSourceAccountResponseTypedDict", Union[List[ResponseBodyTypedDict], List[CreateBatchSourceAccountResponseBodyTypedDict]])

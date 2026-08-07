@@ -1,0 +1,11 @@
+# CreateBatchSourceAccountRequestBody
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `actual_instance`                                                                        | *Optional[Union[List[SourceAccountPrototype], List[SourceAccountV2Prototype]]]*          | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `one_of_schemas`                                                                         | *Set[str]*                                                                               | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `oneof_schema_1_validator`                                                               | List[[shared.SourceAccountV2Prototype](../../models/shared/sourceaccountv2prototype.md)] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `oneof_schema_2_validator`                                                               | List[[shared.SourceAccountPrototype](../../models/shared/sourceaccountprototype.md)]     | :heavy_minus_sign:                                                                       | N/A                                                                                      |

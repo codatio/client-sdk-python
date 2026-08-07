@@ -919,3 +919,13 @@ Based on:
 - [python v12.0.1] bank-feeds
 ### Releases
 - [PyPI v12.0.1] https://pypi.org/project/codat-bankfeeds/12.0.1 - bank-feeds
+
+## 2026-08-07 11:55:50
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Bank-Feeds.yaml
+- codat sdk-codegen b5f25135143b1ccfb99c941df11a7a1596dbe31e https://github.com/codat-spikes/sdk-codegen
+### Generated
+- [python v12.0.2] bank-feeds
+### Releases
+- [PyPI v12.0.2] https://pypi.org/project/codat-bankfeeds/12.0.2 - bank-feeds
