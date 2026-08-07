@@ -1,7 +1,5 @@
 # AccountType
 
-The type of bank account e.g. checking, savings, loan, creditCard, prepaidCard.
-
 ## Example Usage
 
 ```python

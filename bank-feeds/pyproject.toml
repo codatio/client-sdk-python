@@ -1,58 +1,35 @@
-
 [project]
 name = "codat-bankfeeds"
-version = "12.0.1"
+version = "12.0.2"
 description = "Set up bank feeds from accounts in your application to supported accounting software."
-authors = [{ name = "Speakeasy" },]
+authors = [{ name = "Codat", email = "support@codat.io" }]
 readme = "README-PYPI.md"
-requires-python = ">=3.10"
+requires-python = ">=3.8"
 dependencies = [
-    "httpcore >=1.0.9",
-    "httpx >=0.28.1",
-    "pydantic >=2.11.2",
+    "urllib3 >= 1.25.3, < 3.0.0",
+    "python-dateutil >= 2.8.2",
+    "pydantic >= 2",
+    "typing-extensions >= 4.7.1",
+    "httpx >= 0.28.1",
+    "httpcore >= 1.0.9",
 ]
+
+[project.urls]
+Repository = "https://github.com/codatio/client-sdk-python.git"
 
 [tool.poetry]
-repository = "https://github.com/codatio/client-sdk-python.git"
 packages = [
-    { include = "codat_bankfeeds", from = "src" }
+    { include = "codat_bankfeeds", from = "src" },
 ]
-include = ["py.typed", "src/codat_bankfeeds/py.typed"]
-
-[tool.setuptools.package-data]
-"*" = ["py.typed", "src/codat_bankfeeds/py.typed"]
-
-[virtualenvs]
-in-project = true
+include = ["src/codat_bankfeeds/py.typed"]
 
 [tool.poetry.group.dev.dependencies]
-mypy = "==1.15.0"
-pylint = "==3.2.3"
-pyright = "==1.1.398"
+pytest = ">=7.2.1"
+mypy = ">=1.5"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-asyncio_default_fixture_loop_scope = "function"
 pythonpath = ["src"]
-
-[tool.mypy]
-disable_error_code = "misc"
-explicit_package_bases = true
-mypy_path = "src"
-
-[[tool.mypy.overrides]]
-module = "typing_inspect"
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "jsonpath"
-ignore_missing_imports = true
-
-[tool.pyright]
-venvPath = "."
-venv = ".venv"
-
-

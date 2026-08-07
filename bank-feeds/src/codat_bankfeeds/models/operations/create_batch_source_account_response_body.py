@@ -1,0 +1,8 @@
+from __future__ import annotations
+from typing import Union
+from typing_extensions import TypeAliasType
+from codat_bankfeeds.models.shared.sourceaccountv2batchcreateresponse import SourceAccountV2BatchCreateResponse
+from codat_bankfeeds.models.shared.sourceaccountbatchcreateresponse import SourceAccountBatchCreateResponse
+from codat_bankfeeds.models.shared.sourceaccountbatcherrorresponse import SourceAccountBatchErrorResponse
+
+CreateBatchSourceAccountResponseBody = TypeAliasType("CreateBatchSourceAccountResponseBody", Union[SourceAccountV2BatchCreateResponse, SourceAccountBatchCreateResponse, SourceAccountBatchErrorResponse])

@@ -12,7 +12,8 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.companies.create(request={
-        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
     })
 
     # Handle response
@@ -38,7 +39,8 @@ async def main():
     ) as codat_bank_feeds:
 
         res = await codat_bank_feeds.companies.create_async(request={
-            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
         })
 
         # Handle response
