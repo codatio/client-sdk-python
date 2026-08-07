@@ -1,7 +1,5 @@
 # TransactionCategoryRef
 
-An object of bank transaction category reference data.
-
 
 ## Fields
 

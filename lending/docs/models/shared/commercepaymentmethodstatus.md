@@ -1,7 +1,5 @@
 # CommercePaymentMethodStatus
 
-Status of the Payment Method.
-
 ## Example Usage
 
 ```python

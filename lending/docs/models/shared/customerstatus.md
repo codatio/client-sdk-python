@@ -1,7 +1,5 @@
 # CustomerStatus
 
-Status of customer.
-
 ## Example Usage
 
 ```python

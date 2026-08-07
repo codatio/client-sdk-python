@@ -1,7 +1,5 @@
 # LoanTransactionType
 
-The type of loan transaction.
-
 ## Example Usage
 
 ```python

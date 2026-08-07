@@ -1,7 +1,5 @@
 # TransactionCategoryStatus
 
-The status of the transaction category.
-
 ## Example Usage
 
 ```python

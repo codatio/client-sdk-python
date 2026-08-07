@@ -1,13 +1,11 @@
 # Type
 
-The type of routing number.
-
 ## Example Usage
 
 ```python
 from codat_lending.models.shared import Type
 
-value = Type.RTN
+value = Type.ABA
 ```
 
 
@@ -15,16 +13,16 @@ value = Type.RTN
 
 | Name       | Value      |
 | ---------- | ---------- |
-| `RTN`      | rtn        |
 | `ABA`      | aba        |
-| `SWIFT`    | swift      |
-| `BSB`      | bsb        |
-| `IBAN`     | iban       |
-| `NZ2`      | nz2        |
-| `TRNO`     | trno       |
-| `SORTCODE` | sortcode   |
-| `BLZ`      | blz        |
-| `IFSC`     | ifsc       |
-| `BANKCODE` | bankcode   |
 | `APCA`     | apca       |
+| `BANKCODE` | bankcode   |
+| `BLZ`      | blz        |
+| `BSB`      | bsb        |
 | `CLABE`    | clabe      |
+| `IBAN`     | iban       |
+| `IFSC`     | ifsc       |
+| `NZ2`      | nz2        |
+| `RTN`      | rtn        |
+| `SORTCODE` | sortcode   |
+| `SWIFT`    | swift      |
+| `TRNO`     | trno       |

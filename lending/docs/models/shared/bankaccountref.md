@@ -1,7 +1,5 @@
 # BankAccountRef
 
-Links to the Account transactions data type.
-
 
 ## Fields
 

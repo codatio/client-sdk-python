@@ -6,11 +6,63 @@ Retrieve banking data from linked bank accounts.
 
 ### Available Operations
 
+* [download_categorized_bank_statement_excel](#download_categorized_bank_statement_excel) - Download categorized bank statement Excel
 * [end_upload_session](#end_upload_session) - End upload session
+* [get_categorized_bank_statement_transactions](#get_categorized_bank_statement_transactions) - Get categorized bank statement transactions
 * [get_upload_configuration](#get_upload_configuration) - Get upload configuration
+* [list_categorized_bank_statement_accounts](#list_categorized_bank_statement_accounts) - List categorized bank statement accounts
 * [set_upload_configuration](#set_upload_configuration) - Set upload configuration
 * [start_upload_session](#start_upload_session) - Start upload session
 * [upload_bank_statement_data](#upload_bank_statement_data) - Upload data
+
+## download_categorized_bank_statement_excel
+
+Use the *Download categorized bank statement Excel* endpoint to download the categorized bank statement Excel file. 
+
+Before using it, you must call the [Generate report](https://docs.codat.io/lending-api#/operations/generate-report) endpoint of type `categorizedBankStatement`.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="download-categorized-bank-statement-excel" method="get" path="/companies/{companyId}/reports/categorizedBankStatement/{reportId}/excel" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.bank_statements.download_categorized_bank_statement_excel(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "max_age": "2022-10-23T00:00:00Z",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                          | [operations.DownloadCategorizedBankStatementExcelRequest](../../models/operations/downloadcategorizedbankstatementexcelrequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
+| `retries`                                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                   | :heavy_minus_sign:                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                |
+
+### Response
+
+**[httpx.Response](../../models/data.md)**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## end_upload_session
 
@@ -35,7 +87,6 @@ with CodatLending(
     cl_client.bank_statements.end_upload_session(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "dataset_id": "79c714cf-8643-4bc6-9b4e-8d1a971222b7",
     })
 
     # Use the SDK ...
@@ -48,6 +99,57 @@ with CodatLending(
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                          | [operations.EndBankStatementUploadSessionRequest](../../models/operations/endbankstatementuploadsessionrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `retries`                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                   | :heavy_minus_sign:                                                                                                 | Configuration to override the default retry behavior of the client.                                                |
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## get_categorized_bank_statement_transactions
+
+The *Get categorized bank statement transactions* endpoint returns fully categorized bank transactions for a company. Transaction data is obtained from the company's connected bank accounts.
+
+Before using it, you must call the [Generate report](https://docs.codat.io/lending-api#/operations/generate-report) endpoint of type `categorizedBankStatement`.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="get-categorized-bank-statement-transactions" method="get" path="/companies/{companyId}/reports/categorizedBankStatement/{reportId}/transactions" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.bank_statements.get_categorized_bank_statement_transactions(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "max_age": "2022-10-23T00:00:00Z",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                              | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                              | [operations.GetCategorizedBankStatementTransactionsRequest](../../models/operations/getcategorizedbankstatementtransactionsrequest.md) | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
+| `retries`                                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                       | :heavy_minus_sign:                                                                                                                     | Configuration to override the default retry behavior of the client.                                                                    |
+
+### Response
+
+**[shared.CategorizedBankStatementTransactions](../../models/shared/categorizedbankstatementtransactions.md)**
 
 ### Errors
 
@@ -99,6 +201,57 @@ with CodatLending(
 ### Response
 
 **[shared.BankStatementUploadConfiguration](../../models/shared/bankstatementuploadconfiguration.md)**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
+| errors.ErrorMessage          | 500, 503                     | application/json             |
+| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## list_categorized_bank_statement_accounts
+
+The *Get categorized bank statement accounts* endpoint returns a list of bank accounts associated with categorized transactions for a company. 
+
+Before using it, you must call the [Generate report](https://docs.codat.io/lending-api#/operations/generate-report) endpoint of type `categorizedBankStatement`.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="list-categorized-bank-statement-accounts" method="get" path="/companies/{companyId}/reports/categorizedBankStatement/{reportId}/accounts" -->
+```python
+from codat_lending import CodatLending
+from codat_lending.models import shared
+
+
+with CodatLending(
+    security=shared.Security(
+        auth_header="Basic BASE_64_ENCODED(API_KEY)",
+    ),
+) as cl_client:
+
+    res = cl_client.bank_statements.list_categorized_bank_statement_accounts(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "max_age": "2022-10-23T00:00:00Z",
+        "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                        | [operations.ListCategorizedBankStatementAccountsRequest](../../models/operations/listcategorizedbankstatementaccountsrequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| `retries`                                                                                                                        | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                 | :heavy_minus_sign:                                                                                                               | Configuration to override the default retry behavior of the client.                                                              |
+
+### Response
+
+**[shared.CategorizedBankStatementAccounts](../../models/shared/categorizedbankstatementaccounts.md)**
 
 ### Errors
 
@@ -225,7 +378,7 @@ Make sure you created configuration for the account using the [*Set upload confi
 <!-- UsageSnippet language="python" operationID="upload-bank-statement-data" method="post" path="/companies/{companyId}/connections/{connectionId}/bankStatements/upload/dataset/{datasetId}/upload" example="Malformed query" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 
 
 with CodatLending(
@@ -234,43 +387,10 @@ with CodatLending(
     ),
 ) as cl_client:
 
-    cl_client.bank_statements.upload_bank_statement_data(request=operations.UploadBankStatementDataRequest(
-        request_body={
-            "results": [
-                {
-                    "id": "1703194f-7805-4da8-bac0-2ba5da4a4216",
-                    "name": "Business Current Account",
-                    "informalName": "Codat",
-                    "holder": "Codat Ltd",
-                    "type": "Debit",
-                    "balance": {
-                        "available": -459987.97,
-                        "current": -459964.9,
-                        "limit": 5000,
-                    },
-                    "identifiers": {
-                        "type": "Depository",
-                        "subtype": "checking",
-                        "number": "46762629",
-                        "bankCode": 9911,
-                        "iban": "GB29 LOYD 4773 2346 7626 29",
-                        "bic": "LOYDGB21006",
-                        "maskedAccountNumber": "LOYDGB21006",
-                    },
-                    "currency": "GBP",
-                    "institution": {
-                        "id": "lloyds-bank",
-                        "name": "Lloyds Bank",
-                    },
-                    "modifiedDate": "2022-05-23T16:32:50Z",
-                    "sourceModifiedDate": "2021-08-14T05:04:12",
-                },
-            ],
-        },
-        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-        connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        dataset_id="f0095e43-88a7-4395-9f2c-1d5226e1c9e5",
-    ))
+    cl_client.bank_statements.upload_bank_statement_data(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
     # Use the SDK ...
 

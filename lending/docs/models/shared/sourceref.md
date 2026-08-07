@@ -1,7 +1,5 @@
 # SourceRef
 
-A source reference containing the `sourceType` object "Banking".
-
 
 ## Fields
 

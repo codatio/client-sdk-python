@@ -538,11 +538,7 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.companies.update(request={
-        "company_update_request": {
-            "tags": {
-                "refrence": "new reference",
-            },
-        },
+        "company_update_request": {},
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

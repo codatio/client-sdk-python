@@ -209,3 +209,13 @@ Based on:
 - [python v11.0.1] lending
 ### Releases
 - [PyPI v11.0.1] https://pypi.org/project/codat-lending/11.0.1 - lending
+
+## 2026-08-07 11:56:14
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Lending.yaml
+- codat sdk-codegen b5f25135143b1ccfb99c941df11a7a1596dbe31e https://github.com/codat-spikes/sdk-codegen
+### Generated
+- [python v11.0.2] lending
+### Releases
+- [PyPI v11.0.2] https://pypi.org/project/codat-lending/11.0.2 - lending

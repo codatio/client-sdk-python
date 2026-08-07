@@ -5,7 +5,7 @@ The type of platform of the connection.
 ## Example Usage
 
 ```python
-from codat_lending.models.shared import SourceType
+from codat_lending.models.operations import SourceType
 
 value = SourceType.ACCOUNTING
 ```
