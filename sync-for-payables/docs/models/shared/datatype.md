@@ -1,13 +1,13 @@
 # DataType
 
-The type of the linked reference.
+Available data types
 
 ## Example Usage
 
 ```python
 from codat_sync_for_payables.models.shared import DataType
 
-value = DataType.TRACKING_CATEGORIES
+value = DataType.CUSTOMERS
 ```
 
 
@@ -15,5 +15,5 @@ value = DataType.TRACKING_CATEGORIES
 
 | Name                  | Value                 |
 | --------------------- | --------------------- |
-| `TRACKING_CATEGORIES` | trackingCategories    |
 | `CUSTOMERS`           | customers             |
+| `TRACKING_CATEGORIES` | trackingCategories    |

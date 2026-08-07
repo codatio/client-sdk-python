@@ -233,13 +233,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.suppliers.create(request={
+        "supplier_prototype": {
+            "phone": "+44 25691 154789",
+        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "supplier_prototype": {
-            "supplier_name": "<value>",
-            "phone": "+44 25691 154789",
-            "status": shared.SupplierStatus.UNKNOWN,
-        },
     })
 
     # Handle response
@@ -261,27 +259,17 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.suppliers.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier_prototype": {
-            "supplier_name": "Northridge Office Supplies",
+            "addresses": [],
             "contact_name": "Sarah Johnson",
+            "default_currency": "GBP",
             "email_address": "sarah.johnson@northridgesupplies.co.uk",
             "phone": "+44 (0)1223 322410",
-            "addresses": [
-                {
-                    "type": shared.AddressType.BILLING,
-                    "line1": "Flat 1",
-                    "line2": "2 Dennis Avenue",
-                    "city": "London",
-                    "region": "Camden",
-                    "country": "GB",
-                    "postal_code": "EC1N 7TE",
-                },
-            ],
             "status": shared.SupplierStatus.ACTIVE,
-            "default_currency": "GBP",
+            "supplier_name": "Northridge Office Supplies",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -348,14 +336,12 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.suppliers.update(request={
+        "supplier_prototype": {
+            "phone": "+44 25691 154789",
+        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
-        "supplier_prototype": {
-            "supplier_name": "<value>",
-            "phone": "+44 25691 154789",
-            "status": shared.SupplierStatus.ACTIVE,
-        },
     })
 
     # Handle response
@@ -377,28 +363,18 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.suppliers.update(request={
+        "supplier_prototype": {
+            "addresses": [],
+            "contact_name": "Sarah Johnson",
+            "default_currency": "GBP",
+            "email_address": "sarah.johnson@northridgesupplies.co.uk",
+            "phone": "+44 (0)1223 322410",
+            "status": shared.SupplierStatus.ACTIVE,
+            "supplier_name": "Northridge Office Supplies",
+        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
-        "supplier_prototype": {
-            "supplier_name": "Northridge Office Supplies",
-            "contact_name": "Sarah Johnson",
-            "email_address": "sarah.johnson@northridgesupplies.co.uk",
-            "phone": "+44 (0)1223 322410",
-            "addresses": [
-                {
-                    "type": shared.AddressType.BILLING,
-                    "line1": "Flat 1",
-                    "line2": "2 Dennis Avenue",
-                    "city": "London",
-                    "region": "Camden",
-                    "country": "GB",
-                    "postal_code": "EC1N 7TE",
-                },
-            ],
-            "status": shared.SupplierStatus.ACTIVE,
-            "default_currency": "GBP",
-        },
     })
 
     # Handle response
@@ -420,14 +396,12 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.suppliers.update(request={
+        "supplier_prototype": {
+            "phone": "+44 25691 154789",
+        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "supplier_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
-        "supplier_prototype": {
-            "supplier_name": "<value>",
-            "phone": "+44 25691 154789",
-            "status": shared.SupplierStatus.ACTIVE,
-        },
     })
 
     # Handle response

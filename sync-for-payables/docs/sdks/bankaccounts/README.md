@@ -29,16 +29,16 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bank_accounts.create(request={
+        "bank_account_prototype": {
+            "account_number": "0120 0440",
+            "account_type": shared.BankAccountType.DEBIT,
+            "currency": "GBP",
+            "name": "Plutus - Payables - Bank Account 12",
+            "nominal_code": "22",
+            "sort_code": "50-50-50",
+        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bank_account_prototype": {
-            "nominal_code": "22",
-            "name": "Plutus - Payables - Bank Account 12",
-            "account_type": shared.BankAccountType.DEBIT,
-            "account_number": "0120 0440",
-            "sort_code": "50-50-50",
-            "currency": "GBP",
-        },
     })
 
     # Handle response
@@ -60,14 +60,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bank_accounts.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bank_account_prototype": {
-            "name": "<value>",
-            "account_type": shared.BankAccountType.DEBIT,
-            "account_number": "<value>",
             "currency": "GBP",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -89,14 +86,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bank_accounts.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bank_account_prototype": {
-            "name": "<value>",
-            "account_type": shared.BankAccountType.DEBIT,
-            "account_number": "<value>",
             "currency": "GBP",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response

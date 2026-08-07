@@ -32,8 +32,8 @@ with CodatSyncPayables(
 
     res = codat_sync_payables.connections.list(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 
     # Handle response
@@ -82,9 +82,6 @@ with CodatSyncPayables(
 
     res = codat_sync_payables.connections.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "request_body": {
-            "platform_key": "gbol",
-        },
     })
 
     # Handle response
@@ -107,9 +104,6 @@ with CodatSyncPayables(
 
     res = codat_sync_payables.connections.create(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "request_body": {
-            "platform_key": "gbol",
-        },
     })
 
     # Handle response
@@ -245,11 +239,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.connections.unlink(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "request_body": {
             "status": shared.DataConnectionStatus.UNLINKED,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
