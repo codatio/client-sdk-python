@@ -1,7 +1,5 @@
 # Source
 
-The source of the banking data that determines its format
-
 ## Example Usage
 
 ```python

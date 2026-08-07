@@ -1,16 +1,5 @@
 # TaxRateRef
 
-Data types that reference a tax rate, for example invoice and bill line items, use a taxRateRef that includes the ID and name of the linked tax rate.
-
-Found on:
-
-- Bill line items
-- Bill Credit Note line items
-- Credit Note line items
-- Direct incomes line items
-- Invoice line items
-- Items
-
 
 ## Fields
 

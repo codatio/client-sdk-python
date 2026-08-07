@@ -1,7 +1,5 @@
 # JournalEntryRecordRefDataType
 
-Name of underlying data type.
-
 ## Example Usage
 
 ```python

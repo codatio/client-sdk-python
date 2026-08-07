@@ -1,7 +1,5 @@
 # AccountingTransferStatus
 
-The status of the transfer in the account
-
 ## Example Usage
 
 ```python

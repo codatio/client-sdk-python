@@ -25,7 +25,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 <!-- UsageSnippet language="python" operationID="generate-loan-summary" method="post" path="/companies/{companyId}/reports/liabilities/loans" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 
 
 with CodatLending(
@@ -36,7 +36,6 @@ with CodatLending(
 
     cl_client.liabilities.generate_loan_summary(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "source_type": operations.SourceType.ACCOUNTING,
     })
 
     # Use the SDK ...
@@ -72,7 +71,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 <!-- UsageSnippet language="python" operationID="generate-loan-transactions" method="post" path="/companies/{companyId}/reports/liabilities/loans/transactions" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 
 
 with CodatLending(
@@ -83,7 +82,6 @@ with CodatLending(
 
     cl_client.liabilities.generate_loan_transactions(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "source_type": operations.QueryParamSourceType.COMMERCE,
     })
 
     # Use the SDK ...
@@ -119,7 +117,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 <!-- UsageSnippet language="python" operationID="get-loan-summary" method="get" path="/companies/{companyId}/reports/liabilities/loans" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 
 
 with CodatLending(
@@ -130,7 +128,6 @@ with CodatLending(
 
     res = cl_client.liabilities.get_loan_summary(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "source_type": operations.GetLoanSummaryQueryParamSourceType.ACCOUNTING,
     })
 
     # Handle response
@@ -171,7 +168,7 @@ Make sure you have [synced a company](https://docs.codat.io/lending-api#/operati
 <!-- UsageSnippet language="python" operationID="list-loan-transactions" method="get" path="/companies/{companyId}/reports/liabilities/loans/transactions" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 
 
 with CodatLending(
@@ -182,7 +179,6 @@ with CodatLending(
 
     res = cl_client.liabilities.list_loan_transactions(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "source_type": operations.ListLoanTransactionsQueryParamSourceType.COMMERCE,
     })
 
     # Handle response

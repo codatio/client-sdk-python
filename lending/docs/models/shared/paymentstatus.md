@@ -1,7 +1,5 @@
 # PaymentStatus
 
-Status of the payment.
-
 ## Example Usage
 
 ```python

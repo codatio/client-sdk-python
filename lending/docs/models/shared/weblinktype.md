@@ -1,7 +1,5 @@
 # WebLinkType
 
-The type of the weblink.
-
 ## Example Usage
 
 ```python

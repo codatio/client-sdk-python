@@ -1,7 +1,5 @@
 # IntegrityStatus
 
-The current status of the most recently run matching algorithm.
-
 ## Example Usage
 
 ```python

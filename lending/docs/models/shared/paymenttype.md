@@ -1,7 +1,5 @@
 # PaymentType
 
-Type of payment.
-
 ## Example Usage
 
 ```python

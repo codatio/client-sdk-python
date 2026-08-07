@@ -1,0 +1,7 @@
+from __future__ import annotations
+from typing import Union
+from typing_extensions import TypeAliasType
+from codat_lending.models.shared.sourceaccount import SourceAccountTypedDict
+from codat_lending.models.source_account_v2 import SourceAccountV2TypedDict
+
+CreateSourceAccountResponseBodyTypedDict = TypeAliasType("CreateSourceAccountResponseBodyTypedDict", Union[SourceAccountTypedDict, SourceAccountV2TypedDict])

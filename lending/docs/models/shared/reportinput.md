@@ -1,7 +1,5 @@
 # ReportInput
 
-Accounting method used to prepare the cash flow statement.
-
 ## Example Usage
 
 ```python
