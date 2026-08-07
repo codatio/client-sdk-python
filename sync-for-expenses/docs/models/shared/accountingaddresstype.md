@@ -1,7 +1,5 @@
 # AccountingAddressType
 
-The type of the address
-
 ## Example Usage
 
 ```python

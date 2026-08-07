@@ -37,17 +37,10 @@ with CodatSyncExpenses(
 
     res = codat_sync_expenses.customers.create(request={
         "customer": {
-            "contacts": [
-                {
-                    "modified_date": "2022-10-23T00:00:00Z",
-                    "phone": None,
-                    "status": shared.CustomerStatus.UNKNOWN,
-                },
-            ],
+            "contacts": [],
             "default_currency": "GBP",
             "modified_date": "2022-10-23T00:00:00Z",
             "source_modified_date": "2022-10-23T00:00:00Z",
-            "status": shared.CustomerStatus.UNKNOWN,
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
@@ -1007,22 +1000,10 @@ with CodatSyncExpenses(
 
     res = codat_sync_expenses.customers.update(request={
         "customer": {
-            "contacts": [
-                {
-                    "modified_date": "2022-10-23T00:00:00Z",
-                    "phone": [
-                        {
-                            "number": "+44 25691 154789",
-                            "type": shared.Type.PRIMARY,
-                        },
-                    ],
-                    "status": shared.CustomerStatus.UNKNOWN,
-                },
-            ],
+            "contacts": [],
             "default_currency": "GBP",
             "modified_date": "2022-10-23T00:00:00Z",
             "source_modified_date": "2022-10-23T00:00:00Z",
-            "status": shared.CustomerStatus.ACTIVE,
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",

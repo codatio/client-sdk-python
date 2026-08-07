@@ -26,7 +26,6 @@ Adjustments represent write-offs and transaction alterations, such as foreign ex
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -36,45 +35,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.adjustments.create(request={
-        "request_body": [
-            {
-                "currency": "USD",
-                "currency_rate": Decimal("1"),
-                "date_": "2024-05-21T00:00:00+00:00",
-                "id": "3357b3df-5f2e-465d-b9ba-226519dbb8f1",
-                "lines": [
-                    {
-                        "account_ref": {
-                            "id": "80000018-1671793811",
-                        },
-                        "amount": Decimal("50"),
-                        "description": "debit line",
-                        "invoice_to": {
-                            "id": "80000002-1674552702",
-                            "type": shared.InvoiceToType.CUSTOMER,
-                        },
-                        "tracking_refs": [
-                            {
-                                "id": "80000003-1674553958",
-                            },
-                        ],
-                    },
-                    {
-                        "account_ref": {
-                            "id": "80000028-1671794219",
-                        },
-                        "amount": Decimal("-50"),
-                        "description": "credit line",
-                        "tracking_refs": [
-                            {
-                                "id": "80000003-1674553958",
-                            },
-                        ],
-                    },
-                ],
-                "reference": "test reference",
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -97,14 +58,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.adjustments.create(request={
-        "request_body": [
-            {
-                "currency": "Iraqi Dinar",
-                "date_": "2022-10-23T00:00:00Z",
-                "id": "a13b8cfd-4823-489f-b930-8d52faa3dc07",
-                "lines": [],
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -127,14 +81,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.adjustments.create(request={
-        "request_body": [
-            {
-                "currency": "Iraqi Dinar",
-                "date_": "2022-10-23T00:00:00Z",
-                "id": "a13b8cfd-4823-489f-b930-8d52faa3dc07",
-                "lines": [],
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

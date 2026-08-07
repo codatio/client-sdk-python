@@ -1,7 +1,5 @@
 # BankAccountStatus
 
-Status of the bank account.
-
 ## Example Usage
 
 ```python

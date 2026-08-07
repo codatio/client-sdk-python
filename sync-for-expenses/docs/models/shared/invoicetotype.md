@@ -1,7 +1,5 @@
 # InvoiceToType
 
-The type of contact.
-
 ## Example Usage
 
 ```python

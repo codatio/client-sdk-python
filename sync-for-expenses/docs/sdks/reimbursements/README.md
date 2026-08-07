@@ -31,7 +31,6 @@ Use the *Create reimbursable expense* endpoint to submit an employee expense cla
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -41,42 +40,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.reimbursements.create(request={
-        "request_body": [
-            {
-                "contact_ref": {
-                    "id": "752",
-                },
-                "currency": "GBP",
-                "currency_rate": Decimal("1"),
-                "due_date": "2024-05-21",
-                "id": "4d7c6929-7770-412b-91bb-44d3bc71d111",
-                "issue_date": "2024-05-21",
-                "lines": [
-                    shared.ReimbursableExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="35",
-                        ),
-                        description="Hotel",
-                        invoice_to=shared.InvoiceTo(
-                            id="504",
-                            type=shared.InvoiceToType.CUSTOMER,
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="23_Bills",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="DEPARTMENT_5",
-                            ),
-                        ],
-                    ),
-                ],
-                "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-                "reference": "expenses w/c 01/07",
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -90,7 +54,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -100,44 +63,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.reimbursements.create(request={
-        "request_body": [
-            {
-                "ap_account_ref": None,
-                "contact_ref": {
-                    "id": "40e3e57c-2322-4898-966c-ca41adfd23fd",
-                },
-                "currency": "GBP",
-                "due_date": "2022-10-23T00:00:00Z",
-                "id": "4d7c6929-7770-412b-91bb-44d3bc71d111",
-                "issue_date": "2022-10-23T00:00:00Z",
-                "lines": [
-                    shared.ReimbursableExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                        ),
-                        description="2-night hotel stay",
-                        invoice_to=shared.InvoiceTo(
-                            id="80000002-1674552702",
-                            type=shared.InvoiceToType.CUSTOMER,
-                        ),
-                        item_ref=shared.ItemRef(
-                            id="80000002-1675158984",
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="e9a1b63d-9ff0-40e7-8038-016354b987e6",
-                            ),
-                        ],
-                    ),
-                ],
-                "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -151,7 +77,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -161,44 +86,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.reimbursements.create(request={
-        "request_body": [
-            {
-                "ap_account_ref": None,
-                "contact_ref": {
-                    "id": "40e3e57c-2322-4898-966c-ca41adfd23fd",
-                },
-                "currency": "GBP",
-                "due_date": "2022-10-23T00:00:00Z",
-                "id": "4d7c6929-7770-412b-91bb-44d3bc71d111",
-                "issue_date": "2022-10-23T00:00:00Z",
-                "lines": [
-                    shared.ReimbursableExpenseTransactionLine(
-                        account_ref=shared.RecordRef(
-                            id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                        ),
-                        description="2-night hotel stay",
-                        invoice_to=shared.InvoiceTo(
-                            id="80000002-1674552702",
-                            type=shared.InvoiceToType.CUSTOMER,
-                        ),
-                        item_ref=shared.ItemRef(
-                            id="80000002-1675158984",
-                        ),
-                        net_amount=Decimal("100"),
-                        tax_amount=Decimal("20"),
-                        tax_rate_ref=shared.RecordRef(
-                            id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                        ),
-                        tracking_refs=[
-                            shared.TrackingRef(
-                                id="e9a1b63d-9ff0-40e7-8038-016354b987e6",
-                            ),
-                        ],
-                    ),
-                ],
-                "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -248,7 +136,6 @@ Updating an existing [reimbursable expense transaction](https://docs.codat.io/sy
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -258,43 +145,6 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.reimbursements.update(request={
-        "update_reimbursable_expense_transaction_request": {
-            "ap_account_ref": {
-                "id": "8000004C-1724173136",
-            },
-            "contact_ref": {
-                "id": "40e3e57c-2322-4898-966c-ca41adfd23fd",
-            },
-            "currency": "GBP",
-            "due_date": "2022-10-23T00:00:00Z",
-            "issue_date": "2022-10-23T00:00:00Z",
-            "lines": [
-                shared.ReimbursableExpenseTransactionLine(
-                    account_ref=shared.RecordRef(
-                        id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                    ),
-                    description="2-night hotel stay",
-                    invoice_to=shared.InvoiceTo(
-                        id="80000002-1674552702",
-                        type=shared.InvoiceToType.CUSTOMER,
-                    ),
-                    item_ref=shared.ItemRef(
-                        id="80000002-1675158984",
-                    ),
-                    net_amount=Decimal("100"),
-                    tax_amount=Decimal("20"),
-                    tax_rate_ref=shared.RecordRef(
-                        id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                    ),
-                    tracking_refs=[
-                        shared.TrackingRef(
-                            id="e9a1b63d-9ff0-40e7-8038-016354b987e6",
-                        ),
-                    ],
-                ),
-            ],
-            "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
     })
@@ -309,7 +159,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -319,43 +168,6 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.reimbursements.update(request={
-        "update_reimbursable_expense_transaction_request": {
-            "ap_account_ref": {
-                "id": "8000004C-1724173136",
-            },
-            "contact_ref": {
-                "id": "40e3e57c-2322-4898-966c-ca41adfd23fd",
-            },
-            "currency": "GBP",
-            "due_date": "2022-10-23T00:00:00Z",
-            "issue_date": "2022-10-23T00:00:00Z",
-            "lines": [
-                shared.ReimbursableExpenseTransactionLine(
-                    account_ref=shared.RecordRef(
-                        id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                    ),
-                    description="2-night hotel stay",
-                    invoice_to=shared.InvoiceTo(
-                        id="80000002-1674552702",
-                        type=shared.InvoiceToType.CUSTOMER,
-                    ),
-                    item_ref=shared.ItemRef(
-                        id="80000002-1675158984",
-                    ),
-                    net_amount=Decimal("100"),
-                    tax_amount=Decimal("20"),
-                    tax_rate_ref=shared.RecordRef(
-                        id="40e3e57c-2322-4898-966c-ca41adfd23fd",
-                    ),
-                    tracking_refs=[
-                        shared.TrackingRef(
-                            id="e9a1b63d-9ff0-40e7-8038-016354b987e6",
-                        ),
-                    ],
-                ),
-            ],
-            "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
     })
@@ -370,7 +182,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -380,39 +191,6 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.reimbursements.update(request={
-        "update_reimbursable_expense_transaction_request": {
-            "contact_ref": {
-                "id": "752",
-            },
-            "currency": "GBP",
-            "currency_rate": Decimal("1"),
-            "due_date": "2024-05-21",
-            "issue_date": "2024-05-21",
-            "lines": [
-                shared.ReimbursableExpenseTransactionLine(
-                    account_ref=shared.RecordRef(
-                        id="35",
-                    ),
-                    description="Hotel",
-                    invoice_to=shared.InvoiceTo(
-                        id="504",
-                        type=shared.InvoiceToType.CUSTOMER,
-                    ),
-                    net_amount=Decimal("100"),
-                    tax_amount=Decimal("20"),
-                    tax_rate_ref=shared.RecordRef(
-                        id="23_Bills",
-                    ),
-                    tracking_refs=[
-                        shared.TrackingRef(
-                            id="DEPARTMENT_5",
-                        ),
-                    ],
-                ),
-            ],
-            "notes": "APPLE.COM/BILL - 09001077498 - Card Ending: 4590",
-            "reference": "expenses w/c 01/07",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
     })
