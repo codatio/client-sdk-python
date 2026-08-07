@@ -266,67 +266,21 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bill_prototype": {
+            "currency": "GBP",
+            "currency_rate": Decimal("1"),
+            "due_date": "2023-04-23T00:00:00",
+            "issue_date": "2023-04-23T00:00:00",
+            "line_items": [],
             "reference": "bill_b8qmmj4ksf1suax",
+            "status": shared.BillStatus.OPEN,
             "supplier_ref": {
                 "id": "1262c350-fe0f-40ec-aeff-41c95b4a45af",
                 "supplier_name": "DIISR - Small Business Services",
             },
-            "issue_date": "2023-04-23T00:00:00",
-            "due_date": "2023-04-23T00:00:00",
-            "currency": "GBP",
-            "currency_rate": Decimal("1"),
-            "line_items": [
-                {
-                    "description": "Half day training - Microsoft Office",
-                    "unit_amount": Decimal("1800"),
-                    "quantity": Decimal("1"),
-                    "tax_amount": Decimal("360"),
-                    "account_ref": {
-                        "id": "46f9461e-788b-4906-8b74-d1ea17f6dc10",
-                    },
-                    "total_amount": Decimal("2160"),
-                    "tax_rate_ref": {
-                        "id": "INPUT2",
-                    },
-                },
-                {
-                    "description": "Desktop/network support via email & phone.Per month fixed fee for minimum 20 hours/month.",
-                    "unit_amount": Decimal("4000"),
-                    "quantity": Decimal("1"),
-                    "tax_amount": Decimal("800"),
-                    "account_ref": {
-                        "id": "f96c9458-d724-47bf-8f74-a9d5726465ce",
-                    },
-                    "total_amount": Decimal("4800"),
-                    "tax_rate_ref": {
-                        "id": "INPUT2",
-                    },
-                },
-                {
-                    "description": "Stationery charges",
-                    "unit_amount": Decimal("32"),
-                    "quantity": Decimal("8"),
-                    "tax_amount": Decimal("51.2"),
-                    "account_ref": {
-                        "id": "cba6527d-f102-4538-b421-e483233e9d5a",
-                    },
-                    "total_amount": Decimal("307.2"),
-                    "tax_rate_ref": {
-                        "id": "INPUT2",
-                    },
-                    "tracking_refs": [
-                        {
-                            "id": "dba3d4da-f9ed-4eee-8e0b-452d11fdb1fa",
-                            "data_type": shared.DataType.TRACKING_CATEGORIES,
-                        },
-                    ],
-                },
-            ],
-            "status": shared.BillStatus.OPEN,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -348,22 +302,14 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bill_prototype": {
-            "supplier_ref": {
-                "id": "<id>",
-            },
-            "issue_date": "2022-10-23T00:00:00Z",
-            "due_date": "2022-10-23T00:00:00Z",
             "currency": "GBP",
-            "line_items": [
-                {
-                    "tracking_refs": None,
-                },
-            ],
+            "due_date": "2022-10-23T00:00:00Z",
+            "issue_date": "2022-10-23T00:00:00Z",
             "status": shared.BillStatus.OPEN,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -385,22 +331,14 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "bill_prototype": {
-            "supplier_ref": {
-                "id": "<id>",
-            },
-            "issue_date": "2022-10-23T00:00:00Z",
-            "due_date": "2022-10-23T00:00:00Z",
             "currency": "GBP",
-            "line_items": [
-                {
-                    "tracking_refs": None,
-                },
-            ],
+            "due_date": "2022-10-23T00:00:00Z",
+            "issue_date": "2022-10-23T00:00:00Z",
             "status": shared.BillStatus.OPEN,
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -460,28 +398,15 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.update(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "bill_prototype": {
-            "supplier_ref": {
-                "id": "<id>",
-            },
-            "issue_date": "2022-10-23T00:00:00Z",
-            "due_date": "2022-10-23T00:00:00Z",
             "currency": "GBP",
-            "line_items": [
-                {
-                    "tracking_refs": [
-                        {
-                            "id": "e9a1b63d-9ff0-40e7-8038-016354b987e6",
-                            "data_type": shared.DataType.TRACKING_CATEGORIES,
-                        },
-                    ],
-                },
-            ],
+            "due_date": "2022-10-23T00:00:00Z",
+            "issue_date": "2022-10-23T00:00:00Z",
             "status": shared.BillStatus.OPEN,
         },
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -504,54 +429,21 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.update(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "bill_prototype": {
+            "currency": "GBP",
+            "currency_rate": Decimal("1"),
+            "due_date": "2023-05-23T00:00:00",
+            "issue_date": "2023-04-23T00:00:00",
+            "line_items": [],
             "reference": "bill_updated_ref",
+            "status": shared.BillStatus.OPEN,
             "supplier_ref": {
                 "id": "1262c350-fe0f-40ec-aeff-41c95b4a45af",
             },
-            "issue_date": "2023-04-23T00:00:00",
-            "due_date": "2023-05-23T00:00:00",
-            "currency": "GBP",
-            "currency_rate": Decimal("1"),
-            "line_items": [
-                {
-                    "description": "Updated line item - Microsoft Office training",
-                    "unit_amount": Decimal("2000"),
-                    "quantity": Decimal("1"),
-                    "tax_amount": Decimal("400"),
-                    "account_ref": {
-                        "id": "46f9461e-788b-4906-8b74-d1ea17f6dc10",
-                    },
-                    "total_amount": Decimal("2400"),
-                    "tax_rate_ref": {
-                        "id": "INPUT2",
-                    },
-                },
-                {
-                    "description": "Desktop/network support via email & phone - updated rate",
-                    "unit_amount": Decimal("4500"),
-                    "quantity": Decimal("1"),
-                    "tax_amount": Decimal("900"),
-                    "account_ref": {
-                        "id": "f96c9458-d724-47bf-8f74-a9d5726465ce",
-                    },
-                    "total_amount": Decimal("5400"),
-                    "tax_rate_ref": {
-                        "id": "INPUT2",
-                    },
-                    "tracking_refs": [
-                        {
-                            "id": "dba3d4da-f9ed-4eee-8e0b-452d11fdb1fa",
-                            "data_type": shared.DataType.TRACKING_CATEGORIES,
-                        },
-                    ],
-                },
-            ],
-            "status": shared.BillStatus.OPEN,
         },
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -573,28 +465,15 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.update(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "bill_prototype": {
-            "supplier_ref": {
-                "id": "<id>",
-            },
-            "issue_date": "2022-10-23T00:00:00Z",
-            "due_date": "2022-10-23T00:00:00Z",
             "currency": "GBP",
-            "line_items": [
-                {
-                    "tracking_refs": [
-                        {
-                            "id": "e9a1b63d-9ff0-40e7-8038-016354b987e6",
-                            "data_type": shared.DataType.TRACKING_CATEGORIES,
-                        },
-                    ],
-                },
-            ],
+            "due_date": "2022-10-23T00:00:00Z",
+            "issue_date": "2022-10-23T00:00:00Z",
             "status": shared.BillStatus.OPEN,
         },
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -642,9 +521,9 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.upload_attachment(request={
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
 
     # Handle response
@@ -692,9 +571,9 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.list_attachments(request={
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
     })
 
     # Handle response
@@ -743,10 +622,10 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bills.download_attachment(request={
+        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
-        "attachment_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     # Handle response

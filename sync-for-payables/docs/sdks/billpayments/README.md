@@ -84,17 +84,14 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bill_payments.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "bill_payment_prototype": {
             "amount": Decimal("1329.54"),
             "date_": "2022-10-23T00:00:00Z",
             "reference": "Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44",
-            "account_ref": {
-                "id": "<id>",
-            },
         },
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -117,18 +114,18 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bill_payments.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "bill_payment_prototype": {
-            "amount": Decimal("22"),
-            "date_": "2022-10-23T00:00:00.000Z",
-            "reference": "Bill Payment against bill c13e37b6 dfaa-4894-b3be-9fe97bda9f44",
             "account_ref": {
                 "id": "7bda9f44sr56",
             },
+            "amount": Decimal("22"),
             "currency_rate": Decimal("1"),
+            "date_": "2022-10-23T00:00:00.000Z",
+            "reference": "Bill Payment against bill c13e37b6 dfaa-4894-b3be-9fe97bda9f44",
         },
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -151,17 +148,14 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.bill_payments.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
-        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "bill_payment_prototype": {
             "amount": Decimal("1329.54"),
             "date_": "2022-10-23T00:00:00Z",
             "reference": "Bill Payment against bill c13e37b6-dfaa-4894-b3be-9fe97bda9f44",
-            "account_ref": {
-                "id": "<id>",
-            },
         },
+        "bill_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response

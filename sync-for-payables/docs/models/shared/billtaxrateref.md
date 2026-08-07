@@ -1,7 +1,5 @@
 # BillTaxRateRef
 
-Reference to the tax rate to which the line item is linked.
-
 
 ## Fields
 
