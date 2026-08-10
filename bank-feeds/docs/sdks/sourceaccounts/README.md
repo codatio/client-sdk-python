@@ -37,11 +37,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.create(request={
-        "request_body": {
-            "currency": "GBP",
-            "id": "<id>",
-            "modified_date": "2022-10-23T00:00:00Z",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -56,7 +51,6 @@ with CodatBankFeeds(
 ```python
 from codat_bankfeeds import CodatBankFeeds
 from codat_bankfeeds.models import shared
-from decimal import Decimal
 
 
 with CodatBankFeeds(
@@ -66,16 +60,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.create(request={
-        "request_body": {
-            "account_name": "account-081",
-            "account_number": "12345670",
-            "account_type": "Credit",
-            "balance": Decimal("99.99"),
-            "currency": "GBP",
-            "id": "acc-002",
-            "modified_date": "2023-01-09T14:14:14.1057478Z",
-            "sort_code": "123456",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -99,11 +83,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.create(request={
-        "request_body": {
-            "currency": "GBP",
-            "id": "<id>",
-            "modified_date": "2022-10-23T00:00:00Z",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -154,13 +133,7 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.create_batch(request={
-        "request_body": [
-            {
-                "currency": "GBP",
-                "id": "<id>",
-                "modified_date": "2022-10-23T00:00:00Z",
-            },
-        ],
+        "request_body": [],
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -183,11 +156,11 @@ with CodatBankFeeds(
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ErrorMessage          | 400, 401, 402, 403, 404, 429 | application/json             |
-| errors.ErrorMessage          | 500, 503                     | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorMessage               | 400, 401, 402, 403, 404, 409, 429 | application/json                  |
+| errors.ErrorMessage               | 500, 503                          | application/json                  |
+| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -304,7 +277,6 @@ with CodatBankFeeds(
 ) as codat_bank_feeds:
 
     res = codat_bank_feeds.source_accounts.generate_credentials(request={
-        "request_body": open("example.file", "rb"),
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })

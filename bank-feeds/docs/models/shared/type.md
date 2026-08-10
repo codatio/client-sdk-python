@@ -1,7 +1,5 @@
 # Type
 
-The type of routing number.
-
 ## Example Usage
 
 ```python

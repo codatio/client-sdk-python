@@ -36,8 +36,6 @@ with CodatBankFeeds(
         "source_account_id": "<id>",
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 
@@ -86,7 +84,6 @@ with CodatBankFeeds(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "source_account_id": "<id>",
-        "sync_id": "823d304f-a204-4760-9b5d-b8a89bf29bed",
     })
 
     # Handle response
