@@ -1,0 +1,7 @@
+from __future__ import annotations
+from typing import Union, List
+from typing_extensions import TypeAliasType
+from codat_bankfeeds.models.shared.sourceaccountv2prototype import SourceAccountV2PrototypeTypedDict
+from codat_bankfeeds.models.shared.sourceaccountprototype import SourceAccountPrototypeTypedDict
+
+CreateBatchSourceAccountRequestBodyTypedDict = TypeAliasType("CreateBatchSourceAccountRequestBodyTypedDict", Union[List[SourceAccountV2PrototypeTypedDict], List[SourceAccountPrototypeTypedDict]])
