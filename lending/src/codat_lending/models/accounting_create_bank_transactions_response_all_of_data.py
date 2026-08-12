@@ -1,0 +1,5 @@
+from __future__ import annotations
+
+from codat_lending.models.accountingcreatebankaccounttransactions import AccountingCreateBankAccountTransactions as AccountingCreateBankTransactionsResponseAllOfData, AccountingCreateBankAccountTransactionsTypedDict as AccountingCreateBankTransactionsResponseAllOfDataTypedDict
+
+__all__ = ["AccountingCreateBankTransactionsResponseAllOfData", "AccountingCreateBankTransactionsResponseAllOfDataTypedDict"]

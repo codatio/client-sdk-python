@@ -1,7 +1,5 @@
 # BillCreditNoteStatus
 
-Current state of the bill credit note
-
 ## Example Usage
 
 ```python

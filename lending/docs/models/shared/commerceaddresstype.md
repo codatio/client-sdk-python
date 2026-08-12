@@ -1,7 +1,5 @@
 # CommerceAddressType
 
-The type of the address
-
 ## Example Usage
 
 ```python

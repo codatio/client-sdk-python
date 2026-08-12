@@ -1,7 +1,5 @@
 # DisputeStatus
 
-Current status of the dispute
-
 ## Example Usage
 
 ```python

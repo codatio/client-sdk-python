@@ -1,7 +1,5 @@
 # SupplierStatus
 
-Status of the supplier.
-
 ## Example Usage
 
 ```python

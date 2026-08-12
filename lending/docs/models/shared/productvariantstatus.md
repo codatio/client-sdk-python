@@ -1,7 +1,5 @@
 # ProductVariantStatus
 
-The status of the product variant.
-
 ## Example Usage
 
 ```python

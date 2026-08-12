@@ -1,7 +1,5 @@
 # ServiceChargeType
 
-The type of the service charge.
-
 ## Example Usage
 
 ```python

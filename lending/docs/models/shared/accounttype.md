@@ -7,7 +7,7 @@ Type of account
 ```python
 from codat_lending.models.shared import AccountType
 
-value = AccountType.UNKNOWN
+value = AccountType.ASSET
 ```
 
 
@@ -15,9 +15,9 @@ value = AccountType.UNKNOWN
 
 | Name        | Value       |
 | ----------- | ----------- |
-| `UNKNOWN`   | Unknown     |
 | `ASSET`     | Asset       |
+| `EQUITY`    | Equity      |
 | `EXPENSE`   | Expense     |
 | `INCOME`    | Income      |
 | `LIABILITY` | Liability   |
-| `EQUITY`    | Equity      |
+| `UNKNOWN`   | Unknown     |

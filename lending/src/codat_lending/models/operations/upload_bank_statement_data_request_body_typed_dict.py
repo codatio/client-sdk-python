@@ -1,0 +1,7 @@
+from __future__ import annotations
+from typing import Union, Any
+from typing_extensions import TypeAliasType
+from codat_lending.models.shared.bankingtransactions import BankingTransactionsTypedDict
+from codat_lending.models.shared.bankingaccount import BankingAccountTypedDict
+
+UploadBankStatementDataRequestBodyTypedDict = TypeAliasType("UploadBankStatementDataRequestBodyTypedDict", Union[BankingTransactionsTypedDict, BankingAccountTypedDict, Any])

@@ -1,7 +1,5 @@
 # ReportOperationStatus
 
-The status of the report generation.
-
 ## Example Usage
 
 ```python

@@ -1,7 +1,5 @@
 # TransactionCode
 
-Code to identify the underlying transaction.
-
 ## Example Usage
 
 ```python

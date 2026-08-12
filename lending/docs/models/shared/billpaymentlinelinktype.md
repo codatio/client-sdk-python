@@ -1,7 +1,5 @@
 # BillPaymentLineLinkType
 
-Types of links to bill payment lines.
-
 ## Example Usage
 
 ```python

@@ -19,7 +19,6 @@ Returns aged creditors report for company that shows the total balance owed by a
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -32,7 +31,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -45,7 +44,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -58,7 +56,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -71,7 +69,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -84,7 +81,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -97,7 +94,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -110,7 +106,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -123,7 +119,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -136,7 +131,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -149,7 +144,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -162,7 +156,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -175,7 +169,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -188,7 +181,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -201,7 +194,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -214,7 +206,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -227,7 +219,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -240,7 +231,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -253,7 +244,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -266,7 +256,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -279,7 +269,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -292,7 +281,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -305,7 +294,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -318,7 +306,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -331,7 +319,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -344,7 +331,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -357,7 +344,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -370,7 +356,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -407,7 +393,6 @@ Returns aged debtors report for company that shows the total outstanding balance
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -420,7 +405,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -433,7 +418,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -446,7 +430,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -459,7 +443,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -472,7 +455,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -485,7 +468,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -498,7 +480,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -511,7 +493,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -524,7 +505,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -537,7 +518,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -550,7 +530,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -563,7 +543,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -576,7 +555,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -589,7 +568,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -602,7 +580,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -615,7 +593,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -628,7 +605,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -641,7 +618,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -654,7 +630,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -667,7 +643,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -680,7 +655,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -693,7 +668,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -706,7 +680,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -719,7 +693,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -732,7 +705,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response
@@ -745,7 +718,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from datetime import date
 
 
 with CodatLending(
@@ -758,7 +730,7 @@ with CodatLending(
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "number_of_periods": 12,
         "period_length_days": 30,
-        "report_date": date.fromisoformat("2022-12-31"),
+        "report_date": "2022-12-31",
     })
 
     # Handle response

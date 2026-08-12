@@ -1,7 +1,5 @@
 # AccountIdentifierType
 
-Type of account
-
 ## Example Usage
 
 ```python

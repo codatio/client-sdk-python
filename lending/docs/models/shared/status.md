@@ -1,7 +1,5 @@
 # Status
 
-The current status of the dataset.
-
 ## Example Usage
 
 ```python

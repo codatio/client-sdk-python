@@ -35,11 +35,7 @@ with CodatLending(
     res = cl_client.loan_writeback.bank_transactions.create(request={
         "accounting_create_bank_transactions": {
             "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
-            "transactions": [
-                {
-                    "date_": "2022-10-23T00:00:00Z",
-                },
-            ],
+            "transactions": [],
         },
         "account_id": "13d946f0-c5d5-42bc-b092-97ece17923ab",
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

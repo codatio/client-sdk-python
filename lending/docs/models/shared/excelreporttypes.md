@@ -1,7 +1,5 @@
 # ExcelReportTypes
 
-The type of the report requested in the query string.
-
 ## Example Usage
 
 ```python

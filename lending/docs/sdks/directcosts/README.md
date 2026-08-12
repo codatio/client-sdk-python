@@ -33,8 +33,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.direct_costs.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_prototype": {
             "currency": "GBP",
             "issue_date": "2023-02-12",
@@ -62,6 +60,8 @@ with CodatLending(
             "tax_amount": Decimal("0"),
             "total_amount": Decimal("15"),
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -74,7 +74,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from decimal import Decimal
 
 
 with CodatLending(
@@ -84,21 +83,21 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.direct_costs.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_prototype": {
             "currency": "GBP",
             "issue_date": "2022-10-23T00:00:00Z",
             "line_items": [
                 {
-                    "quantity": Decimal("2124.3"),
                     "tracking": {
                         "invoice_to": {
                             "data_type": "journalEntry",
                         },
-                        "record_refs": [],
+                        "record_refs": [
+                            {
+                                "data_type": shared.TrackingRecordRefDataType.TRACKING_CATEGORIES,
+                            },
+                        ],
                     },
-                    "unit_amount": Decimal("1861.66"),
                 },
             ],
             "payment_allocations": [
@@ -113,10 +112,9 @@ with CodatLending(
                     },
                 },
             ],
-            "sub_total": Decimal("3566.34"),
-            "tax_amount": Decimal("7664.68"),
-            "total_amount": Decimal("208.93"),
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -139,8 +137,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.direct_costs.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_prototype": {
             "contact_ref": {
                 "data_type": shared.ContactRefDataType.SUPPLIERS,
@@ -165,12 +161,7 @@ with CodatLending(
                     "sub_total": Decimal("99"),
                     "tax_amount": Decimal("360"),
                     "total_amount": Decimal("70"),
-                    "tracking_category_refs": [
-                        {
-                            "id": "80000001-1674553252",
-                            "name": "Class 1",
-                        },
-                    ],
+                    "tracking_category_refs": [],
                     "unit_amount": Decimal("7"),
                 },
             ],
@@ -199,6 +190,8 @@ with CodatLending(
             "tax_amount": Decimal("4"),
             "total_amount": Decimal("366"),
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -221,8 +214,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.direct_costs.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_prototype": {
             "currency": "USD",
             "currency_rate": Decimal("0.5"),
@@ -266,6 +257,8 @@ with CodatLending(
             "tax_amount": Decimal("2"),
             "total_amount": Decimal("11.99"),
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response
@@ -288,8 +281,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.direct_costs.create(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
         "direct_cost_prototype": {
             "contact_ref": {
                 "data_type": shared.ContactRefDataType.SUPPLIERS,
@@ -331,6 +322,8 @@ with CodatLending(
             "tax_amount": Decimal("-7"),
             "total_amount": Decimal("-42"),
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
 
     # Handle response

@@ -1,7 +1,5 @@
 # StartUploadSessionRequestDataType
 
-A key for a Codat data type.
-
 ## Example Usage
 
 ```python

@@ -1,7 +1,5 @@
 # LoanSummaryRecordRefType
 
-The datatype being referred to.
-
 ## Example Usage
 
 ```python
@@ -13,8 +11,10 @@ value = LoanSummaryRecordRefType.ACCOUNTS
 
 ## Values
 
-| Name                    | Value                   |
-| ----------------------- | ----------------------- |
-| `ACCOUNTS`              | accounts                |
-| `BANKING_ACCOUNTS`      | banking-accounts        |
-| `COMMERCE_TRANSACTIONS` | commerce-transactions   |
+| Name                          | Value                         |
+| ----------------------------- | ----------------------------- |
+| `ACCOUNTS`                    | accounts                      |
+| `BANKING_MINUS_ACCOUNTS`      | banking-accounts              |
+| `BANKING_ACCOUNTS`            | banking-accounts              |
+| `COMMERCE_MINUS_TRANSACTIONS` | commerce-transactions         |
+| `COMMERCE_TRANSACTIONS`       | commerce-transactions         |

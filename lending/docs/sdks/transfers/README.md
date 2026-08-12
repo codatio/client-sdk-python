@@ -22,7 +22,7 @@ Required data may vary by integration. To see what data to post, first call [Get
 <!-- UsageSnippet language="python" operationID="create-transfer" method="post" path="/companies/{companyId}/connections/{connectionId}/push/transfers" example="Malformed query" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 
 
 with CodatLending(
@@ -31,32 +31,28 @@ with CodatLending(
     ),
 ) as cl_client:
 
-    res = cl_client.loan_writeback.transfers.create(request=operations.CreateTransferRequest(
-        accounting_transfer=shared.AccountingTransfer(
-            date_="2022-10-23T00:00:00Z",
-            deposited_record_refs=[
-                shared.AccountingRecordRef(
-                    data_type="journalEntry",
-                ),
-            ],
-            from_=shared.TransferAccount(
-                account_ref=shared.AccountingRecordRef(
-                    data_type="journalEntry",
-                ),
-                currency="GBP",
-            ),
-            modified_date="2022-10-23T00:00:00Z",
-            source_modified_date="2022-10-23T00:00:00Z",
-            to=shared.TransferAccount(
-                account_ref=shared.AccountingRecordRef(
-                    data_type="journalEntry",
-                ),
-                currency="GBP",
-            ),
-        ),
-        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-        connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    ))
+    res = cl_client.loan_writeback.transfers.create(request={
+        "accounting_transfer": {
+            "date_": "2022-10-23T00:00:00Z",
+            "deposited_record_refs": [],
+            "from_": {
+                "account_ref": {
+                    "data_type": "journalEntry",
+                },
+                "currency": "GBP",
+            },
+            "modified_date": "2022-10-23T00:00:00Z",
+            "source_modified_date": "2022-10-23T00:00:00Z",
+            "to": {
+                "account_ref": {
+                    "data_type": "journalEntry",
+                },
+                "currency": "GBP",
+            },
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
     # Handle response
     print(res)
@@ -67,7 +63,7 @@ with CodatLending(
 <!-- UsageSnippet language="python" operationID="create-transfer" method="post" path="/companies/{companyId}/connections/{connectionId}/push/transfers" example="QuickBooks Desktop" -->
 ```python
 from codat_lending import CodatLending
-from codat_lending.models import operations, shared
+from codat_lending.models import shared
 from decimal import Decimal
 
 
@@ -77,42 +73,37 @@ with CodatLending(
     ),
 ) as cl_client:
 
-    res = cl_client.loan_writeback.transfers.create(request=operations.CreateTransferRequest(
-        accounting_transfer=shared.AccountingTransfer(
-            contact_ref=shared.ContactRef(
-                data_type=shared.ContactRefDataType.CUSTOMERS,
-                id="80000028-167239230944",
-            ),
-            date_="2023-01-26T11:51:18.104Z",
-            description="test transfers push 20230126 12.08",
-            from_=shared.TransferAccount(
-                account_ref=shared.AccountingRecordRef(
-                    data_type="bankAccounts",
-                    id="80000028-1671794219",
-                ),
-                amount=Decimal("12"),
-            ),
-            metadata=shared.Metadata(
-                is_deleted=True,
-            ),
-            status=shared.AccountingTransferStatus.UNKNOWN,
-            to=shared.TransferAccount(
-                account_ref=shared.AccountingRecordRef(
-                    data_type="bankAccounts",
-                    id="80000004-1671793811",
-                ),
-                amount=Decimal("12"),
-            ),
-            tracking_category_refs=[
-                shared.TrackingCategoryRef(
-                    id="80000001-1674553252",
-                    name="Class 1",
-                ),
-            ],
-        ),
-        company_id="8a210b68-6988-11ed-a1eb-0242ac120002",
-        connection_id="2e9d2c44-f675-40ba-8049-353bfcb5e171",
-    ))
+    res = cl_client.loan_writeback.transfers.create(request={
+        "accounting_transfer": {
+            "contact_ref": {
+                "data_type": shared.ContactRefDataType.CUSTOMERS,
+                "id": "80000028-167239230944",
+            },
+            "date_": "2023-01-26T11:51:18.104Z",
+            "description": "test transfers push 20230126 12.08",
+            "from_": {
+                "account_ref": {
+                    "data_type": "bankAccounts",
+                    "id": "80000028-1671794219",
+                },
+                "amount": Decimal("12"),
+            },
+            "metadata": {
+                "is_deleted": True,
+            },
+            "status": shared.AccountingTransferStatus.UNKNOWN,
+            "to": {
+                "account_ref": {
+                    "data_type": "bankAccounts",
+                    "id": "80000004-1671793811",
+                },
+                "amount": Decimal("12"),
+            },
+            "tracking_category_refs": [],
+        },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
+    })
 
     # Handle response
     print(res)
