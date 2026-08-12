@@ -1,7 +1,5 @@
 # AccountMappingInfoAccountType
 
-Type of the account.
-
 ## Example Usage
 
 ```python

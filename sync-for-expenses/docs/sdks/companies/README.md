@@ -538,11 +538,7 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.companies.update(request={
-        "company_update_request": {
-            "tags": {
-                "refrence": "new reference",
-            },
-        },
+        "company_update_request": {},
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

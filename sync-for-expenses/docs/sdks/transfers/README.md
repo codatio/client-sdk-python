@@ -74,7 +74,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -87,18 +86,6 @@ with CodatSyncExpenses(
         "transfer_transaction_request": {
             "date_": "2022-10-23T00:00:00Z",
             "description": "Transfer from bank account Y to bank account Z",
-            "from_": {
-                "account_ref": {
-                    "id": "<id>",
-                },
-                "amount": Decimal("7329.18"),
-            },
-            "to": {
-                "account_ref": {
-                    "id": "<id>",
-                },
-                "amount": Decimal("522.15"),
-            },
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
@@ -114,7 +101,6 @@ with CodatSyncExpenses(
 ```python
 from codat_sync_for_expenses import CodatSyncExpenses
 from codat_sync_for_expenses.models import shared
-from decimal import Decimal
 
 
 with CodatSyncExpenses(
@@ -127,18 +113,6 @@ with CodatSyncExpenses(
         "transfer_transaction_request": {
             "date_": "2022-10-23T00:00:00Z",
             "description": "Transfer from bank account Y to bank account Z",
-            "from_": {
-                "account_ref": {
-                    "id": "<id>",
-                },
-                "amount": Decimal("7329.18"),
-            },
-            "to": {
-                "account_ref": {
-                    "id": "<id>",
-                },
-                "amount": Decimal("522.15"),
-            },
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "transaction_id": "336694d8-2dca-4cb5-a28d-3ccb83e55eee",
