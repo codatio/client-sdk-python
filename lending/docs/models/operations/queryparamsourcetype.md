@@ -1,7 +1,5 @@
 # QueryParamSourceType
 
-Data source type.
-
 ## Example Usage
 
 ```python

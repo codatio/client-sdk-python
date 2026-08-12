@@ -34,7 +34,6 @@ with CodatLending(
 
     res = cl_client.excel_reports.download(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
     })
 
     # Handle response
@@ -97,7 +96,6 @@ with CodatLending(
 
     res = cl_client.excel_reports.generate(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "report_type": shared.ExcelReportTypes.ENHANCED_FINANCIALS,
     })
 
     # Handle response
@@ -148,7 +146,6 @@ with CodatLending(
 
     res = cl_client.excel_reports.get_status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "report_type": shared.ExcelReportTypes.ENHANCED_CASH_FLOW,
     })
 
     # Handle response

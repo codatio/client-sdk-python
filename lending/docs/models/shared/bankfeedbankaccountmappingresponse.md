@@ -5,6 +5,7 @@
 
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `additional_properties`                | Dict[str, *Any*]                       | :heavy_check_mark:                     | N/A                                    |
 | `error`                                | *OptionalNullable[str]*                | :heavy_minus_sign:                     | Error returned during the post request |
 | `source_account_id`                    | *Optional[str]*                        | :heavy_minus_sign:                     | Unique ID for the source account.      |
 | `status`                               | *OptionalNullable[str]*                | :heavy_minus_sign:                     | Status of the POST request.            |

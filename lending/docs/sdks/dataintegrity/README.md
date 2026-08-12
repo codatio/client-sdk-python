@@ -32,7 +32,7 @@ with CodatLending(
 
     res = cl_client.data_integrity.details(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+        "data_type": "banking-accounts",
         "order_by": "-modifiedDate",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
@@ -88,7 +88,7 @@ with CodatLending(
 
     res = cl_client.data_integrity.status(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+        "data_type": "banking-accounts",
     })
 
     # Handle response
@@ -139,7 +139,7 @@ with CodatLending(
 
     res = cl_client.data_integrity.summaries(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "data_type": shared.DataIntegrityDataType.BANKING_ACCOUNTS,
+        "data_type": "banking-accounts",
         "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
     })
 

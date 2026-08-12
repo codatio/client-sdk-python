@@ -1,0 +1,7 @@
+from __future__ import annotations
+from typing import Union
+from typing_extensions import TypeAliasType
+from codat_lending.models.shared.sourceaccountprototype import SourceAccountPrototype
+from codat_lending.models.shared.sourceaccountv2prototype import SourceAccountV2Prototype
+
+CreateSourceAccountRequestBody = TypeAliasType("CreateSourceAccountRequestBody", Union[SourceAccountPrototype, SourceAccountV2Prototype])

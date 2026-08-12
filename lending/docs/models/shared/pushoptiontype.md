@@ -1,7 +1,5 @@
 # PushOptionType
 
-The option type.
-
 ## Example Usage
 
 ```python

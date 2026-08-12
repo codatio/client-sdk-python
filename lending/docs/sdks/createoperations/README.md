@@ -27,7 +27,6 @@ with CodatLending(
 
     res = cl_client.loan_writeback.create_operations.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "push_operation_key": "23a26d56-6e3d-4414-865c-4fa7ebbb43e3",
     })
 
     # Handle response

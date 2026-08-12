@@ -1,7 +1,5 @@
 # ListLoanTransactionsQueryParamSourceType
 
-Data source type.
-
 ## Example Usage
 
 ```python

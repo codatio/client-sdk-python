@@ -1,7 +1,5 @@
 # ZeroDataType
 
-Allowed name of the 'dataType'.
-
 ## Example Usage
 
 ```python

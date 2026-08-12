@@ -27,7 +27,6 @@ with CodatLending(
 
     res = cl_client.manage_data.pull_operations.get(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "dataset_id": "fa5f3e86-bd80-49b8-853c-5fbba4b201f5",
     })
 
     # Handle response

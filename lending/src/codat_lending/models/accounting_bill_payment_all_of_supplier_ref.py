@@ -1,0 +1,5 @@
+from __future__ import annotations
+
+from codat_lending.models.shared.supplierref import SupplierRef as AccountingBillPaymentAllOfSupplierRef, SupplierRefTypedDict as AccountingBillPaymentAllOfSupplierRefTypedDict
+
+__all__ = ["AccountingBillPaymentAllOfSupplierRef", "AccountingBillPaymentAllOfSupplierRefTypedDict"]

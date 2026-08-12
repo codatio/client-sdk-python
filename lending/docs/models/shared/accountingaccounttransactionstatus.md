@@ -1,7 +1,5 @@
 # AccountingAccountTransactionStatus
 
-The status of the account transaction.
-
 ## Example Usage
 
 ```python

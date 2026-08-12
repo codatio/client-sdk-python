@@ -1,7 +1,5 @@
 # ReportOperationType
 
-The name of the generated report.
-
 ## Example Usage
 
 ```python

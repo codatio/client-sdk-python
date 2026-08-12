@@ -1,7 +1,5 @@
 # SourceAccountStatus
 
-Status of the source account.
-
 ## Example Usage
 
 ```python

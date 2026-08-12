@@ -1,7 +1,5 @@
 # EndUploadSessionRequestStatus
 
-An indicator to cancel the dataset processing or trigger ingestion and enrichment of data.
-
 ## Example Usage
 
 ```python

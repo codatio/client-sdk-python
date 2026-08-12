@@ -30,7 +30,7 @@ with CodatLending(
 
     res = cl_client.file_upload.download(request={
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "date_": "2022-10-23T00:00:00Z",
+        "date": "2022-10-23T00:00:00Z",
     })
 
     # Handle response

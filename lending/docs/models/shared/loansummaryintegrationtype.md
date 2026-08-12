@@ -1,7 +1,5 @@
 # LoanSummaryIntegrationType
 
-The integration type begin referred to.
-
 ## Example Usage
 
 ```python

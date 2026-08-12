@@ -23,7 +23,6 @@ Required data may vary by integration. To see what data to post, first call [Get
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from decimal import Decimal
 
 
 with CodatLending(
@@ -36,12 +35,7 @@ with CodatLending(
         "accounting_payment": {
             "currency": "GBP",
             "date_": "2022-10-23T00:00:00Z",
-            "lines": [
-                {
-                    "allocated_on_date": "2022-10-23T00:00:00Z",
-                    "amount": Decimal("8277.93"),
-                },
-            ],
+            "lines": [],
             "modified_date": "2022-10-23T00:00:00Z",
             "payment_method_ref": {
                 "id": "EILBDVJVNUAGVKRQ",
@@ -85,20 +79,7 @@ with CodatLending(
                 "id": "80000002-1674552702",
             },
             "date_": "2023-02-10T11:47:04.792Z",
-            "lines": [
-                {
-                    "allocated_on_date": "2023-02-11T11:47:04.792Z",
-                    "amount": Decimal("28"),
-                    "links": [
-                        {
-                            "amount": Decimal("-28"),
-                            "currency_rate": Decimal("1"),
-                            "id": "181-1676374586",
-                            "type": shared.PaymentLinkType.INVOICE,
-                        },
-                    ],
-                },
-            ],
+            "lines": [],
             "note": "note 14/02 1147",
             "payment_method_ref": {
                 "id": "string",
@@ -142,20 +123,7 @@ with CodatLending(
                 "id": "CUST1",
             },
             "date_": "2023-03-17T11:47:04.792Z",
-            "lines": [
-                {
-                    "allocated_on_date": "2023-02-11T11:47:04.792Z",
-                    "amount": Decimal("4"),
-                    "links": [
-                        {
-                            "amount": Decimal("-4"),
-                            "currency_rate": Decimal("1"),
-                            "id": "INV-31",
-                            "type": shared.PaymentLinkType.INVOICE,
-                        },
-                    ],
-                },
-            ],
+            "lines": [],
             "note": "note 07/03 14.31",
             "payment_method_ref": {
                 "id": "4405",
@@ -199,20 +167,7 @@ with CodatLending(
                 "id": "30444c5bd4964fd787c7f8e2e5301ce1",
             },
             "date_": "2023-03-20T11:47:04.792Z",
-            "lines": [
-                {
-                    "allocated_on_date": "2023-02-11T11:47:04.792Z",
-                    "amount": Decimal("0.17"),
-                    "links": [
-                        {
-                            "amount": Decimal("-0.17"),
-                            "currency_rate": Decimal("1"),
-                            "id": "bb85db9226d7450fb99eb83e7fb37505",
-                            "type": shared.PaymentLinkType.INVOICE,
-                        },
-                    ],
-                },
-            ],
+            "lines": [],
             "note": "Need to send products asap.",
             "reference": "normal payment 20/03 17.05",
             "total_amount": Decimal("0.17"),
@@ -249,23 +204,7 @@ with CodatLending(
                 "id": "19",
             },
             "date_": "2022-03-12T00:00:00",
-            "lines": [
-                {
-                    "amount": Decimal("0"),
-                    "links": [
-                        {
-                            "amount": Decimal("-1.1"),
-                            "id": "246",
-                            "type": shared.PaymentLinkType.INVOICE,
-                        },
-                        {
-                            "amount": Decimal("1.1"),
-                            "id": "280",
-                            "type": shared.PaymentLinkType.CREDIT_NOTE,
-                        },
-                    ],
-                },
-            ],
+            "lines": [],
             "total_amount": Decimal("0"),
         },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",

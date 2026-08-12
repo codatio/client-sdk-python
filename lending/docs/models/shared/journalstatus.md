@@ -1,7 +1,5 @@
 # JournalStatus
 
-Current journal status.
-
 ## Example Usage
 
 ```python

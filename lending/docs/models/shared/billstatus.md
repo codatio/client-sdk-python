@@ -1,7 +1,5 @@
 # BillStatus
 
-Current state of the bill.
-
 ## Example Usage
 
 ```python

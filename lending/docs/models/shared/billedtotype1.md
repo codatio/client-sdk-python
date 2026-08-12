@@ -1,7 +1,5 @@
 # BilledToType1
 
-Defines if the bill or bill credit note is billed/rebilled to a project.
-
 ## Example Usage
 
 ```python

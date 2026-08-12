@@ -1,0 +1,9 @@
+# FinancialSummary
+
+
+## Fields
+
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `accounting_score`                                                                                                 | [Optional[shared.FinancialSummaryAccountingScore]](../../models/shared/financialsummaryaccountingscore.md)         | :heavy_minus_sign:                                                                                                 | A score based on data completeness, accuracy, consistency, and presentation of data and the reasons for the score. |
+| `books_closed_date`                                                                                                | [Optional[shared.FinancialSummaryBooksClosedDate]](../../models/shared/financialsummarybookscloseddate.md)         | :heavy_minus_sign:                                                                                                 | The date time in UTC the books closed.                                                                             |

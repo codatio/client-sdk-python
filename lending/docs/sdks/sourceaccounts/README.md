@@ -30,11 +30,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.source_accounts.create(request={
-        "request_body": {
-            "currency": "GBP",
-            "id": "<id>",
-            "modified_date": "2022-10-23T00:00:00Z",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -49,7 +44,6 @@ with CodatLending(
 ```python
 from codat_lending import CodatLending
 from codat_lending.models import shared
-from decimal import Decimal
 
 
 with CodatLending(
@@ -59,16 +53,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.source_accounts.create(request={
-        "request_body": {
-            "account_name": "account-081",
-            "account_number": "12345670",
-            "account_type": "Credit",
-            "balance": Decimal("99.99"),
-            "currency": "GBP",
-            "id": "acc-002",
-            "modified_date": "2023-01-09T14:14:14.1057478Z",
-            "sort_code": "123456",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })
@@ -92,11 +76,6 @@ with CodatLending(
 ) as cl_client:
 
     res = cl_client.loan_writeback.source_accounts.create(request={
-        "request_body": {
-            "currency": "GBP",
-            "id": "<id>",
-            "modified_date": "2022-10-23T00:00:00Z",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "connection_id": "2e9d2c44-f675-40ba-8049-353bfcb5e171",
     })

@@ -7,5 +7,6 @@ The bank or other financial institution providing the account.
 
 | Field                                                         | Type                                                          | Required                                                      | Description                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `additional_properties`                                       | Dict[str, *Any*]                                              | :heavy_check_mark:                                            | N/A                                                           |
 | `id`                                                          | *Optional[str]*                                               | :heavy_minus_sign:                                            | The institution's ID, according to the provider.              |
 | `name`                                                        | *Optional[str]*                                               | :heavy_minus_sign:                                            | The institution's name, according to the underlying provider. |
