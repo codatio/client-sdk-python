@@ -45,14 +45,6 @@ with CodatPlatform(
             "key_by": [
                 "$[*].id",
             ],
-            "required_data": {
-                "currency": "$[*].currencyCode",
-                "number": "$[*].number",
-                "date": "$[*].orderDate",
-                "totalexvat": "$[*].totalAmountExcludingTax",
-                "totaltax": "$[*].totalTaxAmount",
-                "vendor": "$[*].number",
-            },
             "source_modified_date": [
                 "$[*].lastModifiedDateTime",
             ],
@@ -85,11 +77,6 @@ with CodatPlatform(
             "key_by": [
                 "$.Id",
             ],
-            "required_data": {
-                "id": "$.Id",
-                "Currentbal": "$.CurrentBalance",
-                "SubAcc": "$.SubAccount",
-            },
             "source_modified_date": [
                 "$.time",
             ],
@@ -122,15 +109,6 @@ with CodatPlatform(
             "key_by": [
                 "$[*].id",
             ],
-            "required_data": {
-                "currencyCode": "$[*].currencyCode",
-                "id": "$[*].id",
-                "number": "$[*].number",
-                "orderDate": "$[*].orderDate",
-                "totalAmountExcludingTax": "$[*].totalAmountExcludingTax",
-                "totalTaxAmount": "$[*].totalTaxAmount",
-                "vendorName": "$[*].number",
-            },
             "source_modified_date": [
                 "$[*].lastModifiedDateTime",
             ],
@@ -163,12 +141,6 @@ with CodatPlatform(
             "key_by": [
                 "$.InvoiceID",
             ],
-            "required_data": {
-                "invNumber": "$.InvoiceNumber",
-                "type": "$.Type",
-                "InvoiceID": "$.InvoiceID",
-                "lines": "$.LineItems[*]",
-            },
             "source_modified_date": [
                 "$.UpdatedDateUTC",
             ],
@@ -201,12 +173,6 @@ with CodatPlatform(
             "key_by": [
                 "$.AccountID",
             ],
-            "required_data": {
-                "code": "$.Code",
-                "accountId": "$.AccountID",
-                "type": "$.Type",
-                "SysAcc": "$.SystemAccount",
-            },
         },
         "custom_data_identifier": "DynamicsPurchaseOrders",
         "platform_key": "gbol",

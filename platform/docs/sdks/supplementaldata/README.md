@@ -23,7 +23,7 @@ See the *examples* for integration-specific frequently requested properties.
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="QBO - Customers" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -34,7 +34,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -46,7 +46,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="QBO - Invoices" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -57,7 +57,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -69,7 +69,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Unauthorized" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -79,20 +79,8 @@ with CodatPlatform(
 ) as cp_client:
 
     cp_client.supplemental_data.configure(request={
-        "supplemental_data_configuration": {
-            "supplemental_data_config": {
-                "orders-supplemental-data": {
-                    "data_source": "/orders",
-                    "pull_data": {
-                        "orderNumber": "order_num",
-                    },
-                    "push_data": {
-                        "orderNumber": "order_num",
-                    },
-                },
-            },
-        },
-        "data_type": operations.DataType.INVOICES,
+        "supplemental_data_configuration": {},
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -104,7 +92,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Accounts" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -115,7 +103,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -127,7 +115,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Contacts" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -138,7 +126,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -150,7 +138,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Invoices" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -161,7 +149,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -173,7 +161,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Items" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -184,7 +172,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -196,7 +184,7 @@ with CodatPlatform(
 <!-- UsageSnippet language="python" operationID="configure-supplemental-data" method="put" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" example="Xero - Tax rates" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -207,7 +195,7 @@ with CodatPlatform(
 
     cp_client.supplemental_data.configure(request={
         "supplemental_data_configuration": {},
-        "data_type": operations.DataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 
@@ -241,7 +229,7 @@ The *Get configuration* endpoint returns supplemental data configuration previou
 <!-- UsageSnippet language="python" operationID="get-supplemental-data-configuration" method="get" path="/integrations/{platformKey}/dataTypes/{dataType}/supplementalDataConfig" -->
 ```python
 from codat_platform import CodatPlatform
-from codat_platform.models import operations, shared
+from codat_platform.models import shared
 
 
 with CodatPlatform(
@@ -251,7 +239,7 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.supplemental_data.get_configuration(request={
-        "data_type": operations.PathParamDataType.INVOICES,
+        "data_type": "invoices",
         "platform_key": "gbol",
     })
 

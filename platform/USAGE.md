@@ -11,8 +11,9 @@ with CodatPlatform(
     ),
 ) as cp_client:
 
-    res = cp_client.settings.create_api_key(request={
-        "name": "azure-invoice-finance-processor",
+    res = cp_client.companies.add_product(request={
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+        "product_identifier": "bank-feeds",
     })
 
     # Handle response
@@ -37,8 +38,9 @@ async def main():
         ),
     ) as cp_client:
 
-        res = await cp_client.settings.create_api_key_async(request={
-            "name": "azure-invoice-finance-processor",
+        res = await cp_client.companies.add_product_async(request={
+            "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
+            "product_identifier": "bank-feeds",
         })
 
         # Handle response
