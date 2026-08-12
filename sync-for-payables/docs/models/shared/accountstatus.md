@@ -1,7 +1,5 @@
 # AccountStatus
 
-The current status of the account.
-
 ## Example Usage
 
 ```python

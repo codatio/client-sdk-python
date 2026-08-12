@@ -48,8 +48,8 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.list(request={
-        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "tags": "region=uk && team=invoice-finance",
     })
 
@@ -72,8 +72,8 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.list(request={
-        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "order_by": "-modifiedDate",
+        "query": "id=e3334455-1aed-4e71-ab43-6bccf12092ee",
         "tags": "region=uk && team=invoice-finance",
     })
 
@@ -125,8 +125,8 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.create(request={
-        "name": "Bank of Dave",
         "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
     })
 
     # Handle response
@@ -148,8 +148,8 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.create(request={
-        "name": "Technicalium",
         "description": "Technology services, including web and app design and development",
+        "name": "Technicalium",
     })
 
     # Handle response
@@ -171,8 +171,8 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.create(request={
-        "name": "Bank of Dave",
         "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
     })
 
     # Handle response
@@ -243,11 +243,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.replace(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
-            "name": "Bank of Dave",
             "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     # Handle response
@@ -269,11 +269,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.replace(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
-            "name": "Same name",
             "description": "Additional documents required",
+            "name": "Same name",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     # Handle response
@@ -295,10 +295,10 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.replace(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_request_body": {
             "name": "New Name",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     # Handle response
@@ -348,11 +348,11 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.update(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_update_request": {
-            "name": "Bank of Dave",
             "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     # Handle response
@@ -374,10 +374,10 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.update(request={
-        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
         "company_update_request": {
             "name": "New Name",
         },
+        "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
     # Handle response
@@ -399,12 +399,8 @@ with CodatSyncPayables(
 ) as codat_sync_payables:
 
     res = codat_sync_payables.companies.update(request={
+        "company_update_request": {},
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
-        "company_update_request": {
-            "tags": {
-                "refrence": "new reference",
-            },
-        },
     })
 
     # Handle response
