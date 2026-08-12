@@ -12,7 +12,8 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.companies.create(request={
-        "name": "Technicalium",
+        "description": "Requested early access to the new financing scheme.",
+        "name": "Bank of Dave",
     })
 
     # Handle response
@@ -38,7 +39,8 @@ async def main():
     ) as codat_sync_expenses:
 
         res = await codat_sync_expenses.companies.create_async(request={
-            "name": "Technicalium",
+            "description": "Requested early access to the new financing scheme.",
+            "name": "Bank of Dave",
         })
 
         # Handle response

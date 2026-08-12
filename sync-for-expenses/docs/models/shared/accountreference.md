@@ -1,6 +1,6 @@
 # AccountReference
 
-Reference of the account you are transferring money from.
+Data types that reference an account, for example bill and invoice line items, use an accountRef that includes the ID and name of the linked account.
 
 
 ## Fields

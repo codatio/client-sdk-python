@@ -34,9 +34,6 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.connections.create(request={
-        "request_body": {
-            "platform_key": "gbol",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 
@@ -59,9 +56,6 @@ with CodatSyncExpenses(
 ) as codat_sync_expenses:
 
     res = codat_sync_expenses.connections.create(request={
-        "request_body": {
-            "platform_key": "gbol",
-        },
         "company_id": "8a210b68-6988-11ed-a1eb-0242ac120002",
     })
 

@@ -1,7 +1,5 @@
 # ExpenseTransactionType
 
-The type of transaction.
-
 ## Example Usage
 
 ```python
