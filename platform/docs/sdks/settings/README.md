@@ -517,21 +517,7 @@ with CodatPlatform(
     ),
 ) as cp_client:
 
-    cp_client.settings.update_sync_settings(request={
-        "client_id": "9807ce3e-cfa5-4370-b4f2-09c282b1598b",
-        "settings": [
-            {
-                "data_type": shared.DataType.INVOICES,
-                "fetch_on_first_link": True,
-                "is_locked": True,
-                "months_to_sync": 24,
-                "sync_from_utc": "2020-01-01T12:00:00.000Z",
-                "sync_from_window": 24,
-                "sync_order": 0,
-                "sync_schedule": 24,
-            },
-        ],
-    })
+    cp_client.settings.update_sync_settings(request={})
 
     # Use the SDK ...
 

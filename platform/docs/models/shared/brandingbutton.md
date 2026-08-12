@@ -1,7 +1,5 @@
 # BrandingButton
 
-Button branding references.
-
 
 ## Fields
 

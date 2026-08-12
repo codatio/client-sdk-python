@@ -1,7 +1,5 @@
 # FeatureType
 
-The type of feature.
-
 ## Example Usage
 
 ```python
