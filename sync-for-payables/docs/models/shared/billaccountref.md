@@ -1,7 +1,5 @@
 # BillAccountRef
 
-Reference to the account to which the line item is linked.
-
 
 ## Fields
 

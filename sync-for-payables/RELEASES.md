@@ -119,3 +119,13 @@ Based on:
 - [python v9.1.0] sync-for-payables
 ### Releases
 - [PyPI v9.1.0] https://pypi.org/project/codat-sync-for-payables/9.1.0 - sync-for-payables
+
+## 2026-08-12 14:34:35
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Payables.yaml
+- codat sdk-codegen b16d9d8262794a585cbc621bca8d2dca77a75682 https://github.com/codat-spikes/sdk-codegen
+### Generated
+- [python v9.1.1] sync-for-payables
+### Releases
+- [PyPI v9.1.1] https://pypi.org/project/codat-sync-for-payables/9.1.1 - sync-for-payables

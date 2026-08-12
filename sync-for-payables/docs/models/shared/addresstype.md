@@ -1,7 +1,5 @@
 # AddressType
 
-The type of the address
-
 ## Example Usage
 
 ```python
