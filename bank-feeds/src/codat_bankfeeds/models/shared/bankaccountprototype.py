@@ -22,10 +22,10 @@ import re  # noqa: F401
 import json
 
 from pydantic import BeforeValidator, PlainSerializer, BaseModel, ConfigDict, Field, field_validator, model_serializer
-from typing import Annotated, Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from codat_bankfeeds.models.shared.bankaccountstatus import BankAccountStatus
 from typing import Optional, Set
-from typing_extensions import Self, NotRequired, TypedDict
+from typing_extensions import Annotated, Self, NotRequired, TypedDict
 
 from codat_bankfeeds.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class BankAccountPrototype(BaseModel):
