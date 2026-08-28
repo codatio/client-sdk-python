@@ -31,7 +31,7 @@ class SchemaTransaction(BaseModel):
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        _nullable = {'message', 'status', 'transactionId', 'transaction_id'}
+        _nullable = {'integrationType', 'integration_type', 'message', 'status', 'transactionId', 'transaction_id'}
         return {
             k: v for k, v in serialized.items()
             if v != UNSET_SENTINEL and (v is not None or k in _nullable)
@@ -42,7 +42,7 @@ class SchemaTransaction(BaseModel):
     transaction_id: OptionalNullable[str] = Field(default=UNSET, description="Your unique idenfier of the transaction.", alias="transactionId")
     status: OptionalNullable[TransactionStatus] = UNSET
     message: OptionalNullable[str] = Field(default=UNSET, description="Metadata such as validation errors or the resulting record created in the accounting software.")
-    integration_type: Optional[IntegrationType] = Field(default=IntegrationType.EXPENSES, alias="integrationType")
+    integration_type: OptionalNullable[IntegrationType] = Field(default=IntegrationType.EXPENSES, alias="integrationType")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["transactionId", "status", "message", "integrationType"]
 
