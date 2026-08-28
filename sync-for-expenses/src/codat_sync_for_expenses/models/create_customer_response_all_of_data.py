@@ -28,25 +28,30 @@ from codat_sync_for_expenses.models.shared.supplementaldata import SupplementalD
 from typing import Optional, Set
 from typing_extensions import Self, NotRequired, TypedDict
 
+from codat_sync_for_expenses.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class CreateCustomerResponseAllOfData(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'addresses', 'contactName', 'contact_name', 'contacts', 'customerName', 'customer_name', 'emailAddress', 'email_address', 'phone', 'registrationNumber', 'registration_number', 'taxNumber', 'tax_number'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     CreateCustomerResponseAllOfData
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Identifier for the customer, unique to the company in the accounting software.")
-    customer_name: Optional[str] = Field(default=None, description="Name of the customer as recorded in the accounting system, typically the company name.", alias="customerName")
-    contact_name: Optional[str] = Field(default=None, description="Name of the main contact for the identified customer.", alias="contactName")
-    email_address: Optional[str] = Field(default=None, description="Email address the customer can be contacted by.", alias="emailAddress")
+    customer_name: OptionalNullable[str] = Field(default=UNSET, description="Name of the customer as recorded in the accounting system, typically the company name.", alias="customerName")
+    contact_name: OptionalNullable[str] = Field(default=UNSET, description="Name of the main contact for the identified customer.", alias="contactName")
+    email_address: OptionalNullable[str] = Field(default=UNSET, description="Email address the customer can be contacted by.", alias="emailAddress")
     default_currency: Optional[str] = Field(default=None, description="The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.  ## Unknown currencies  In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction.   There are only a very small number of edge cases where this currency code is returned by the Codat system.", alias="defaultCurrency")
-    phone: Optional[str] = Field(default=None, description="Phone number the customer can be contacted by.")
-    addresses: Optional[List[Items]] = Field(default=None, description="An array of Addresses.")
-    contacts: Optional[List[Contact]] = Field(default=None, description="An array of Contacts.")
-    registration_number: Optional[str] = Field(default=None, description="Company number. In the UK, this is typically the Companies House company registration number.", alias="registrationNumber")
-    tax_number: Optional[str] = Field(default=None, description="Company tax number.", alias="taxNumber")
+    phone: OptionalNullable[str] = Field(default=UNSET, description="Phone number the customer can be contacted by.")
+    addresses: OptionalNullable[List[Items]] = Field(default=UNSET, description="An array of Addresses.")
+    contacts: OptionalNullable[List[Contact]] = Field(default=UNSET, description="An array of Contacts.")
+    registration_number: OptionalNullable[str] = Field(default=UNSET, description="Company number. In the UK, this is typically the Companies House company registration number.", alias="registrationNumber")
+    tax_number: OptionalNullable[str] = Field(default=UNSET, description="Company tax number.", alias="taxNumber")
     status: CustomerStatus = Field(description="Current state of the customer.")
     metadata: Optional[Metadata] = None
     supplemental_data: Optional[SupplementalData] = Field(default=None, alias="supplementalData")

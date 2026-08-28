@@ -30,27 +30,32 @@ from typing import Optional, Set
 from typing_extensions import Annotated, Self, NotRequired, TypedDict
 
 from codat_sync_for_expenses.models.bank_account_type import BankAccountType
+from codat_sync_for_expenses.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class CreateBankAccountResponseAllOfData(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'accountName', 'accountNumber', 'account_name', 'account_number', 'availableBalance', 'available_balance', 'balance', 'iBan', 'i_ban', 'institution', 'nominalCode', 'nominal_code', 'overdraftLimit', 'overdraft_limit', 'sortCode', 'sort_code'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     CreateBankAccountResponseAllOfData
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Identifier for the account, unique for the company in the accounting software.")
-    account_name: Optional[str] = Field(default=None, description="Name of the bank account in the accounting software.", alias="accountName")
+    account_name: OptionalNullable[str] = Field(default=UNSET, description="Name of the bank account in the accounting software.", alias="accountName")
     account_type: Optional[BankAccountType] = Field(default=None, description="The type of transactions and balances on the account.   For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.   For Debit accounts, positive balances are assets, and positive transactions **increase** assets.", alias="accountType")
-    nominal_code: Optional[str] = Field(default=None, description="Code used to identify each nominal account for a business.", alias="nominalCode")
-    sort_code: Optional[str] = Field(default=None, description="Sort code for the bank account.  Xero integrations The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.", alias="sortCode")
-    account_number: Optional[str] = Field(default=None, description="Account number for the bank account.  Xero integrations Only a UK account number shows for bank accounts with GBP currency and a combined total of sort code and account number that equals 14 digits, For non-GBP accounts, the full bank account number is populated.  FreeAgent integrations For Credit accounts, only the last four digits are required. For other types, the field is optional.", alias="accountNumber")
-    i_ban: Optional[str] = Field(default=None, description="International bank account number of the account. Often used when making or receiving international payments.", alias="iBan")
+    nominal_code: OptionalNullable[str] = Field(default=UNSET, description="Code used to identify each nominal account for a business.", alias="nominalCode")
+    sort_code: OptionalNullable[str] = Field(default=UNSET, description="Sort code for the bank account.  Xero integrations The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.", alias="sortCode")
+    account_number: OptionalNullable[str] = Field(default=UNSET, description="Account number for the bank account.  Xero integrations Only a UK account number shows for bank accounts with GBP currency and a combined total of sort code and account number that equals 14 digits, For non-GBP accounts, the full bank account number is populated.  FreeAgent integrations For Credit accounts, only the last four digits are required. For other types, the field is optional.", alias="accountNumber")
+    i_ban: OptionalNullable[str] = Field(default=UNSET, description="International bank account number of the account. Often used when making or receiving international payments.", alias="iBan")
     currency: Optional[str] = Field(default=None, description="The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.  ## Unknown currencies  In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction.   There are only a very small number of edge cases where this currency code is returned by the Codat system.")
-    balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=None, description="Balance of the bank account.")
-    institution: Optional[str] = Field(default=None, description="The institution of the bank account.")
-    available_balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=None, description="Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example.", alias="availableBalance")
-    overdraft_limit: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=None, description="Pre-arranged overdraft limit of the account.  The value is always positive. For example, an overdraftLimit of `1000` means that the balance of the account can go down to `-1000`.", alias="overdraftLimit")
+    balance: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=UNSET, description="Balance of the bank account.")
+    institution: OptionalNullable[str] = Field(default=UNSET, description="The institution of the bank account.")
+    available_balance: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=UNSET, description="Total available balance of the bank account as reported by the underlying data source. This may take into account overdrafts or pending transactions for example.", alias="availableBalance")
+    overdraft_limit: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=UNSET, description="Pre-arranged overdraft limit of the account.  The value is always positive. For example, an overdraftLimit of `1000` means that the balance of the account can go down to `-1000`.", alias="overdraftLimit")
     status: Optional[BankAccountStatus] = None
     metadata: Optional[Metadata] = None
     supplemental_data: Optional[SupplementalData] = Field(default=None, alias="supplementalData")

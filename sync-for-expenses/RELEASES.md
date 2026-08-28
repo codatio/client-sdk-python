@@ -777,3 +777,13 @@ Based on:
 - [python v8.0.2] sync-for-expenses
 ### Releases
 - [PyPI v8.0.2] https://pypi.org/project/codat-sync-for-expenses/8.0.2 - sync-for-expenses
+
+## 2026-08-28 09:00:12
+### Changes
+Based on:
+- OpenAPI Doc prealpha https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Sync-Expenses.yaml
+- codat sdk-codegen db72283147925427108432b8413c2487af21f9e6 https://github.com/codat-spikes/sdk-codegen
+### Generated
+- [python v8.0.3] sync-for-expenses
+### Releases
+- [PyPI v8.0.3] https://pypi.org/project/codat-sync-for-expenses/8.0.3 - sync-for-expenses
