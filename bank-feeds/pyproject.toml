@@ -1,6 +1,6 @@
 [project]
 name = "codat-bankfeeds"
-version = "12.0.3"
+version = "12.0.4"
 description = "Set up bank feeds from accounts in your application to supported accounting software."
 authors = [{ name = "Codat", email = "support@codat.io" }]
 readme = "README-PYPI.md"

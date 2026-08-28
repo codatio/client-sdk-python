@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_serializer
+from pydantic import BaseModel, ConfigDict, Field, model_serializer
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 from typing import Optional, Set
@@ -37,13 +37,6 @@ class CompanyRequestBody(BaseModel):
     description: Optional[str] = Field(default=None, description="Additional information about the company. This can be used to store foreign IDs, references, etc.")
     tags: Optional[Dict[str, str]] = Field(default=None, description="A collection of user-defined key-value pairs that store custom metadata against the company.")
     __properties: ClassVar[List[str]] = ["name", "description", "tags"]
-
-    @field_validator('name')
-    def name_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^[A-Za-z0-9\s\-\',&@.,?!\s]+$", value):
-            raise ValueError(r"must validate the regular expression /^[A-Za-z0-9\s\-',&@.,?!\s]+$/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

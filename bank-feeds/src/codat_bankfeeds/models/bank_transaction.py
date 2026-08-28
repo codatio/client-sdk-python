@@ -26,24 +26,29 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Annotated, Self, NotRequired, TypedDict
 
+from codat_bankfeeds.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class BankTransaction(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'counterparty', 'description', 'reconciled', 'reference', 'transactionType', 'transaction_type'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     BankTransaction
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Identifier for the bank account transaction, unique for the company in the accounting software.")
     date_: Optional[str] = Field(default=None, description="In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:  ``` 2023-08-22T10:21:00 2023-08-22 ```  When pushing bank transaction data to Codat, the date is treated as a local date. This means:  - The date/time is used exactly as provided, without any timezone conversion. - If a timezone offset is included (e.g., `2023-08-22T10:21:00-05:00`), the offset will be ignored and only the local date/time portion will be used. - We recommend providing dates without a timezone suffix for clarity (e.g., `2023-08-22T10:21:00` rather than `2023-08-22T10:21:00Z`).", alias="date")
-    description: Optional[str] = Field(default=None, description="Description of the bank transaction.")
-    counterparty: Optional[str] = Field(default=None, description="The giving or receiving party such as a person or organization.")
-    reference: Optional[str] = Field(default=None, description="An optional reference to the bank transaction.")
-    reconciled: Optional[bool] = Field(default=None, description="`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting software.")
+    description: OptionalNullable[str] = Field(default=UNSET, description="Description of the bank transaction.")
+    counterparty: OptionalNullable[str] = Field(default=UNSET, description="The giving or receiving party such as a person or organization.")
+    reference: OptionalNullable[str] = Field(default=UNSET, description="An optional reference to the bank transaction.")
+    reconciled: OptionalNullable[bool] = Field(default=UNSET, description="`True` if the bank transaction has been [reconciled](https://www.xero.com/uk/guides/what-is-bank-reconciliation/) in the accounting software.")
     amount: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=None, description="The amount transacted in the bank transaction.")
     balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=None, description="The remaining balance in the account with ID `accountId`. This field is optional for QuickBooks Online but is required for Xero, Sage, NetSuite, Exact, and FreeAgent.")
-    transaction_type: Optional[BankTransactionType] = Field(default=None, description="Type of transaction for the bank statement line.", alias="transactionType")
+    transaction_type: OptionalNullable[BankTransactionType] = Field(default=UNSET, description="Type of transaction for the bank statement line.", alias="transactionType")
     __properties: ClassVar[List[str]] = ["id", "date", "description", "counterparty", "reference", "reconciled", "amount", "balance", "transactionType"]
 
     @field_validator('transaction_type')
