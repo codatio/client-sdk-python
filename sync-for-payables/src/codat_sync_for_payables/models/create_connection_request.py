@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_serializer
+from pydantic import BaseModel, ConfigDict, Field, model_serializer
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 from typing import Optional, Set
@@ -35,16 +35,6 @@ class CreateConnectionRequest(BaseModel):
     """ # noqa: E501
     platform_key: Optional[str] = Field(default=None, description="A unique 4-letter key to represent a platform in each integration. View [accounting](https://docs.codat.io/integrations/accounting/overview#platform-keys), [banking](https://docs.codat.io/integrations/banking/overview#platform-keys), and [commerce](https://docs.codat.io/integrations/commerce/overview#platform-keys) platform keys.", alias="platformKey")
     __properties: ClassVar[List[str]] = ["platformKey"]
-
-    @field_validator('platform_key')
-    def platform_key_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"[a-z]{4}", value):
-            raise ValueError(r"must validate the regular expression /[a-z]{4}/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

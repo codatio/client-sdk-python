@@ -27,6 +27,7 @@ from codat_sync_for_payables.models.shared.attachmentupload import AttachmentUpl
 from codat_sync_for_payables.models.shared.company import Company
 from codat_sync_for_payables.models.shared.connections import Connections
 from codat_sync_for_payables.models.shared.suppliers import Suppliers
+from codat_sync_for_payables.models.shared.attachment import Attachment
 from codat_sync_for_payables.models.shared.bill import Bill
 from codat_sync_for_payables.models.shared.billmappingoptions import BillMappingOptions
 from codat_sync_for_payables.models.shared.billprototype import BillPrototype
@@ -40,7 +41,6 @@ from codat_sync_for_payables.models.errors.errormessage import ErrorMessageData 
 from codat_sync_for_payables.rest import RESTResponseType
 from codat_sync_for_payables.types import UNSET, OptionalNullable
 from codat_sync_for_payables.utils.retries import RetryConfig, execute_with_retries
-from codat_sync_for_payables.models.shared.attachment import Attachment
 
 
 
