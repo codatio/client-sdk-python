@@ -24,12 +24,17 @@ from codat_bankfeeds.models.shared.errorvalidation import ErrorValidation, Error
 from typing import Optional, Set
 from typing_extensions import Self, NotRequired, TypedDict
 
+from codat_bankfeeds.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class ErrorMessage(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'validation'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     ErrorMessage
     """ # noqa: E501
@@ -37,7 +42,7 @@ class ErrorMessage(BaseModel):
     service: Optional[str] = Field(default=None, description="Codat's service the returned the error.")
     error: Optional[str] = Field(default=None, description="A brief description of the error.")
     correlation_id: Optional[str] = Field(default=None, description="Unique identifier used to propagate to all downstream services and determine the source of the error.", alias="correlationId")
-    validation: Optional[ErrorValidation] = None
+    validation: OptionalNullable[ErrorValidation] = UNSET
     can_be_retried: Optional[str] = Field(default=None, description="`True` if the error occurred transiently and can be retried.", alias="canBeRetried")
     detailed_error_code: Optional[int] = Field(default=None, description="Machine readable error code used to automate processes based on the code returned.", alias="detailedErrorCode")
     __properties: ClassVar[List[str]] = ["statusCode", "service", "error", "correlationId", "validation", "canBeRetried", "detailedErrorCode"]

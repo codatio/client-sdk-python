@@ -30,7 +30,7 @@ class RoutingInfo(BaseModel):
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        _nullable = {'bankCode', 'bank_code'}
+        _nullable = {'bankCode', 'bank_code', 'type'}
         return {
             k: v for k, v in serialized.items()
             if v != UNSET_SENTINEL and (v is not None or k in _nullable)
@@ -39,7 +39,7 @@ class RoutingInfo(BaseModel):
     Routing information for the bank. This does not include account number.
     """ # noqa: E501
     bank_code: OptionalNullable[str] = Field(default=UNSET, description="The numeric identifier of the routing number", alias="bankCode")
-    type: Optional[Type] = Field(default='bankcode', description="The type of routing number.")
+    type: OptionalNullable[Type] = Field(default=Type('bankcode'), description="The type of routing number.")
     __properties: ClassVar[List[str]] = ["bankCode", "type"]
 
     @field_validator('type')
