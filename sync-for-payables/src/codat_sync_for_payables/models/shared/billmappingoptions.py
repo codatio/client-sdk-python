@@ -22,10 +22,10 @@ from pydantic import BaseModel, ConfigDict, Field, model_serializer
 from typing import Any, ClassVar, Dict, List, Optional
 from codat_sync_for_payables.models.shared.accountmappingoption import AccountMappingOption, AccountMappingOptionTypedDict
 from codat_sync_for_payables.models.shared.pagination import Pagination, PaginationTypedDict
+from codat_sync_for_payables.models.shared.taxratemappingoption import TaxRateMappingOption, TaxRateMappingOptionTypedDict
 from typing import Optional, Set
 from typing_extensions import Self, NotRequired, TypedDict
 
-from codat_sync_for_payables.models.shared.taxratemappingoption import TaxRateMappingOption, TaxRateMappingOptionTypedDict
 from codat_sync_for_payables.types import Nullable
 class BillMappingOptions(BaseModel):
 
@@ -87,9 +87,6 @@ class BillMappingOptions(BaseModel):
                 if _item_accounts:
                     _items.append(_item_accounts.to_dict())
             _dict['accounts'] = _items
-        # override the default output from pydantic by calling `to_dict()` of pagination
-        if self.pagination:
-            _dict['pagination'] = self.pagination.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in tax_rates (list)
         _items = []
         if self.tax_rates:
@@ -97,6 +94,9 @@ class BillMappingOptions(BaseModel):
                 if _item_tax_rates:
                     _items.append(_item_tax_rates.to_dict())
             _dict['taxRates'] = _items
+        # override the default output from pydantic by calling `to_dict()` of pagination
+        if self.pagination:
+            _dict['pagination'] = self.pagination.to_dict()
         return _dict
 
     @classmethod
