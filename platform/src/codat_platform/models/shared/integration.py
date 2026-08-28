@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_serializer
+from pydantic import BaseModel, ConfigDict, Field, model_serializer
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 from codat_platform.models.shared.datatypefeature import DataTypeFeature, DataTypeFeatureTypedDict
@@ -47,13 +47,6 @@ class Integration(BaseModel):
     data_provided_by: Optional[str] = Field(default=None, description="The name of the data provider.", alias="dataProvidedBy")
     datatype_features: Optional[List[DataTypeFeature]] = Field(default=None, alias="datatypeFeatures")
     __properties: ClassVar[List[str]] = ["key", "logoUrl", "name", "enabled", "sourceId", "sourceType", "integrationId", "isOfflineConnector", "isBeta", "dataProvidedBy", "datatypeFeatures"]
-
-    @field_validator('key')
-    def key_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"[a-z]{4}", value):
-            raise ValueError(r"must validate the regular expression /[a-z]{4}/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

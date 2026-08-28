@@ -30,7 +30,7 @@ class WebhookConsumerPrototype(BaseModel):
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        _nullable = {'companyTags', 'company_tags'}
+        _nullable = {'companyTags', 'company_tags', 'disabled'}
         return {
             k: v for k, v in serialized.items()
             if v != UNSET_SENTINEL and (v is not None or k in _nullable)
@@ -39,7 +39,7 @@ class WebhookConsumerPrototype(BaseModel):
     WebhookConsumerPrototype
     """ # noqa: E501
     url: Optional[str] = Field(default=None, description="The URL that will consume webhook events dispatched by Codat.")
-    disabled: Optional[bool] = Field(default=False, description="Flag that enables or disables the endpoint from receiving events. Disabled when set to `true`.")
+    disabled: OptionalNullable[bool] = Field(default=False, description="Flag that enables or disables the endpoint from receiving events. Disabled when set to `true`.")
     event_types: Optional[List[str]] = Field(default=None, description="An array of event types the webhook consumer subscribes to.", alias="eventTypes")
     company_tags: OptionalNullable[List[str]] = Field(default=UNSET, description="Company tags provide an additional way to filter messages, independent of event types. Company tags are case-sensitive, and only messages from companies with matching tags will be sent to this endpoint. Use the format `tagKey:tagValue`.", alias="companyTags")
     __properties: ClassVar[List[str]] = ["url", "disabled", "eventTypes", "companyTags"]
