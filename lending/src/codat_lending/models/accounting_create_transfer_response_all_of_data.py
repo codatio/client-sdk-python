@@ -30,24 +30,29 @@ from codat_lending.models.shared.transferaccount import TransferAccount, Transfe
 from typing import Optional, Set
 from typing_extensions import Self, NotRequired, TypedDict
 
+from codat_lending.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class AccountingCreateTransferResponseAllOfData(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'depositedRecordRefs', 'deposited_record_refs', 'description', 'status', 'trackingCategoryRefs', 'tracking_category_refs'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     AccountingCreateTransferResponseAllOfData
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Unique identifier for the transfer.")
-    description: Optional[str] = Field(default=None, description="Description of the transfer.")
+    description: OptionalNullable[str] = Field(default=UNSET, description="Description of the transfer.")
     contact_ref: Optional[ContactRef] = Field(default=None, description="The customer or supplier for the transfer, if available.", alias="contactRef")
     date_: Optional[str] = Field(default=None, description="In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>. Date and time fields are formatted as strings; for example:  ``` 2020-10-08T22:40:50Z 2021-01-01T00:00:00 ```    When syncing data that contains `DateTime` fields from Codat, make sure you support the following cases when reading time information:  - Coordinated Universal Time (UTC): `2021-11-15T06:00:00Z` - Unqualified local time: `2021-11-15T01:00:00` - UTC time offsets: `2021-11-15T01:00:00-05:00`  > Time zones >  > Not all dates from Codat will contain information about time zones.   > Where it is not available from the underlying platform, Codat will return these as times local to the business whose data has been synced.", alias="date")
     from_: Optional[TransferAccount] = Field(default=None, description="The details of the accounts the transfer is moving from.", alias="from")
     to: Optional[TransferAccount] = Field(default=None, description="The details of the accounts the transfer is moving to.")
-    status: Optional[str] = Field(default=None, description="The status of the transfer in the account")
-    tracking_category_refs: Optional[List[TrackingCategoryRef]] = Field(default=None, description="Reference to the tracking categories this transfer is being tracked against.", alias="trackingCategoryRefs")
-    deposited_record_refs: Optional[List[AccountingRecordRef]] = Field(default=None, description="List of selected transactions to associate with the transfer. Use this field to include transactions which are posted to the _undeposited funds_ (or other holding) account within the transfer.", alias="depositedRecordRefs")
+    status: OptionalNullable[str] = Field(default=UNSET, description="The status of the transfer in the account")
+    tracking_category_refs: OptionalNullable[List[TrackingCategoryRef]] = Field(default=UNSET, description="Reference to the tracking categories this transfer is being tracked against.", alias="trackingCategoryRefs")
+    deposited_record_refs: OptionalNullable[List[AccountingRecordRef]] = Field(default=UNSET, description="List of selected transactions to associate with the transfer. Use this field to include transactions which are posted to the _undeposited funds_ (or other holding) account within the transfer.", alias="depositedRecordRefs")
     metadata: Optional[Metadata] = None
     supplemental_data: Optional[SupplementalData] = Field(default=None, alias="supplementalData")
     modified_date: Optional[str] = Field(default=None, description="The date when the record was last fetched from the accounting software, commerce software, or open banking provider and updated in Codat’s data cache.  Use it to identify and retrieve records that have changed since your last fetch. For example, filtering `modifiedDate` to today will provide new records updated in Codat today.  This date is populated for all data types except for attachments, balance sheets, company information, and profit & loss reports ([read more](https://docs.codat.io/using-the-api/modified-dates#modified-date)).  In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.", alias="modifiedDate")
