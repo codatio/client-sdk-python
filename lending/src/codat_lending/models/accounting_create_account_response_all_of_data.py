@@ -29,27 +29,32 @@ from codat_lending.models.valid_data_type_links import ValidDataTypeLinks, Valid
 from typing import Optional, Set
 from typing_extensions import Annotated, Self, NotRequired, TypedDict
 
+from codat_lending.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class AccountingCreateAccountResponseAllOfData(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'currentBalance', 'current_balance', 'description', 'fullyQualifiedCategory', 'fullyQualifiedName', 'fully_qualified_category', 'fully_qualified_name', 'name', 'nominalCode', 'nominal_code', 'validDatatypeLinks', 'valid_datatype_links'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     AccountingCreateAccountResponseAllOfData
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Identifier for the account, unique for the company.")
-    nominal_code: Optional[str] = Field(default=None, description="Reference given to each nominal account for a business. It ensures money is allocated to the correct account. This code isn't a unique identifier in the Codat system.", alias="nominalCode")
-    name: Optional[str] = Field(default=None, description="Name of the account.")
-    description: Optional[str] = Field(default=None, description="Description for the account.")
-    fully_qualified_category: Optional[str] = Field(default=None, description="Full category of the account.     For example, `Liability.Current` or `Income.Revenue`. To determine a list of possible categories for each integration, see our examples, follow our [Create, update, delete data](https://docs.codat.io/using-the-api/push) guide, or refer to the integration's own documentation.", alias="fullyQualifiedCategory")
-    fully_qualified_name: Optional[str] = Field(default=None, description="Full name of the account, for example: - `Cash On Hand` - `Rents Held In Trust` - `Fixed Asset`", alias="fullyQualifiedName")
+    nominal_code: OptionalNullable[str] = Field(default=UNSET, description="Reference given to each nominal account for a business. It ensures money is allocated to the correct account. This code isn't a unique identifier in the Codat system.", alias="nominalCode")
+    name: OptionalNullable[str] = Field(default=UNSET, description="Name of the account.")
+    description: OptionalNullable[str] = Field(default=UNSET, description="Description for the account.")
+    fully_qualified_category: OptionalNullable[str] = Field(default=UNSET, description="Full category of the account.     For example, `Liability.Current` or `Income.Revenue`. To determine a list of possible categories for each integration, see our examples, follow our [Create, update, delete data](https://docs.codat.io/using-the-api/push) guide, or refer to the integration's own documentation.", alias="fullyQualifiedCategory")
+    fully_qualified_name: OptionalNullable[str] = Field(default=UNSET, description="Full name of the account, for example: - `Cash On Hand` - `Rents Held In Trust` - `Fixed Asset`", alias="fullyQualifiedName")
     currency: Optional[str] = Field(default=None, description="The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.  ## Unknown currencies  In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction.   There are only a very small number of edge cases where this currency code is returned by the Codat system.")
-    current_balance: Annotated[Optional[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=None, description="Current balance in the account.", alias="currentBalance")
+    current_balance: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=UNSET, description="Current balance in the account.", alias="currentBalance")
     type: Optional[str] = Field(default=None, description="The type of bank account e.g. Credit.")
     status: Optional[AccountStatus] = None
     is_bank_account: Optional[bool] = Field(default=None, description="Confirms whether the account is a bank account or not.", alias="isBankAccount")
-    valid_datatype_links: Optional[List[ValidDataTypeLinks]] = Field(default=None, description="The validDatatypeLinks can be used to determine whether an account can be correctly mapped to another object; for example, accounts with a `type` of `income` might only support being used on an Invoice and Direct Income. For more information, see [Valid Data Type Links](/lending-api#/schemas/ValidDataTypeLinks).", alias="validDatatypeLinks")
+    valid_datatype_links: OptionalNullable[List[ValidDataTypeLinks]] = Field(default=UNSET, description="The validDatatypeLinks can be used to determine whether an account can be correctly mapped to another object; for example, accounts with a `type` of `income` might only support being used on an Invoice and Direct Income. For more information, see [Valid Data Type Links](/lending-api#/schemas/ValidDataTypeLinks).", alias="validDatatypeLinks")
     supplemental_data: Optional[SupplementalData] = Field(default=None, alias="supplementalData")
     metadata: Optional[Metadata] = None
     modified_date: Optional[str] = Field(default=None, description="The date when the record was last fetched from the accounting software, commerce software, or open banking provider and updated in Codat’s data cache.  Use it to identify and retrieve records that have changed since your last fetch. For example, filtering `modifiedDate` to today will provide new records updated in Codat today.  This date is populated for all data types except for attachments, balance sheets, company information, and profit & loss reports ([read more](https://docs.codat.io/using-the-api/modified-dates#modified-date)).  In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.", alias="modifiedDate")

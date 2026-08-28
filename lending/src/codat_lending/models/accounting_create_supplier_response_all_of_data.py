@@ -27,25 +27,30 @@ from codat_lending.models.shared.supplierstatus import SupplierStatus
 from typing import Optional, Set
 from typing_extensions import Self, NotRequired, TypedDict
 
+from codat_lending.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class AccountingCreateSupplierResponseAllOfData(BaseModel):
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
         serialized = handler(self)
-        return {k: v for k, v in serialized.items() if v is not None}
+        _nullable = {'addresses', 'contactName', 'contact_name', 'defaultCurrency', 'default_currency', 'emailAddress', 'email_address', 'phone', 'registrationNumber', 'registration_number', 'supplierName', 'supplier_name', 'taxNumber', 'tax_number'}
+        return {
+            k: v for k, v in serialized.items()
+            if v != UNSET_SENTINEL and (v is not None or k in _nullable)
+        }
     """
     AccountingCreateSupplierResponseAllOfData
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Identifier for the supplier, unique to the company in the accounting software.")
-    supplier_name: Optional[str] = Field(default=None, description="Name of the supplier as recorded in the accounting system, typically the company name.", alias="supplierName")
-    contact_name: Optional[str] = Field(default=None, description="Name of the main contact for the supplier.", alias="contactName")
-    email_address: Optional[str] = Field(default=None, description="Email address that the supplier may be contacted on.", alias="emailAddress")
-    phone: Optional[str] = Field(default=None, description="Phone number that the supplier may be contacted on.")
-    addresses: Optional[List[AccountingAddress]] = Field(default=None, description="An array of Addresses.")
-    registration_number: Optional[str] = Field(default=None, description="Company number of the supplier. In the UK, this is typically the company registration number issued by Companies House.", alias="registrationNumber")
-    tax_number: Optional[str] = Field(default=None, description="Supplier's company tax number.", alias="taxNumber")
+    supplier_name: OptionalNullable[str] = Field(default=UNSET, description="Name of the supplier as recorded in the accounting system, typically the company name.", alias="supplierName")
+    contact_name: OptionalNullable[str] = Field(default=UNSET, description="Name of the main contact for the supplier.", alias="contactName")
+    email_address: OptionalNullable[str] = Field(default=UNSET, description="Email address that the supplier may be contacted on.", alias="emailAddress")
+    phone: OptionalNullable[str] = Field(default=UNSET, description="Phone number that the supplier may be contacted on.")
+    addresses: OptionalNullable[List[AccountingAddress]] = Field(default=UNSET, description="An array of Addresses.")
+    registration_number: OptionalNullable[str] = Field(default=UNSET, description="Company number of the supplier. In the UK, this is typically the company registration number issued by Companies House.", alias="registrationNumber")
+    tax_number: OptionalNullable[str] = Field(default=UNSET, description="Supplier's company tax number.", alias="taxNumber")
     status: SupplierStatus
-    default_currency: Optional[str] = Field(default=None, description="Default currency the supplier's transactional data is recorded in.", alias="defaultCurrency")
+    default_currency: OptionalNullable[str] = Field(default=UNSET, description="Default currency the supplier's transactional data is recorded in.", alias="defaultCurrency")
     metadata: Optional[Metadata] = None
     supplemental_data: Optional[SupplementalData] = Field(default=None, alias="supplementalData")
     modified_date: Optional[str] = Field(default=None, description="The date when the record was last fetched from the accounting software, commerce software, or open banking provider and updated in Codat’s data cache.  Use it to identify and retrieve records that have changed since your last fetch. For example, filtering `modifiedDate` to today will provide new records updated in Codat today.  This date is populated for all data types except for attachments, balance sheets, company information, and profit & loss reports ([read more](https://docs.codat.io/using-the-api/modified-dates#modified-date)).  In Codat's data model, dates and times are represented using the <a class=\"external\" href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601 standard</a>.", alias="modifiedDate")
