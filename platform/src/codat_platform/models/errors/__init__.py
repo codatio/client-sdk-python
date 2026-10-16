@@ -1,4 +1,4 @@
-"""codat_platform.models.errors — Speakeasy-shape exception hierarchy."""
+"""codat_platform.models.errors — exception hierarchy."""
 
 from .codatplatformerror import CodatPlatformError
 from .sdkerror import SDKError

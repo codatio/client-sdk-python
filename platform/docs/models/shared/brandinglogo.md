@@ -1,5 +1,7 @@
 # BrandingLogo
 
+Logo branding references.
+
 
 ## Fields
 

@@ -1,6 +1,6 @@
 [project]
 name = "codat-platform"
-version = "5.0.3"
+version = "6.0.0"
 description = "Manage the building blocks of Codat, including companies, connections, and more."
 authors = [{ name = "Codat", email = "support@codat.io" }]
 readme = "README-PYPI.md"

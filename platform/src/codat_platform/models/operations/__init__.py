@@ -118,17 +118,17 @@ from codat_platform.api.webhooks import (
     DeleteWebhookConsumerRequestTypedDict,
 )
 
-# Speakeasy request-body class names (aliases to POC body classes).
+# Request-body class names (aliases to body classes).
 from codat_platform.models.create_connection_request import CreateConnectionRequest as CreateConnectionRequestBody
 from codat_platform.models.refresh_product_data_request import RefreshProductDataRequest as RefreshProductDataRequestBody
 from codat_platform.models.set_company_sync_settings_request import SetCompanySyncSettingsRequest as SetCompanySyncSettingsRequestBody
 
-# Speakeasy operations names POC defines elsewhere (response bodies, op-param enums).
+# Operations names defined elsewhere (response bodies, op-param enums).
 from codat_platform.models.operations.get_supplemental_data_configuration import PathParamDataType
 from codat_platform.models.update_profile_sync_settings_request import UpdateProfileSyncSettingsRequestBody
 from codat_platform.api.settings import UpdateProfileSyncSettingsRequestBodyTypedDict
 
-# Speakeasy TypedDict companions for aliased names.
+# TypedDict companions for aliased names.
 from codat_platform.models.create_connection_request import CreateConnectionRequestTypedDict as CreateConnectionRequestBodyTypedDict
 from codat_platform.models.refresh_product_data_request import RefreshProductDataRequestTypedDict as RefreshProductDataRequestBodyTypedDict
 from codat_platform.models.set_company_sync_settings_request import SetCompanySyncSettingsRequestTypedDict as SetCompanySyncSettingsRequestBodyTypedDict
