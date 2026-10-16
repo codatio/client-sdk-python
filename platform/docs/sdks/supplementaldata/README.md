@@ -239,7 +239,7 @@ with CodatPlatform(
 ) as cp_client:
 
     res = cp_client.supplemental_data.get_configuration(request={
-        "data_type": "invoices",
+        "data_type": PathParamDataType.INVOICES,
         "platform_key": "gbol",
     })
 

@@ -179,3 +179,13 @@ Based on:
 - [python v5.0.3] platform
 ### Releases
 - [PyPI v5.0.3] https://pypi.org/project/codat-platform/5.0.3 - platform
+
+## 2026-10-16 14:39:28
+### Changes
+Based on:
+- OpenAPI Doc 3.0.0 https://raw.githubusercontent.com/codatio/oas/main/yaml/Codat-Platform.yaml
+- codat sdk-codegen 421ee46357004185edfc4f70f3699963e19d21ce
+### Generated
+- [python v6.0.0] platform
+### Releases
+- [PyPI v6.0.0] https://pypi.org/project/codat-platform/6.0.0 - platform

@@ -48,9 +48,10 @@ class CompanyDetails(BaseModel):
     created_by_user_name: OptionalNullable[str] = Field(default=UNSET, description="Name of user that created the company in Codat.", alias="createdByUserName")
     products: Optional[List[str]] = Field(default=None, description="An array of products that are currently enabled for the company.")
     tags: Optional[Dict[str, str]] = Field(default=None, description="A collection of user-defined key-value pairs that store custom metadata against the company.")
+    owner_user_ids: Optional[List[str]] = Field(default=None, description="The IDs of the users assigned as owners of the company in the Codat Portal. Empty if the company has no owners assigned. Owners are managed in the Codat Portal and can't be set via the API.", alias="ownerUserIds")
     reference_parent_company: Optional[CompanyReference] = Field(default=None, description="The parent entity or controlling organization of this company. Null if the company has no parent.", alias="referenceParentCompany")
     reference_subsidiary_companies: Optional[List[CompanyReference]] = Field(default=None, description="A list of subsidiary companies owned or controlled by this entity. Empty if the company has no children.", alias="referenceSubsidiaryCompanies")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "redirect", "lastSync", "created", "createdByUserName", "products", "tags", "referenceParentCompany", "referenceSubsidiaryCompanies"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "redirect", "lastSync", "created", "createdByUserName", "products", "tags", "ownerUserIds", "referenceParentCompany", "referenceSubsidiaryCompanies"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -122,6 +123,7 @@ class CompanyDetails(BaseModel):
             "createdByUserName": obj.get("createdByUserName"),
             "products": obj.get("products"),
             "tags": obj.get("tags"),
+            "ownerUserIds": obj.get("ownerUserIds"),
             "referenceParentCompany": CompanyReference.from_dict(obj["referenceParentCompany"]) if obj.get("referenceParentCompany") is not None else None,
             "referenceSubsidiaryCompanies": [CompanyReference.from_dict(_item) for _item in obj["referenceSubsidiaryCompanies"]] if obj.get("referenceSubsidiaryCompanies") is not None else None
         })
@@ -142,5 +144,6 @@ class CompanyDetailsTypedDict(TypedDict):
     created_by_user_name: NotRequired[Optional[str]]
     products: NotRequired[Optional[List[str]]]
     tags: NotRequired[Optional[Dict[str, str]]]
+    owner_user_ids: NotRequired[Optional[List[str]]]
     reference_parent_company: NotRequired[Optional[CompanyReferenceTypedDict]]
     reference_subsidiary_companies: NotRequired[Optional[List[CompanyReferenceTypedDict]]]

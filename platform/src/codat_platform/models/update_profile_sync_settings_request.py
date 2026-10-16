@@ -105,8 +105,8 @@ class UpdateProfileSyncSettingsRequest(BaseModel):
 
 
 
-# Speakeasy compat alias — body class name collides with the
-# request-wrapper class name; expose under the Speakeasy-style `Body` name.
+# Compat alias — body class name collides with the
+# request-wrapper class name; expose under the `Body` name.
 UpdateProfileSyncSettingsRequestBody = UpdateProfileSyncSettingsRequest
 
 
@@ -117,5 +117,5 @@ class UpdateProfileSyncSettingsRequestTypedDict(TypedDict):
     settings: List[SyncSettingTypedDict]
     overrides_defaults: NotRequired[bool]
 
-# Speakeasy TypedDict companions for response-class aliases.
+# TypedDict companions for response-class aliases.
 UpdateProfileSyncSettingsRequestBodyTypedDict = UpdateProfileSyncSettingsRequestTypedDict
