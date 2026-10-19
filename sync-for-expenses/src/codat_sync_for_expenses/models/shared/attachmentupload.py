@@ -1,5 +1,5 @@
 # coding: utf-8
-"""Multipart attachment-upload body — Speakeasy wraps the uploaded file in this
+"""Multipart attachment-upload body — the uploaded file is wrapped in this
 shape (`attachment_upload.file` is a CodatFile)."""
 
 from __future__ import annotations

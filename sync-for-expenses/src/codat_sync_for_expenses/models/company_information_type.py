@@ -3,8 +3,4 @@ from __future__ import annotations
 from enum import Enum
 
 
-class CompanyInformationType(str, Enum):
-    """CompanyInformationType enum (lifted from inline OAS enum)."""
-    WEBSITE = 'Website'
-    SOCIAL = 'Social'
-    UNKNOWN = 'Unknown'
+from codat_sync_for_expenses.models.type import Type as CompanyInformationType

@@ -30,6 +30,7 @@ from typing import Optional, Set
 from typing_extensions import Annotated, Self, NotRequired, TypedDict
 
 from codat_sync_for_expenses.models.bank_account_type import BankAccountType
+from codat_sync_for_expenses.models._compat.createbankaccountresponse import CreateBankAccountResponseBankAccountType
 from codat_sync_for_expenses.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class CreateBankAccountResponseAllOfData(BaseModel):
 
@@ -46,7 +47,7 @@ class CreateBankAccountResponseAllOfData(BaseModel):
     """ # noqa: E501
     id: Optional[str] = Field(default=None, description="Identifier for the account, unique for the company in the accounting software.")
     account_name: OptionalNullable[str] = Field(default=UNSET, description="Name of the bank account in the accounting software.", alias="accountName")
-    account_type: Optional[BankAccountType] = Field(default=None, description="The type of transactions and balances on the account.   For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.   For Debit accounts, positive balances are assets, and positive transactions **increase** assets.", alias="accountType")
+    account_type: Optional[CreateBankAccountResponseBankAccountType] = Field(default=None, description="The type of transactions and balances on the account.   For Credit accounts, positive balances are liabilities, and positive transactions **reduce** liabilities.   For Debit accounts, positive balances are assets, and positive transactions **increase** assets.", alias="accountType")
     nominal_code: OptionalNullable[str] = Field(default=UNSET, description="Code used to identify each nominal account for a business.", alias="nominalCode")
     sort_code: OptionalNullable[str] = Field(default=UNSET, description="Sort code for the bank account.  Xero integrations The sort code is only displayed when the currency = GBP and the sort code and account number sum to 14 digits. For non-GBP accounts, this field is not populated.", alias="sortCode")
     account_number: OptionalNullable[str] = Field(default=UNSET, description="Account number for the bank account.  Xero integrations Only a UK account number shows for bank accounts with GBP currency and a combined total of sort code and account number that equals 14 digits, For non-GBP accounts, the full bank account number is populated.  FreeAgent integrations For Credit accounts, only the last four digits are required. For other types, the field is optional.", alias="accountNumber")
@@ -158,7 +159,7 @@ class CreateBankAccountResponseAllOfDataTypedDict(TypedDict):
     """TypedDict variant of CreateBankAccountResponseAllOfData, for dict-literal request/response inputs."""
     id: NotRequired[Optional[str]]
     account_name: NotRequired[Optional[str]]
-    account_type: NotRequired[Optional[BankAccountType]]
+    account_type: NotRequired[Optional[CreateBankAccountResponseBankAccountType]]
     nominal_code: NotRequired[Optional[str]]
     sort_code: NotRequired[Optional[str]]
     account_number: NotRequired[Optional[str]]

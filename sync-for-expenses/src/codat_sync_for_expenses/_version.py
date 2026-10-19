@@ -8,13 +8,14 @@ from __future__ import annotations
 import importlib.metadata
 
 __title__: str = "codat-sync-for-expenses"
-__version__: str = "0.0.0"
+__version__: str = "9.0.0"
 __openapi_doc_version__: str = "prealpha"
-__gen_version__: str = "codat-sdk-codegen-poc-0.1.0"
-__user_agent__: str = "codat-sdk/python 0.0.0 codat-sdk-codegen-poc-0.1.0 prealpha codat-sync-for-expenses"
+__gen_version__: str = "1.0.0"
 
 try:
     if __package__ is not None:
         __version__ = importlib.metadata.version(__package__)
 except importlib.metadata.PackageNotFoundError:
     pass
+
+__user_agent__: str = f"codat-sdk/python {__version__} {__gen_version__} {__openapi_doc_version__} {__title__}"

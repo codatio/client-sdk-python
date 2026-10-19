@@ -135,17 +135,17 @@ from codat_sync_for_expenses.api.transfers import (
     CreateTransferTransactionRequestTypedDict,
 )
 
-# Speakeasy request-body class names (aliases to POC body classes).
+# Request-body class names (aliases to body classes).
 from codat_sync_for_expenses.models.shared.adjustmenttransactionrequest import AdjustmentTransactionRequest as CreateAdjustmentTransactionAdjustmentTransactionRequest
 from codat_sync_for_expenses.models.create_connection_request import CreateConnectionRequest as CreateConnectionRequestBody
 from codat_sync_for_expenses.models.shared.expensetransaction import ExpenseTransaction as CreateExpenseTransactionExpenseTransaction
 from codat_sync_for_expenses.models.shared.reimbursableexpensetransaction import ReimbursableExpenseTransaction as CreateReimbursableExpenseTransactionReimbursableExpenseTransaction
 from codat_sync_for_expenses.models.update_connection import UpdateConnection as UnlinkConnectionUpdateConnection
 
-# Speakeasy operations names POC defines elsewhere (response bodies, op-param enums).
+# Operations names defined elsewhere (response bodies, op-param enums).
 from codat_sync_for_expenses.models.data_statuses import GetDataStatusDataStatuses
 
-# Speakeasy TypedDict companions for aliased names.
+# TypedDict companions for aliased names.
 from codat_sync_for_expenses.models.shared.adjustmenttransactionrequest import AdjustmentTransactionRequestTypedDict as CreateAdjustmentTransactionAdjustmentTransactionRequestTypedDict
 from codat_sync_for_expenses.models.create_connection_request import CreateConnectionRequestTypedDict as CreateConnectionRequestBodyTypedDict
 from codat_sync_for_expenses.models.shared.expensetransaction import ExpenseTransactionTypedDict as CreateExpenseTransactionExpenseTransactionTypedDict

@@ -3,8 +3,4 @@ from __future__ import annotations
 from enum import Enum
 
 
-class CreateBankAccountResponseBankAccountType(str, Enum):
-    """Speakeasy-name compat for BankAccountType (matched by value set)."""
-    UNKNOWN = 'Unknown'
-    CREDIT = 'Credit'
-    DEBIT = 'Debit'
+from codat_sync_for_expenses.models._compat.createbankaccountresponse import CreateBankAccountResponseBankAccountType

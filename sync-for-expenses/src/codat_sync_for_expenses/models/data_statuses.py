@@ -307,7 +307,7 @@ class DataStatuses(BaseModel):
 
 
 
-# Speakeasy response-class alias — type-identical so isinstance() checks pass.
+# Response-class alias — type-identical so isinstance() checks pass.
 GetDataStatusDataStatuses = DataStatuses
 
 
@@ -358,5 +358,5 @@ class DataStatusesTypedDict(TypedDict):
     commerce_tax_components: NotRequired[Optional[DataStatusTypedDict]]
     commerce_transactions: NotRequired[Optional[DataStatusTypedDict]]
 
-# Speakeasy TypedDict companions for response-class aliases.
+# TypedDict companions for response-class aliases.
 GetDataStatusDataStatusesTypedDict = DataStatusesTypedDict
