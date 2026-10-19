@@ -118,7 +118,7 @@ from ._version import (
 VERSION: str = __version__
 OPENAPI_DOC_VERSION: str = __openapi_doc_version__
 USER_AGENT: str = __user_agent__
-SPEAKEASY_GENERATOR_VERSION: str = __gen_version__
+CODAT_GENERATOR_VERSION: str = __gen_version__
 
 from .utils.retries import (
     RetryConfig as RetryConfig,

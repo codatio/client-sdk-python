@@ -1,4 +1,4 @@
-"""Sentinel / type-alias helpers — matches Speakeasy SDK surface."""
+"""Sentinel / type-alias helpers."""
 
 from __future__ import annotations
 
@@ -7,8 +7,8 @@ from typing_extensions import Literal, TypeAlias, TypeAliasType
 
 from pydantic import BaseModel as BaseModel, ConfigDict, model_serializer
 
-# Speakeasy exposes UnrecognizedInt/UnrecognizedStr as the fallback types for open
-# (extensible) enums. POC keeps the plain scalar, so these alias to int/str — a
+# Earlier SDK versions exposed UnrecognizedInt/UnrecognizedStr as the fallback types for open
+# (extensible) enums. This SDK keeps the plain scalar, so these alias to int/str — a
 # consumer annotating with them type-checks and runs identically.
 UnrecognizedInt: TypeAlias = int
 UnrecognizedStr: TypeAlias = str

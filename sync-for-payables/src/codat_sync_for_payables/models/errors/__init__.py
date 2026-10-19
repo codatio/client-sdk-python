@@ -1,4 +1,4 @@
-"""codat_sync_for_payables.models.errors — Speakeasy-shape exception hierarchy."""
+"""codat_sync_for_payables.models.errors — exception hierarchy."""
 
 from .codatsyncpayableserror import CodatSyncPayablesError
 from .sdkerror import SDKError
