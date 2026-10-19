@@ -4,7 +4,7 @@ from enum import Enum
 
 
 class CompanyInformationSchemasType(str, Enum):
-    """Speakeasy-name compat for CompanyInformationType (matched by value set)."""
+    """Compat name for CompanyInformationType (matched by value set)."""
     WEBSITE = 'Website'
     SOCIAL = 'Social'
     UNKNOWN = 'Unknown'

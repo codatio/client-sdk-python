@@ -5,14 +5,16 @@
 ```python
 from codat_sync_for_expenses.models.shared import CompanyInformationType
 
-value = CompanyInformationType.WEBSITE
+value = CompanyInformationType.FAX
 ```
 
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `WEBSITE` | Website   |
-| `SOCIAL`  | Social    |
-| `UNKNOWN` | Unknown   |
+| Name       | Value      |
+| ---------- | ---------- |
+| `FAX`      | Fax        |
+| `LANDLINE` | Landline   |
+| `MOBILE`   | Mobile     |
+| `PRIMARY`  | Primary    |
+| `UNKNOWN`  | Unknown    |
