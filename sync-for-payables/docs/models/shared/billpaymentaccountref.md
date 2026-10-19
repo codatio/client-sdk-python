@@ -1,5 +1,7 @@
 # BillPaymentAccountRef
 
+Reference to the bank account / credit card which you are using to pay the bill.
+
 
 ## Fields
 

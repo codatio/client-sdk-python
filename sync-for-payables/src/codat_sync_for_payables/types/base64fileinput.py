@@ -1,4 +1,4 @@
-"""Base64 file-input helpers — matches Speakeasy SDK surface."""
+"""Base64 file-input helpers."""
 
 from __future__ import annotations
 

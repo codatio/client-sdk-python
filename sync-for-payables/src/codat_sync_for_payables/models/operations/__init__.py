@@ -65,10 +65,10 @@ from codat_sync_for_payables.api.suppliers import (
     UpdateSupplierRequestTypedDict,
 )
 
-# Speakeasy request-body class names (aliases to POC body classes).
+# Request-body class names (aliases to body classes).
 from codat_sync_for_payables.models.create_connection_request import CreateConnectionRequest as CreateConnectionRequestBody
 from codat_sync_for_payables.models.update_connection import UpdateConnection as UnlinkConnectionUpdateConnection
 
-# Speakeasy TypedDict companions for aliased names.
+# TypedDict companions for aliased names.
 from codat_sync_for_payables.models.create_connection_request import CreateConnectionRequestTypedDict as CreateConnectionRequestBodyTypedDict
 from codat_sync_for_payables.models.update_connection import UpdateConnectionTypedDict as UnlinkConnectionUpdateConnectionTypedDict

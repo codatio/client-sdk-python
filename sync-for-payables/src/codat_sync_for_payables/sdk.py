@@ -96,7 +96,7 @@ The synchronous Bill Pay solution is an API and a set of supporting tools design
         if async_client is not None:
             import warnings as _w
             _w.warn(
-                "the async_client kwarg is accepted for Speakeasy-SDK compatibility "
+                "the async_client kwarg is accepted for compatibility with earlier SDK versions "
                 "but not used: the bare async methods (e.g. .companies.list_async(...)) "
                 "run the sync stack in a worker thread, where an httpx.AsyncClient "
                 "cannot be driven safely. Pass client= (an httpx.Client) instead — it "
