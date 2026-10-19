@@ -184,9 +184,9 @@ class SourceAccounts:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -206,8 +206,7 @@ class SourceAccounts:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -399,9 +398,9 @@ class SourceAccounts:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -434,8 +433,7 @@ class SourceAccounts:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -625,9 +623,9 @@ class SourceAccounts:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -647,8 +645,7 @@ class SourceAccounts:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:

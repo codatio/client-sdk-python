@@ -12,7 +12,7 @@ from typing import Any, Iterator, Mapping, Optional
 
 class CaseInsensitiveHeaders(_AbcMapping):
     """Read-only header mapping with case-insensitive lookup, matching the
-    httpx.Headers a Speakeasy consumer reads. urllib3 hands the POC original-case
+    httpx.Headers earlier SDK versions exposed. urllib3 hands the POC original-case
     keys, so `err.headers["content-type"]` would miss a `Content-Type` header on a
     plain dict; here keys are stored lower-cased and lookups are lower-cased too, so
     exact-, lower- and mixed-case lookups all match and iteration yields lower-case
@@ -52,7 +52,7 @@ class CodatLendingError(Exception):
         status_code: Optional[int] = None,
         headers: Optional[Mapping[str, str]] = None,
     ) -> None:
-        # `raw_response` is the 2nd positional arg to match Speakeasy
+        # `raw_response` is the 2nd positional arg to match earlier SDK versions
         # (`CodatLendingError(message, raw_response, body)`). status_code / body /
         # headers are derived from raw_response when not passed explicitly.
         if status_code is None:

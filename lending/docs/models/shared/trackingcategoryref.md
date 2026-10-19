@@ -1,5 +1,7 @@
 # TrackingCategoryRef
 
+References a category against which the item is tracked.
+
 
 ## Fields
 

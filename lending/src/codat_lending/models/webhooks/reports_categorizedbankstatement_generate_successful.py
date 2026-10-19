@@ -1,4 +1,4 @@
-"""Webhook payload models Speakeasy names. Synthesized to match Speakeasy's surface."""
+"""Webhook payload models, one public type per webhook."""
 from __future__ import annotations
 from typing import Any, Optional
 from pydantic import BaseModel, ConfigDict, Field, model_serializer

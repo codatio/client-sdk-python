@@ -41,16 +41,17 @@ from codat_lending.types import UNSET, OptionalNullable
 from codat_lending.utils.retries import RetryConfig, execute_with_retries
 
 
+from codat_lending.models._compat.data_integrity_data_type import DataIntegrityDataType
 class GetDataIntegrityStatusRequestTypedDict(TypedDict):
     """TypedDict variant of GetDataIntegrityStatusRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    data_type: Annotated[str, Field(description="A key for a Codat data type.")]
+    data_type: Annotated[DataIntegrityDataType, Field(description="A key for a Codat data type.")]
 
 
 class GetDataIntegrityStatusRequest(BaseModel):
     """Request envelope for get_data_integrity_status."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    data_type: Annotated[str, Field(description="A key for a Codat data type.")]
+    data_type: Annotated[DataIntegrityDataType, Field(description="A key for a Codat data type.")]
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
@@ -61,14 +62,14 @@ class GetDataIntegrityStatusRequest(BaseModel):
 class GetDataIntegritySummariesRequestTypedDict(TypedDict):
     """TypedDict variant of GetDataIntegritySummariesRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    data_type: Annotated[str, Field(description="A key for a Codat data type.")]
+    data_type: Annotated[DataIntegrityDataType, Field(description="A key for a Codat data type.")]
     query: NotRequired[Annotated[Optional[str], Field(description="Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).")]]
 
 
 class GetDataIntegritySummariesRequest(BaseModel):
     """Request envelope for get_data_integrity_summaries."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    data_type: Annotated[str, Field(description="A key for a Codat data type.")]
+    data_type: Annotated[DataIntegrityDataType, Field(description="A key for a Codat data type.")]
     query: Annotated[Optional[str], Field(description="Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).")] = None
 
     @model_serializer(mode="wrap")
@@ -80,7 +81,7 @@ class GetDataIntegritySummariesRequest(BaseModel):
 class ListDataIntegrityDetailsRequestTypedDict(TypedDict):
     """TypedDict variant of ListDataIntegrityDetailsRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    data_type: Annotated[str, Field(description="A key for a Codat data type.")]
+    data_type: Annotated[DataIntegrityDataType, Field(description="A key for a Codat data type.")]
     page: NotRequired[Annotated[Optional[int], Field(description="Page number. [Read more](https://docs.codat.io/using-the-api/paging).")]]
     page_size: NotRequired[Annotated[Optional[int], Field(description="Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging).")]]
     query: NotRequired[Annotated[Optional[str], Field(description="Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).")]]
@@ -90,7 +91,7 @@ class ListDataIntegrityDetailsRequestTypedDict(TypedDict):
 class ListDataIntegrityDetailsRequest(BaseModel):
     """Request envelope for list_data_integrity_details."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    data_type: Annotated[str, Field(description="A key for a Codat data type.")]
+    data_type: Annotated[DataIntegrityDataType, Field(description="A key for a Codat data type.")]
     page: Annotated[Optional[int], Field(description="Page number. [Read more](https://docs.codat.io/using-the-api/paging).")] = 1
     page_size: Annotated[Optional[int], Field(description="Number of records to return in a page. [Read more](https://docs.codat.io/using-the-api/paging).")] = 100
     query: Annotated[Optional[str], Field(description="Codat query string. [Read more](https://docs.codat.io/using-the-api/querying).")] = None
@@ -177,9 +178,9 @@ class DataIntegrity:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -199,8 +200,7 @@ class DataIntegrity:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -377,9 +377,9 @@ class DataIntegrity:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -399,8 +399,7 @@ class DataIntegrity:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -585,9 +584,9 @@ class DataIntegrity:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -607,8 +606,7 @@ class DataIntegrity:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:

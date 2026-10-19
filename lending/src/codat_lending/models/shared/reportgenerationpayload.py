@@ -1,4 +1,4 @@
-"""Report generation payload. Synthesized to match Speakeasy's shared surface."""
+"""Report generation payload. Synthesized as a shared model."""
 from __future__ import annotations
 from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field, model_serializer

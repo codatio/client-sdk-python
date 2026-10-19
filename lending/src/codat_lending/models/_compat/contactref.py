@@ -4,6 +4,6 @@ from enum import Enum
 
 
 class ContactRefDataType(str, Enum):
-    """Speakeasy-name compat for AccountingJournalEntryDataType (matched by value set)."""
+    """Compat name for AccountingJournalEntryDataType (matched by value set)."""
     CUSTOMERS = 'customers'
     SUPPLIERS = 'suppliers'

@@ -39,6 +39,7 @@ from codat_lending.types import UNSET, OptionalNullable
 from codat_lending.utils.retries import RetryConfig, execute_with_retries
 
 
+from codat_lending.models._compat.period_unit import PeriodUnit
 class GetCommerceCustomerRetentionMetricsRequestTypedDict(TypedDict):
     """TypedDict variant of GetCommerceCustomerRetentionMetricsRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
@@ -46,7 +47,7 @@ class GetCommerceCustomerRetentionMetricsRequestTypedDict(TypedDict):
     report_date: Annotated[str, Field(description="The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month.")]
     period_length: Annotated[int, Field(description="The number of months per period. E.g. 2 = 2 months per period.")]
     number_of_periods: Annotated[int, Field(description="The number of periods to return. There will be no pagination as a query parameter.")]
-    period_unit: Annotated[str, Field(description="The period unit of time returned.")]
+    period_unit: Annotated[PeriodUnit, Field(description="The period unit of time returned.")]
     include_display_names: NotRequired[Annotated[Optional[bool], Field(description="Shows the dimensionDisplayName and itemDisplayName in measures to make the report data human-readable.")]]
 
 
@@ -57,7 +58,7 @@ class GetCommerceCustomerRetentionMetricsRequest(BaseModel):
     report_date: Annotated[str, Field(description="The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month.")]
     period_length: Annotated[int, Field(description="The number of months per period. E.g. 2 = 2 months per period.")]
     number_of_periods: Annotated[int, Field(description="The number of periods to return. There will be no pagination as a query parameter.")]
-    period_unit: Annotated[str, Field(description="The period unit of time returned.")]
+    period_unit: Annotated[PeriodUnit, Field(description="The period unit of time returned.")]
     include_display_names: Annotated[Optional[bool], Field(description="Shows the dimensionDisplayName and itemDisplayName in measures to make the report data human-readable.")] = None
 
     @model_serializer(mode="wrap")
@@ -73,7 +74,7 @@ class GetCommerceLifetimeValueMetricsRequestTypedDict(TypedDict):
     report_date: Annotated[str, Field(description="The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month.")]
     period_length: Annotated[int, Field(description="The number of months per period. E.g. 2 = 2 months per period.")]
     number_of_periods: Annotated[int, Field(description="The number of periods to return. There will be no pagination as a query parameter.")]
-    period_unit: Annotated[str, Field(description="The period unit of time returned.")]
+    period_unit: Annotated[PeriodUnit, Field(description="The period unit of time returned.")]
     include_display_names: NotRequired[Annotated[Optional[bool], Field(description="Shows the dimensionDisplayName and itemDisplayName in measures to make the report data human-readable.")]]
 
 
@@ -84,7 +85,7 @@ class GetCommerceLifetimeValueMetricsRequest(BaseModel):
     report_date: Annotated[str, Field(description="The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month.")]
     period_length: Annotated[int, Field(description="The number of months per period. E.g. 2 = 2 months per period.")]
     number_of_periods: Annotated[int, Field(description="The number of periods to return. There will be no pagination as a query parameter.")]
-    period_unit: Annotated[str, Field(description="The period unit of time returned.")]
+    period_unit: Annotated[PeriodUnit, Field(description="The period unit of time returned.")]
     include_display_names: Annotated[Optional[bool], Field(description="Shows the dimensionDisplayName and itemDisplayName in measures to make the report data human-readable.")] = None
 
     @model_serializer(mode="wrap")
@@ -100,7 +101,7 @@ class GetCommerceRevenueMetricsRequestTypedDict(TypedDict):
     report_date: Annotated[str, Field(description="The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month.")]
     period_length: Annotated[int, Field(description="The number of months per period. E.g. 2 = 2 months per period.")]
     number_of_periods: Annotated[int, Field(description="The number of periods to return. There will be no pagination as a query parameter.")]
-    period_unit: Annotated[str, Field(description="The period unit of time returned.")]
+    period_unit: Annotated[PeriodUnit, Field(description="The period unit of time returned.")]
     include_display_names: NotRequired[Annotated[Optional[bool], Field(description="Shows the dimensionDisplayName and itemDisplayName in measures to make the report data human-readable.")]]
 
 
@@ -111,7 +112,7 @@ class GetCommerceRevenueMetricsRequest(BaseModel):
     report_date: Annotated[str, Field(description="The date in which the report is created up to. Users must specify a specific date, however the response will be provided for the full month.")]
     period_length: Annotated[int, Field(description="The number of months per period. E.g. 2 = 2 months per period.")]
     number_of_periods: Annotated[int, Field(description="The number of periods to return. There will be no pagination as a query parameter.")]
-    period_unit: Annotated[str, Field(description="The period unit of time returned.")]
+    period_unit: Annotated[PeriodUnit, Field(description="The period unit of time returned.")]
     include_display_names: Annotated[Optional[bool], Field(description="Shows the dimensionDisplayName and itemDisplayName in measures to make the report data human-readable.")] = None
 
     @model_serializer(mode="wrap")
@@ -201,9 +202,9 @@ class Metrics:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -223,8 +224,7 @@ class Metrics:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -430,9 +430,9 @@ class Metrics:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -452,8 +452,7 @@ class Metrics:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -659,9 +658,9 @@ class Metrics:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -681,8 +680,7 @@ class Metrics:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:

@@ -4,7 +4,7 @@ from enum import Enum
 
 
 class AccountTransactionLineRecordRefDataType(str, Enum):
-    """Speakeasy-name compat for JournalEntryRecordRefDataType (matched by value set)."""
+    """Compat name for JournalEntryRecordRefDataType (matched by value set)."""
     BANK_TRANSACTIONS = 'bankTransactions'
     BILL_CREDIT_NOTES = 'billCreditNotes'
     BILL_PAYMENTS = 'billPayments'

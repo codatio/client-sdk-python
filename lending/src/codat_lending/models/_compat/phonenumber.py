@@ -4,7 +4,7 @@ from enum import Enum
 
 
 class PhoneNumberType(str, Enum):
-    """Speakeasy-name compat for Type (matched by value set)."""
+    """Compat name for Type (matched by value set)."""
     PRIMARY = 'Primary'
     LANDLINE = 'Landline'
     MOBILE = 'Mobile'

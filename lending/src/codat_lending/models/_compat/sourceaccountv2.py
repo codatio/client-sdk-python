@@ -4,7 +4,7 @@ from enum import Enum
 
 
 class SourceAccountV2AccountType(str, Enum):
-    """Speakeasy-name compat for AccountType (matched by value set)."""
+    """Compat name for AccountType (matched by value set)."""
     CHECKING = 'checking'
     SAVINGS = 'savings'
     LOAN = 'loan'

@@ -1,4 +1,4 @@
-"""File to be uploaded as an attachment. Synthesized to match Speakeasy's shared surface."""
+"""File to be uploaded as an attachment. Synthesized as a shared model."""
 from __future__ import annotations
 from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field, model_serializer
