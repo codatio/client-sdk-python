@@ -1,5 +1,7 @@
 # ReportInfo
 
+Report additional information, which is specific to Lending reports.
+
 
 ## Fields
 

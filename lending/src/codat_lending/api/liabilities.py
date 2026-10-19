@@ -39,6 +39,9 @@ from codat_lending.types import UNSET, OptionalNullable
 from codat_lending.utils.retries import RetryConfig, execute_with_retries
 
 
+from codat_lending.models._compat.get_loan_summary import GetLoanSummaryQueryParamSourceType
+from codat_lending.models._compat.list_loan_transactions import ListLoanTransactionsQueryParamSourceType
+from codat_lending.models._compat.generate_loan_transactions import QueryParamSourceType
 class GenerateLoanSummaryRequestTypedDict(TypedDict):
     """TypedDict variant of GenerateLoanSummaryRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
@@ -59,13 +62,13 @@ class GenerateLoanSummaryRequest(BaseModel):
 class GenerateLoanTransactionsRequestTypedDict(TypedDict):
     """TypedDict variant of GenerateLoanTransactionsRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    source_type: Annotated[str, Field(description="Data source type.")]
+    source_type: Annotated[QueryParamSourceType, Field(description="Data source type.")]
 
 
 class GenerateLoanTransactionsRequest(BaseModel):
     """Request envelope for generate_loan_transactions."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    source_type: Annotated[str, Field(description="Data source type.")]
+    source_type: Annotated[QueryParamSourceType, Field(description="Data source type.")]
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
@@ -76,13 +79,13 @@ class GenerateLoanTransactionsRequest(BaseModel):
 class GetLoanSummaryRequestTypedDict(TypedDict):
     """TypedDict variant of GetLoanSummaryRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    source_type: Annotated[str, Field(description="Data source type.")]
+    source_type: Annotated[GetLoanSummaryQueryParamSourceType, Field(description="Data source type.")]
 
 
 class GetLoanSummaryRequest(BaseModel):
     """Request envelope for get_loan_summary."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    source_type: Annotated[str, Field(description="Data source type.")]
+    source_type: Annotated[GetLoanSummaryQueryParamSourceType, Field(description="Data source type.")]
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
@@ -93,13 +96,13 @@ class GetLoanSummaryRequest(BaseModel):
 class ListLoanTransactionsRequestTypedDict(TypedDict):
     """TypedDict variant of ListLoanTransactionsRequest, for dict-literal request inputs."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    source_type: Annotated[str, Field(description="Data source type.")]
+    source_type: Annotated[ListLoanTransactionsQueryParamSourceType, Field(description="Data source type.")]
 
 
 class ListLoanTransactionsRequest(BaseModel):
     """Request envelope for list_loan_transactions."""
     company_id: Annotated[str, Field(description="Unique identifier for a company.")]
-    source_type: Annotated[str, Field(description="Data source type.")]
+    source_type: Annotated[ListLoanTransactionsQueryParamSourceType, Field(description="Data source type.")]
 
     @model_serializer(mode="wrap")
     def _serialize_drop_none(self, handler):
@@ -182,9 +185,9 @@ class Liabilities:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -204,8 +207,7 @@ class Liabilities:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -383,9 +385,9 @@ class Liabilities:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -405,8 +407,7 @@ class Liabilities:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -583,9 +584,9 @@ class Liabilities:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -605,8 +606,7 @@ class Liabilities:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:
@@ -784,9 +784,9 @@ class Liabilities:
                     response_data=response_data,
                     response_types_map=_response_types_map,
                 )
-                # Speakeasy raises SDKError for any status the operation does not document,
-                # including an unexpected 2xx; OAG's response_deserialize would instead return
-                # None. Match Speakeasy: if neither the exact status nor its NXX wildcard is
+                # Raise SDKError for any status the operation does not document, including
+                # an unexpected 2xx; OAG's response_deserialize would instead return
+                # None. If neither the exact status nor its NXX wildcard is
                 # documented, raise. A documented no-content status is a key mapping to None,
                 # so it stays and returns None.
                 _ok_status = getattr(response_data, "status", None)
@@ -806,8 +806,7 @@ class Liabilities:
                 _status = getattr(_e, "status", 0) or 0
                 _headers = dict(getattr(_e, "headers", None) or {})
                 # Raise the typed Codat ErrorMessage only for the statuses this operation
-                # documents as ErrorMessage, matching Speakeasy (which raises SDKError for any
-                # undocumented status). Consumers can then do
+                # documents as ErrorMessage; any undocumented status raises SDKError. Consumers can then do
                 # `except errors.ErrorMessage as e: e.data.correlation_id`.
                 if _response_types_map.get(str(_status)) == "ErrorMessage" and _body:
                     try:

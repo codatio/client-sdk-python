@@ -1,5 +1,7 @@
 # SupplierRef
 
+Reference to the supplier the record relates to.
+
 
 ## Fields
 

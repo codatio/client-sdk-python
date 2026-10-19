@@ -3,8 +3,4 @@ from __future__ import annotations
 from enum import Enum
 
 
-class QueryParamSourceType(str, Enum):
-    """Operation-parameter enum (lifted from inline OAS enum on generate-loan-transactions)."""
-    BANKING = 'banking'
-    COMMERCE = 'commerce'
-    ACCOUNTING = 'accounting'
+from codat_lending.models._compat.generate_loan_transactions import QueryParamSourceType

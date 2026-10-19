@@ -4,6 +4,6 @@ from enum import Enum
 
 
 class BillLineItemDataType(str, Enum):
-    """Speakeasy-name compat for RecordLineReferenceDataType (matched by value set)."""
+    """Compat name for RecordLineReferenceDataType (matched by value set)."""
     PURCHASE_ORDERS = 'purchaseOrders'
     BILLS = 'bills'

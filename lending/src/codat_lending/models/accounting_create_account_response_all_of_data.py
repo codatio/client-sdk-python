@@ -29,6 +29,7 @@ from codat_lending.models.valid_data_type_links import ValidDataTypeLinks, Valid
 from typing import Optional, Set
 from typing_extensions import Annotated, Self, NotRequired, TypedDict
 
+from codat_lending.models.shared.accounttype import AccountType
 from codat_lending.types import OptionalNullable, UNSET, UNSET_SENTINEL
 class AccountingCreateAccountResponseAllOfData(BaseModel):
 
@@ -51,7 +52,7 @@ class AccountingCreateAccountResponseAllOfData(BaseModel):
     fully_qualified_name: OptionalNullable[str] = Field(default=UNSET, description="Full name of the account, for example: - `Cash On Hand` - `Rents Held In Trust` - `Fixed Asset`", alias="fullyQualifiedName")
     currency: Optional[str] = Field(default=None, description="The currency data type in Codat is the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code, e.g. _GBP_.  ## Unknown currencies  In line with the ISO 4217 specification, the code _XXX_ is used when the data source does not return a currency for a transaction.   There are only a very small number of edge cases where this currency code is returned by the Codat system.")
     current_balance: Annotated[OptionalNullable[Decimal], BeforeValidator(validate_decimal), PlainSerializer(serialize_decimal(False))] = Field(default=UNSET, description="Current balance in the account.", alias="currentBalance")
-    type: Optional[str] = Field(default=None, description="The type of bank account e.g. Credit.")
+    type: Optional[AccountType] = Field(default=None, description="The type of bank account e.g. Credit.")
     status: Optional[AccountStatus] = None
     is_bank_account: Optional[bool] = Field(default=None, description="Confirms whether the account is a bank account or not.", alias="isBankAccount")
     valid_datatype_links: OptionalNullable[List[ValidDataTypeLinks]] = Field(default=UNSET, description="The validDatatypeLinks can be used to determine whether an account can be correctly mapped to another object; for example, accounts with a `type` of `income` might only support being used on an Invoice and Direct Income. For more information, see [Valid Data Type Links](/lending-api#/schemas/ValidDataTypeLinks).", alias="validDatatypeLinks")
@@ -158,7 +159,7 @@ class AccountingCreateAccountResponseAllOfDataTypedDict(TypedDict):
     fully_qualified_name: NotRequired[Optional[str]]
     currency: NotRequired[Optional[str]]
     current_balance: NotRequired[Optional[Decimal]]
-    type: NotRequired[Optional[str]]
+    type: NotRequired[Optional[AccountType]]
     status: NotRequired[Optional[AccountStatus]]
     is_bank_account: NotRequired[Optional[bool]]
     valid_datatype_links: NotRequired[Optional[List[ValidDataTypeLinksTypedDict]]]

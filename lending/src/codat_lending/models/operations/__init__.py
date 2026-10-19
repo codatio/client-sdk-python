@@ -431,11 +431,11 @@ from codat_lending.api.transfers import (
     GetCreateTransfersModelRequestTypedDict,
 )
 
-# Speakeasy request-body class names (aliases to POC body classes).
+# Request-body class names (aliases to body classes).
 from codat_lending.models.create_connection_request import CreateConnectionRequest as CreateConnectionRequestBody
 from codat_lending.models.update_connection import UpdateConnection as UnlinkConnectionUpdateConnection
 
-# Speakeasy operations names POC defines elsewhere (response bodies, op-param enums).
+# Operations names defined elsewhere (response bodies, op-param enums).
 from codat_lending.models.data_statuses import GetDataStatusDataStatuses
 from codat_lending.models.operations.get_loan_summary import GetLoanSummaryQueryParamSourceType
 from codat_lending.models.operations.list_loan_transactions import ListLoanTransactionsQueryParamSourceType
@@ -448,7 +448,7 @@ from codat_lending.models.operations.create_source_account_response_body_typed_d
 from codat_lending.models.operations.upload_bank_statement_data_request_body import UploadBankStatementDataRequestBody
 from codat_lending.models.operations.upload_bank_statement_data_request_body_typed_dict import UploadBankStatementDataRequestBodyTypedDict
 
-# Speakeasy TypedDict companions for aliased names.
+# TypedDict companions for aliased names.
 from codat_lending.models.create_connection_request import CreateConnectionRequestTypedDict as CreateConnectionRequestBodyTypedDict
 from codat_lending.models.update_connection import UpdateConnectionTypedDict as UnlinkConnectionUpdateConnectionTypedDict
 from codat_lending.models.data_statuses import GetDataStatusDataStatusesTypedDict

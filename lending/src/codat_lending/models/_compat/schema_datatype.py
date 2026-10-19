@@ -4,7 +4,7 @@ from enum import Enum
 
 
 class SchemaDataType(str, Enum):
-    """Speakeasy-name compat for DataTypes (matched by value set)."""
+    """Compat name for DataTypes (matched by value set)."""
     ACCOUNT_TRANSACTIONS = 'accountTransactions'
     BALANCE_SHEET = 'balanceSheet'
     BANK_ACCOUNTS = 'bankAccounts'

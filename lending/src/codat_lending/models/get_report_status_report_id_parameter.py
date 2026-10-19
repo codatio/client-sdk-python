@@ -25,8 +25,8 @@ from typing_extensions import Literal, Self, NotRequired, TypedDict
 GETREPORTSTATUSREPORTIDPARAMETER_ONE_OF_SCHEMAS = ["str"]
 
 # Collapsed by postprocess: degenerate oneOf branch — OAG emitted a oneOf wrapper for what the OAS
-# specifies as a single `str` schema. Speakeasy types it as the
-# bare underlying type. See collapse_identical_oneof_wrappers in
+# specifies as a single `str` schema. Earlier SDK versions typed it as
+# the bare underlying type. See collapse_identical_oneof_wrappers in
 # pipeline/postprocess_generated.py.
 GetReportStatusReportIdParameter = str
 

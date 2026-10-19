@@ -1,6 +1,6 @@
 # coding: utf-8
-"""Speakeasy-compat multipart file helper. Not an OAS schema — Speakeasy emits this
-to wrap multipart/form-data file uploads (see AttachmentUpload)."""
+"""Multipart file helper. Not an OAS schema — wraps multipart/form-data file
+uploads (see AttachmentUpload)."""
 
 from __future__ import annotations
 

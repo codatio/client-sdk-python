@@ -21,7 +21,7 @@ class SDKError(CodatLendingError):
         status_code: Optional[int] = None,
         headers: Optional[Mapping[str, str]] = None,
     ) -> None:
-        # `raw_response` is the 2nd positional arg to match Speakeasy
+        # `raw_response` is the 2nd positional arg to match earlier SDK versions
         # (`SDKError(message, raw_response, body)`); existing consumer code that
         # re-raises via `SDKError(msg, response)` then stores the response in
         # `raw_response`, not `status_code`. status_code / body are derived from
