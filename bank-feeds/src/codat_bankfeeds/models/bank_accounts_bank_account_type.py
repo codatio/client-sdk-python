@@ -3,8 +3,4 @@ from __future__ import annotations
 from enum import Enum
 
 
-class BankAccountsBankAccountType(str, Enum):
-    """BankAccountsBankAccountType enum (lifted from inline OAS enum)."""
-    UNKNOWN = 'Unknown'
-    CREDIT = 'Credit'
-    DEBIT = 'Debit'
+from codat_bankfeeds.models.bank_account_create_response_bank_account_type import BankAccountCreateResponseBankAccountType as BankAccountsBankAccountType

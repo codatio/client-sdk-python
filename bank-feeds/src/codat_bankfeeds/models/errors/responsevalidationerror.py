@@ -20,7 +20,7 @@ class ResponseValidationError(CodatBankFeedsError):
         headers: Optional[Mapping[str, str]] = None,
     ) -> None:
         # `raw_response` is the 2nd positional arg, `cause` the 3rd, to match
-        # Speakeasy (`ResponseValidationError(message, raw_response, cause, body)`).
+        # earlier SDK versions (`ResponseValidationError(message, raw_response, cause, body)`).
         full_message = f"{message}: {cause}"
         super().__init__(
             full_message,

@@ -1,9 +1,6 @@
 **/__pycache__/
-**/.speakeasy/temp/
-**/.speakeasy/logs/
 .env
 .env.local
-.speakeasy/reports
 .venv/
 pyrightconfig.json
 README-PYPI.md

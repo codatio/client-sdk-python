@@ -1,4 +1,4 @@
-"""Decimal validators and serializers matching Speakeasy's money-field handling."""
+"""Decimal validators and serializers for money fields."""
 from __future__ import annotations
 from decimal import Decimal
 from codat_bankfeeds.types import Unset
