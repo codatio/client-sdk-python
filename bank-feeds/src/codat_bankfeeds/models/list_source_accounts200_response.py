@@ -26,8 +26,8 @@ from typing_extensions import Literal, Self, NotRequired, TypedDict
 LISTSOURCEACCOUNTS200RESPONSE_ONE_OF_SCHEMAS = ["List[SourceAccount]"]
 
 # Collapsed by postprocess: degenerate oneOf branch — OAG emitted a oneOf wrapper for what the OAS
-# specifies as a single `List[SourceAccount]` schema. Speakeasy types it as the
-# bare underlying type. See collapse_identical_oneof_wrappers in
+# specifies as a single `List[SourceAccount]` schema. Earlier SDK versions typed it as
+# the bare underlying type. See collapse_identical_oneof_wrappers in
 # pipeline/postprocess_generated.py.
 ListSourceAccounts200Response = List[SourceAccount]
 

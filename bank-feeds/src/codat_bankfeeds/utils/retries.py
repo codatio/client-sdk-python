@@ -1,4 +1,4 @@
-"""Retry configuration matching Speakeasy SDK surface, with runtime backoff loop."""
+"""Retry configuration, with runtime backoff loop."""
 
 from __future__ import annotations
 
@@ -54,7 +54,7 @@ class Retries:
         self.status_codes = status_codes
 
 
-# Default retryable status codes from the OAS (x-speakeasy-retries.statusCodes).
+# Default retryable status codes from the OAS retry configuration.
 # Entries may be ints or strings like "5XX" denoting wildcards across a hundred-block.
 DEFAULT_RETRY_STATUS_CODES: List[Any] = [408, 429, '5XX']
 
@@ -79,7 +79,7 @@ def _matches_status(code: int, retry_codes: Iterable[Any]) -> bool:
 
 def _retry_after_ms(exc: Any) -> Optional[int]:
     """Milliseconds to wait from a response's Retry-After header, or None if absent.
-    Accepts an integer number of seconds or an HTTP date, matching Speakeasy and the
+    Accepts an integer number of seconds or an HTTP date, matching the
     TypeScript runtime. A past date clamps to 0."""
     headers = getattr(exc, "headers", None)
     if not headers:
@@ -114,7 +114,7 @@ def execute_with_retries(
     """Run call_fn() and retry on retryable failures per retry_config.
 
     `retry_config=None` means nothing was supplied, so fall back to the default backoff
-    policy (retry by default, matching Speakeasy). A RetryConfig with strategy "none"
+    policy (retry by default). A RetryConfig with strategy "none"
     disables retries -> just one attempt. `retry_status_codes` falls back to
     DEFAULT_RETRY_STATUS_CODES.
     """

@@ -25,7 +25,7 @@ class ErrorMessage(CodatBankFeedsError):
         status_code: Optional[int] = None,
         headers: Optional[Mapping[str, str]] = None,
     ) -> None:
-        # `raw_response` is the 2nd positional arg to match Speakeasy
+        # `raw_response` is the 2nd positional arg to match earlier SDK versions
         # (`ErrorMessage(data, raw_response, body)`).
         message = body or str(data)
         super().__init__(

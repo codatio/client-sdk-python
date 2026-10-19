@@ -1,4 +1,4 @@
-"""codat_bankfeeds.models.errors — Speakeasy-shape exception hierarchy."""
+"""codat_bankfeeds.models.errors — exception hierarchy."""
 
 from .codatbankfeedserror import CodatBankFeedsError
 from .sdkerror import SDKError

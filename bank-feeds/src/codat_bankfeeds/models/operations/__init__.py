@@ -83,12 +83,12 @@ from codat_bankfeeds.api.transactions import (
     ListCreateOperationsRequestTypedDict,
 )
 
-# Speakeasy request-body class names (aliases to POC body classes).
+# Request-body class names (aliases to body classes).
 from codat_bankfeeds.models.create_batch_source_account_request_body import CreateBatchSourceAccountRequestBody as CreateBatchSourceAccountCreateBatchSourceAccountRequestBody
 from codat_bankfeeds.models.create_connection_request import CreateConnectionRequest as CreateConnectionRequestBody
 from codat_bankfeeds.models.update_connection import UpdateConnection as UnlinkConnectionUpdateConnection
 
-# Speakeasy operations names POC defines elsewhere (response bodies, op-param enums).
+# Operations names defined elsewhere (response bodies, op-param enums).
 from codat_bankfeeds.models.operations.create_batch_source_account_request_body import CreateBatchSourceAccountRequestBody
 from codat_bankfeeds.models.operations.create_batch_source_account_request_body_typed_dict import CreateBatchSourceAccountRequestBodyTypedDict
 from codat_bankfeeds.models.operations.create_batch_source_account_response_body import CreateBatchSourceAccountResponseBody
@@ -104,7 +104,7 @@ from codat_bankfeeds.models.operations.response_body_typed_dict import ResponseB
 from codat_bankfeeds.models.operations.create_batch_source_account_response import CreateBatchSourceAccountResponse
 from codat_bankfeeds.models.operations.create_batch_source_account_response_typed_dict import CreateBatchSourceAccountResponseTypedDict
 
-# Speakeasy TypedDict companions for aliased names.
+# TypedDict companions for aliased names.
 from codat_bankfeeds.models.create_batch_source_account_request_body import CreateBatchSourceAccountRequestBodyTypedDict as CreateBatchSourceAccountCreateBatchSourceAccountRequestBodyTypedDict
 from codat_bankfeeds.models.create_connection_request import CreateConnectionRequestTypedDict as CreateConnectionRequestBodyTypedDict
 from codat_bankfeeds.models.update_connection import UpdateConnectionTypedDict as UnlinkConnectionUpdateConnectionTypedDict
